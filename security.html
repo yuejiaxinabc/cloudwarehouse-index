@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>安全日志 · 安全审计与漏洞修复 | 云仓 YUNCANG</title>
+  <meta name="description" content="云仓（YUNCANG）安全日志：三重安全审计（黑盒实测、代码审查、依赖扫描）、6 项核心安全机制、FIX-2026-1001~1006 漏洞修复清单与漏洞披露政策。v1.0.1 已修复全部高危问题。" />
+  <meta name="author" content="小岳 (xiao yue)" />
+  <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/security.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="云仓 YUNCANG" />
+  <meta property="og:title" content="安全日志 · 安全审计与漏洞修复 | 云仓 YUNCANG" />
+  <meta property="og:description" content="安全，是仓库数据的底线。三重安全审计，高危漏洞已清零。" />
+  <meta property="og:url" content="https://yuejiaxinabc.github.io/cloudwarehouse-index/security.html" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============================ 导航栏 ============================ -->
+  <header id="siteHeader" class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="云仓首页">
+        <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
+        <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="features.html">产品功能</a>
+        <a href="pricing.html">部署服务</a>
+        <a href="releases.html">版本发布</a>
+        <a href="changelog.html">更新日志</a>
+        <a href="security.html" class="active" aria-current="page">安全日志</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn-github" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+          Gitee
+        </a>
+        <button id="menuToggle" class="menu-toggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="features.html">产品功能</a></li>
+        <li><a href="pricing.html">部署服务</a></li>
+        <li><a href="releases.html">版本发布</a></li>
+        <li><a href="changelog.html">更新日志</a></li>
+        <li><a href="security.html" class="active" aria-current="page">安全日志</a></li>
+        <li class="mobile-cta">
+          <a class="btn btn-outline btn-sm" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">Gitee</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================ 页首 ============================ -->
+    <section class="page-hero">
+      <div class="container reveal">
+        <span class="eyebrow">安全日志</span>
+        <h1 class="title">安全，是仓库数据的底线</h1>
+        <p class="desc">项目经过「黑盒实测 + 代码审查 + 依赖扫描」三重安全审计。v1.0.1 已修复全部已发现的高危问题，并持续披露。</p>
+      </div>
+    </section>
+
+    <!-- ============================ 三重审计 ============================ -->
+    <section class="section-tight">
+      <div class="container">
+        <div class="grid cols-3">
+          <div class="card reveal">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/></svg>
+            </div>
+            <h3>黑盒实测</h3>
+            <p>以攻击者视角对登录、鉴权、上传等关键面实测验证。</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+            </div>
+            <h3>代码审查</h3>
+            <p>逐行审查中间件、路由与数据层，杜绝逻辑越权与注入。</p>
+          </div>
+          <div class="card reveal">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg>
+            </div>
+            <h3>依赖扫描</h3>
+            <p>扫描第三方依赖已知漏洞，及时升级并移除高风险包。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 核心安全机制 ============================ -->
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">安全机制</span>
+          <h2 class="title">6 项核心安全机制</h2>
+        </div>
+
+        <div class="grid cols-3 section-head-below">
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+            </div>
+            <h3>密码哈希</h3>
+            <p>bcrypt(12) 强哈希存储，明文永不落库。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414a1 1 0 00-.707-.293H4"/></svg>
+            </div>
+            <h3>参数化查询</h3>
+            <p>Prisma ORM 全程参数化，杜绝 SQL 注入。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>CSRF 防护</h3>
+            <p>Origin 校验 + 白名单，跨站请求被拦截。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>接口限流</h3>
+            <p>基于真实客户端 IP 限流，防爆破与滥用。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+            </div>
+            <h3>安全响应头</h3>
+            <p>HTTPS / HSTS / CSP 全量启用。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+            </div>
+            <h3>库存乐观锁</h3>
+            <p>并发出库防超卖，账实一致。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 漏洞修复清单 ============================ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">漏洞披露</span>
+          <h2 class="title">已修复漏洞清单 · FIX-2026-1001~1006</h2>
+        </div>
+
+        <div class="table-wrap reveal section-head-below">
+          <table>
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>级别</th>
+                <th>问题</th>
+                <th>修复方案</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono">1001</td>
+                <td><span class="sev sev-P0">P0</span></td>
+                <td>middleware 任意 token 头放行导致越权</td>
+                <td>移除放行逻辑，/api/v1/* 由路由内部真实校验</td>
+              </tr>
+              <tr>
+                <td class="mono">1002</td>
+                <td><span class="sev sev-P0">P0</span></td>
+                <td>验证码答案随前端下发可被绕过</td>
+                <td>服务端 SVG 生成 + 一次性校验，答案不下发</td>
+              </tr>
+              <tr>
+                <td class="mono">1003</td>
+                <td><span class="sev sev-P1">P1</span></td>
+                <td>login-check 可被用于用户枚举</td>
+                <td>降级空壳，统一登录 / 重置错误文案</td>
+              </tr>
+              <tr>
+                <td class="mono">1004</td>
+                <td><span class="sev sev-P2">P2</span></td>
+                <td>限流 IP 可被伪造头绕过</td>
+                <td>IP 取 X-Real-IP / XFF 末段真实客户端</td>
+              </tr>
+              <tr>
+                <td class="mono">1005</td>
+                <td><span class="sev sev-INFO">INFO</span></td>
+                <td>关键依赖存在已知风险</td>
+                <td>next 14.2.35 / next-auth 4.24.11；移除 puppeteer-core；xlsx → exceljs</td>
+              </tr>
+              <tr>
+                <td class="mono">1006</td>
+                <td><span class="sev sev-INFO">INFO</span></td>
+                <td>冗余配置扩大攻击面</td>
+                <td>关闭未使用图片优化器；CSRF 白名单移除 http 来源</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 披露政策 -->
+        <div class="callout callout-amber reveal" style="margin-top: 2.5rem;">
+          <h4>🔐 漏洞披露政策</h4>
+          <p>
+            发现安全漏洞时，<strong>请勿直接公开 Issue</strong>。请按
+            <a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">docs/SECURITY.md</a>
+            的披露政策私下报告，我们将在确认后第一时间修复并公告。完整安全测试报告见
+            <a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a>。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CTA 引导条 ============================ -->
+    <section class="band-dark cta-band">
+      <div class="container cta-inner reveal">
+        <h2>把数据放在自己手里</h2>
+        <p>私有化部署 + 开源可审计，安全看得见。单次 ¥299，我们帮你装到自己的服务器。</p>
+        <div class="hero-cta">
+          <a class="btn btn-light btn-lg" href="pricing.html">了解部署服务</a>
+          <a class="btn btn-ghost btn-lg" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">
+            阅读 SECURITY.md ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ 页脚 ============================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="云仓首页">
+            <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
+            <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
+          </a>
+          <p>面向中小企业的开源全链路库存管理系统。浏览器打开即用，仓库全流程可追溯。</p>
+          <div class="footer-social">
+            <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+              GitHub
+            </a>
+            <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+              Gitee
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>页面导航</h4>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="features.html">产品功能</a></li>
+            <li><a href="pricing.html">部署服务</a></li>
+            <li><a href="releases.html">版本发布</a></li>
+            <li><a href="changelog.html">更新日志</a></li>
+            <li><a href="security.html">安全日志</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>项目文档</h4>
+          <ul>
+                        <li><a href="http://82.156.236.221/" target="_blank" rel="noopener">在线演示 ↗</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">SECURITY</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/DEPLOYMENT.md" target="_blank" rel="noopener">DEPLOYMENT</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse-wxapp" target="_blank" rel="noopener">微信小程序端</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/LICENSE" target="_blank" rel="noopener">MIT 许可证</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.0.2</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="toTop" class="to-top" aria-label="回到顶部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

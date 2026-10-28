@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>版本发布 · 发布时间线 | 云仓 YUNCANG</title>
+  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.0.2 稳定版、v1.0.1 安全修复版（修复 FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
+  <meta name="author" content="小岳 (xiao yue)" />
+  <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/releases.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="云仓 YUNCANG" />
+  <meta property="og:title" content="版本发布 · 发布时间线 | 云仓 YUNCANG" />
+  <meta property="og:description" content="每一次发布都可追溯、可回看。安全相关版本均经过独立审计。" />
+  <meta property="og:url" content="https://yuejiaxinabc.github.io/cloudwarehouse-index/releases.html" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============================ 导航栏 ============================ -->
+  <header id="siteHeader" class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="云仓首页">
+        <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
+        <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="features.html">产品功能</a>
+        <a href="pricing.html">部署服务</a>
+        <a href="releases.html" class="active" aria-current="page">版本发布</a>
+        <a href="changelog.html">更新日志</a>
+        <a href="security.html">安全日志</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn-github" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+          Gitee
+        </a>
+        <button id="menuToggle" class="menu-toggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="features.html">产品功能</a></li>
+        <li><a href="pricing.html">部署服务</a></li>
+        <li><a href="releases.html" class="active" aria-current="page">版本发布</a></li>
+        <li><a href="changelog.html">更新日志</a></li>
+        <li><a href="security.html">安全日志</a></li>
+        <li class="mobile-cta">
+          <a class="btn btn-outline btn-sm" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">Gitee</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================ 页首 ============================ -->
+    <section class="page-hero">
+      <div class="container reveal">
+        <span class="eyebrow">版本发布</span>
+        <h1 class="title">发布时间线</h1>
+        <p class="desc">每一次发布都可追溯、可回看。安全相关版本均经过独立审计。</p>
+      </div>
+    </section>
+
+    <!-- ============================ 时间线 ============================ -->
+    <section class="section">
+      <div class="container">
+        <div class="timeline">
+          <!-- v1.0.2 -->
+          <div class="tl-item is-latest reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.0.2</h3>
+                <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-10-27</span>
+              </div>
+              <ul class="list">
+                <li>持续打磨交互细节与系统稳定性。</li>
+                <li>缺陷修复与文档补全（详见 <a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/UPDATE-2026-10-27.md" target="_blank" rel="noopener">docs/UPDATE-2026-10-27.md</a>）。</li>
+                <li>补齐 GitHub 发布配套：README 徽章、功能表、文档导航与安全说明。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.0.1 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.0.1</h3>
+                <span class="badge badge-security">Security</span>
+                <span class="tl-date">2026-10-11</span>
+              </div>
+              <p>修复安全审计发现的漏洞 <span class="mono" style="font-family: var(--font-mono); color: var(--ink-900);">FIX-2026-1001~1006</span>，含两处 P0 高危项，并升级关键依赖。</p>
+              <ul class="list">
+                <li>移除 middleware 任意 token 头放行（P0 越权）。</li>
+                <li>验证码改为服务端 SVG 生成 + 一次性校验（P0）。</li>
+                <li>依赖升级：next 14.2.35 / next-auth 4.24.11；移除 puppeteer-core；xlsx → exceljs。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.0.0 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.0.0</h3>
+                <span class="badge badge-baseline">Baseline</span>
+                <span class="tl-date">初始版本</span>
+              </div>
+              <ul class="list">
+                <li>全链路库存管理首发：8 大核心模块 + 扩展能力。</li>
+                <li>系统底座：RBAC、操作日志审计、API Token、NextAuth 会话认证。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" style="margin-top: 3rem; display: flex; flex-wrap: wrap; gap: .85rem;">
+          <a class="btn btn-outline" href="https://github.com/yuejiaxinabc/cloud-warehouse/releases" target="_blank" rel="noopener">
+            查看 GitHub Releases ↗
+          </a>
+          <a class="btn btn-outline" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener">
+            完整版本历史（CHANGELOG）↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CTA 引导条 ============================ -->
+    <section class="band-dark cta-band">
+      <div class="container cta-inner reveal">
+        <h2>直接用上最新稳定版</h2>
+        <p>克隆仓库即可本地体验；也可以交给我们，单次 ¥299 帮你部署到自己的服务器。</p>
+        <div class="hero-cta">
+          <a class="btn btn-light btn-lg" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+            去 GitHub 拿源码
+          </a>
+          <a class="btn btn-ghost btn-lg" href="pricing.html">了解部署服务</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ 页脚 ============================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="云仓首页">
+            <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
+            <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
+          </a>
+          <p>面向中小企业的开源全链路库存管理系统。浏览器打开即用，仓库全流程可追溯。</p>
+          <div class="footer-social">
+            <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+              GitHub
+            </a>
+            <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+              Gitee
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>页面导航</h4>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="features.html">产品功能</a></li>
+            <li><a href="pricing.html">部署服务</a></li>
+            <li><a href="releases.html">版本发布</a></li>
+            <li><a href="changelog.html">更新日志</a></li>
+            <li><a href="security.html">安全日志</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>项目文档</h4>
+          <ul>
+                        <li><a href="http://82.156.236.221/" target="_blank" rel="noopener">在线演示 ↗</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">SECURITY</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/DEPLOYMENT.md" target="_blank" rel="noopener">DEPLOYMENT</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse-wxapp" target="_blank" rel="noopener">微信小程序端</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/LICENSE" target="_blank" rel="noopener">MIT 许可证</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.0.2</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="toTop" class="to-top" aria-label="回到顶部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

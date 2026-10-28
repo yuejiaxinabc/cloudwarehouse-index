@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yuejiaxinabc.github.io/cloudwarehouse-index/sitemap.xml

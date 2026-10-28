@@ -1,7 +1,7 @@
 /* ============================================================
-   云仓官方项目站 — 交互脚本
-   功能：移动端菜单、导航吸顶、滚动渐显、锚点高亮、回到顶部
-   纯原生 JS，无依赖。
+   云仓官方项目站 — 多页面共享交互脚本
+   功能：移动端菜单、导航吸顶、滚动渐显、数字滚动、回到顶部
+   纯原生 JS，无依赖。每个页面引入一次。
    ============================================================ */
 (function () {
   "use strict";
@@ -23,39 +23,25 @@
     });
   }
 
-  /* ---------- 导航吸顶阴影 ---------- */
-  var nav = document.getElementById("navbar");
+  /* ---------- 导航吸顶样式 ---------- */
+  var nav = document.getElementById("siteHeader");
   function onScrollNav() {
     if (!nav) return;
-    if (window.scrollY > 8) nav.classList.add("scrolled");
-    else nav.classList.remove("scrolled");
-  }
-
-  /* ---------- 顶部滚动进度条 ---------- */
-  var progressBar = document.getElementById("progressBar");
-  function onScrollProgress() {
-    if (!progressBar) return;
-    var h = document.documentElement;
-    var max = h.scrollHeight - h.clientHeight;
-    var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-    progressBar.style.width = pct + "%";
+    nav.classList.toggle("scrolled", window.scrollY > 8);
   }
 
   /* ---------- 回到顶部按钮 ---------- */
   var toTop = document.getElementById("toTop");
   function onScrollToTop() {
     if (!toTop) return;
-    if (window.scrollY > 600) toTop.classList.add("show");
-    else toTop.classList.remove("show");
+    toTop.classList.toggle("show", window.scrollY > 560);
   }
 
   window.addEventListener("scroll", function () {
     onScrollNav();
-    onScrollProgress();
     onScrollToTop();
-  });
+  }, { passive: true });
   onScrollNav();
-  onScrollProgress();
   onScrollToTop();
 
   if (toTop) {
@@ -78,21 +64,18 @@
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
-    revealEls.forEach(function (el) {
-      io.observe(el);
-    });
+    revealEls.forEach(function (el) { io.observe(el); });
   } else {
-    revealEls.forEach(function (el) {
-      el.classList.add("is-visible");
-    });
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
   /* ---------- 数据指标数字滚动 ---------- */
   var counters = document.querySelectorAll(".counter");
   function animateCounter(el) {
     var target = parseInt(el.getAttribute("data-target"), 10) || 0;
+    var suffix = el.getAttribute("data-suffix") || "";
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      if (el.firstChild && el.firstChild.nodeType === 3) el.firstChild.nodeValue = String(target);
+      el.textContent = target + suffix;
       return;
     }
     var duration = 1200, start = null;
@@ -100,8 +83,7 @@
       if (!start) start = ts;
       var p = Math.min((ts - start) / duration, 1);
       var eased = 1 - Math.pow(1 - p, 3);
-      var val = Math.round(target * eased);
-      if (el.firstChild && el.firstChild.nodeType === 3) el.firstChild.nodeValue = String(val);
+      el.textContent = Math.round(target * eased) + suffix;
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -120,29 +102,6 @@
     } else {
       counters.forEach(animateCounter);
     }
-  }
-
-  /* ---------- 锚点当前区块高亮（scroll spy） ---------- */
-  var sections = document.querySelectorAll("section[id]");
-  var navLinks = document.querySelectorAll(".nav-link");
-  if (sections.length && navLinks.length && "IntersectionObserver" in window) {
-    var spy = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var id = entry.target.getAttribute("id");
-            navLinks.forEach(function (link) {
-              var href = link.getAttribute("href") || "";
-              link.classList.toggle("active", href === "#" + id);
-            });
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    sections.forEach(function (s) {
-      spy.observe(s);
-    });
   }
 
   /* ---------- 当前年份（页脚） ---------- */
