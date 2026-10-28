@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>安全日志 · 安全审计与漏洞修复 | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）安全日志：三重安全审计（黑盒实测、代码审查、依赖扫描）、6 项核心安全机制、FIX-2026-1001~1006 漏洞修复清单与漏洞披露政策。v1.0.1 已修复全部高危问题。" />
+  <meta name="description" content="云仓（YUNCANG）安全日志：三重安全审计（黑盒实测、代码审查、依赖扫描）、9 项核心安全机制、v1.0.1 → v1.2.0 漏洞修复清单与漏洞披露政策。截至 v1.2.0，已发现高危问题全部修复并复测通过。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/security.html" />
 
@@ -75,7 +75,7 @@
       <div class="container reveal">
         <span class="eyebrow">安全日志</span>
         <h1 class="title">安全，是仓库数据的底线</h1>
-        <p class="desc">项目经过「黑盒实测 + 代码审查 + 依赖扫描」三重安全审计。v1.0.1 已修复全部已发现的高危问题，并持续披露。</p>
+        <p class="desc">项目经过「黑盒实测 + 代码审查 + 依赖扫描」三重安全审计。截至 v1.2.0，已发现的高危问题全部修复并复测通过，并持续披露。</p>
       </div>
     </section>
 
@@ -113,7 +113,7 @@
       <div class="container">
         <div class="section-head center reveal">
           <span class="eyebrow">安全机制</span>
-          <h2 class="title">6 项核心安全机制</h2>
+          <h2 class="title">9 项核心安全机制</h2>
         </div>
 
         <div class="grid cols-3 section-head-below">
@@ -159,6 +159,27 @@
             <h3>库存乐观锁</h3>
             <p>并发出库防超卖，账实一致。</p>
           </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
+            </div>
+            <h3>两步验证（TOTP）</h3>
+            <p>自研 RFC6238 实现、无第三方依赖；开启后登录需额外 6 位动态码，密钥生成 / 启用 / 关闭走独立鉴权接口。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            </div>
+            <h3>上传魔数校验</h3>
+            <p>按文件头嗅探真实类型 + 扩展名白名单 + crypto 随机文件名，杜绝改后缀上传 HTML 造成存储型 XSS。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+            </div>
+            <h3>Webhook 签名</h3>
+            <p>回调携带 <span class="mono">x-yc-signature</span>（HMAC-SHA256），3 秒超时、记录 last_status，可及时发现被伪造或丢投的回调。</p>
+          </div>
         </div>
       </div>
     </section>
@@ -168,7 +189,7 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">漏洞披露</span>
-          <h2 class="title">已修复漏洞清单 · FIX-2026-1001~1006</h2>
+          <h2 class="title">已修复漏洞清单 · v1.0.1 → v1.2.0</h2>
         </div>
 
         <div class="table-wrap reveal section-head-below">
@@ -218,9 +239,26 @@
                 <td>冗余配置扩大攻击面</td>
                 <td>关闭未使用图片优化器；CSRF 白名单移除 http 来源</td>
               </tr>
+              <tr>
+                <td class="mono">1012</td>
+                <td><span class="sev sev-P0">P0</span></td>
+                <td>安全复检发现九项隐患（含验证码可绕过、CSRF 基准可伪造、上传后缀绕过、弱密钥、Token 时序侧信道）</td>
+                <td>验证码在 authorize() 内一次性消费；CSRF 改用真实 Host；上传按魔数嗅探；弱密钥全站 503（fail-closed）；Token 定长比较；登录 IP + 账号双维度限速并统一文案</td>
+              </tr>
+              <tr>
+                <td class="mono">1029</td>
+                <td><span class="sev sev-P1">P1</span></td>
+                <td>验证码错误提示不精确，难以区分「验证码错误 / 已过期」</td>
+                <td>新增只校验不消费的校验接口（带 IP 限流），账号密码错误仍统一文案，不引入用户名枚举面</td>
+              </tr>
             </tbody>
           </table>
         </div>
+
+        <p class="reveal" style="margin-top: 1.5rem; font-size: .9rem; color: var(--ink-600);">
+          注：v1.1.1 另有两条 P0 属<strong>可用性缺陷</strong>（新建商品 500、操作日志未落库），一并修复但不计入安全漏洞；
+          v1.2.0 新增的两步验证、上传魔数校验与 Webhook 签名属主动加固，见上方「核心安全机制」。
+        </p>
 
         <!-- 披露政策 -->
         <div class="callout callout-amber reveal" style="margin-top: 2.5rem;">
@@ -300,7 +338,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.0.2</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.0</p>
       </div>
     </div>
   </footer>

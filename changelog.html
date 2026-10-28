@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>更新日志 · Changelog | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型，v1.0.1 安全修复详情一览。" />
+  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.2.0 覆盖批次效期、FEFO、补货闭环、单据附件、日结快照、现场大屏与初始化向导。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/changelog.html" />
 
@@ -82,6 +82,51 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.2.0 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.2.0</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-10-28</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span><span> 批次与效期台账 <span class="mono">/inventory/lots</span>：批次号 / 生产日期 / 到期日 / 剩余天数 / 状态，可按仓库、关键词、临期天数筛选。</span></li>
+            <li><span class="badge badge-new">新增</span> 临期自动预警：预警接口新增 expiry 类型，已过期与 ≤7 天判紧急、≤30 天判警告，预警中心加「批次临期」筛选。</li>
+            <li><span class="badge badge-new">新增</span> 库存冻结：批次可冻结 / 解冻，冻结量同步累加 locked（不超过在手量），解冻原样释放并写操作日志。</li>
+            <li><span class="badge badge-new">新增</span> 补货建议闭环：建议量 = ceil(安全库存 − 可用量) 且不超过库存上限，勾选一键生成购买申请。</li>
+            <li><span class="badge badge-new">新增</span> 单据附件：入库挂采购发票 / 送货单，出库挂签收回单（图片 / PDF），单张单据最多 20 个。</li>
+            <li><span class="badge badge-new">新增</span> 库存日结快照：每日 00:05 由 cron 落快照（幂等），可按日期回溯最近 30 个时点。</li>
+            <li><span class="badge badge-new">新增</span><span> 现场大屏 <span class="mono">/screen</span>：浅色看板、30 秒轮询、只读，适合仓库挂电视。</span></li>
+            <li><span class="badge badge-new">新增</span><span> 初始化向导 <span class="mono">/setup</span>：单位 → 分类 → 仓库 → 商品四步自检，带完成度进度条。</span></li>
+            <li><span class="badge badge-new">新增</span><span> 商品保质期与采购周期：<span class="mono">shelfLifeDays &gt; 0</span> 视为效期商品，入库强制批次号 + 生产日期。</span></li>
+            <li><span class="badge badge-new">新增</span> 出库 FEFO 选批：按到期日升序逐批扣减并写拣货明细，批次不足拒绝过账，全程事务化。</li>
+            <li><span class="badge badge-new">新增</span> 回收站（主数据软删除 15 天可恢复）、两步验证（自研 TOTP）、登录失败递增延迟。</li>
+            <li><span class="badge badge-new">新增</span> 开放 API v1（products / inventory / movements，支持增量同步）与 Webhook 订阅（HMAC-SHA256 签名）。</li>
+            <li><span class="badge badge-new">新增</span> SMTP 配置与报表订阅：后台可配邮件参数并自检，日报 / 周报按订阅整点发送。</li>
+            <li><span class="badge badge-doc">文档</span><span> 新增《云仓用户手册 v1.2.0》（PDF，27 页）、<span class="mono">docs/ROADMAP-v1.2.md</span> 需求评审与 <span class="mono">docs/UPDATE-2026-10-28.md</span>。</span></li>
+          </ul>
+        </div>
+
+        <!-- v1.1.1 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.1.1</h3>
+            <span class="badge badge-fix">Fix</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-10-28</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-security">修复 P0</span><span> 新建商品必然失败：<span class="mono">/api/products</span> POST 使用未导入的 handleApiError 导致空响应 500，初始库存仍走已废弃的 boxes 表。</span></li>
+            <li><span class="badge badge-fix">修复</span> 操作日志永远空白：登录与仓库 / 单位 / 分类 / 供应商增删改全部补写审计日志，并带操作人 userId。</li>
+            <li><span class="badge badge-fix">修复</span> 新建商品弹窗关闭后表单残留：销毁时重置字段并清空仓库 / 货位 / 图片。</li>
+            <li><span class="badge badge-fix">修复</span> 验证码错误提示不精确：新增只校验不消费的校验接口（带 IP 限流），账号密码错误仍统一文案。</li>
+            <li><span class="badge badge-opt">优化</span> 宽表格横向滚动：商品表合并「图片 + 名称 + 编码」列、仓库表收窄列宽，1280px 下操作列不再被挤出屏幕。</li>
+            <li><span class="badge badge-new">新增</span> 品牌与界面重构：LogoMark 矢量标识、侧边栏分组折叠导航、统一设计系统、登录页左右分栏。</li>
+            <li><span class="badge badge-new">新增</span> 基础主数据预置：种子脚本内置 10 个计量单位与 6 个商品分类（幂等）。</li>
+          </ul>
+        </div>
+
         <!-- v1.0.2 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
@@ -198,7 +243,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.0.2</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.0</p>
       </div>
     </div>
   </footer>
