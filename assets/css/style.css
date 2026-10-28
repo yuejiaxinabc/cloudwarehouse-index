@@ -1,0 +1,247 @@
+/* ============================================================
+   云仓 · 智能仓储管理平台 — 官方项目站 自定义样式
+   说明：基础布局与动效由 Tailwind(CDN) 负责，本文件只补充
+   品牌渐变、时间线、滚动渐显、导航吸顶等 Tailwind 不易表达的部分。
+   ============================================================ */
+
+:root {
+  --brand-500: #2563eb;   /* 云蓝 */
+  --brand-600: #1d4ed8;
+  --accent-500: #06b6d4;  /* 青色 */
+  --ink-900: #0f172a;
+  --ink-600: #475569;
+  --ink-400: #94a3b8;
+  --line: #e2e8f0;
+  --bg-soft: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px; /* 锚点定位避开吸顶导航 */
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue",
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- 品牌渐变文字 / 背景 ---------- */
+.brand-gradient {
+  background-image: linear-gradient(120deg, #2563eb 0%, #06b6d4 100%);
+}
+.brand-gradient-text {
+  background-image: linear-gradient(120deg, #2563eb 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand-ring {
+  box-shadow: 0 10px 30px -12px rgba(37, 99, 235, 0.55);
+}
+
+/* ---------- 导航吸顶 ---------- */
+.nav-blur {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.nav-blur.scrolled {
+  border-bottom-color: var(--line);
+  box-shadow: 0 6px 24px -16px rgba(15, 23, 42, 0.35);
+}
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
+  transition: width 0.25s ease;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--brand-600);
+}
+.nav-link.active::after,
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ---------- 卡片悬浮 ---------- */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px -22px rgba(15, 23, 42, 0.35);
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+/* ---------- 滚动渐显 ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 版本时间线 ---------- */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(180deg, #2563eb, #06b6d4);
+  opacity: 0.35;
+}
+.timeline-item {
+  position: relative;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid var(--brand-500);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+.timeline-item.is-latest::before {
+  background: linear-gradient(120deg, #2563eb, #06b6d4);
+  border-color: #fff;
+}
+
+/* ---------- 安全漏洞严重级别徽章 ---------- */
+.sev-P0 { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.sev-P1 { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+.sev-P2 { background: #fefce8; color: #a16207; border: 1px solid #fde68a; }
+.sev-INFO { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+
+/* ---------- 装饰网格背景 ---------- */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+/* ---------- 移动端菜单 ---------- */
+#mobileMenu {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+#mobileMenu.open {
+  max-height: 420px;
+  opacity: 1;
+}
+
+/* ---------- 回到顶部 ---------- */
+#toTop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+#toTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+#toTop:hover { transform: translateY(-3px); }
+
+/* ---------- 顶部滚动进度条 ---------- */
+#progressBar { transition: width 0.1s linear; }
+
+/* ---------- 装饰光斑 ---------- */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: blobFloat 14s ease-in-out infinite;
+}
+.blob-1 { width: 320px; height: 320px; top: -80px; left: -60px; background: rgba(6, 182, 212, 0.55); }
+.blob-2 { width: 280px; height: 280px; bottom: -90px; right: -50px; background: rgba(37, 99, 235, 0.45); animation-delay: -5s; }
+.blob-soft { width: 360px; height: 360px; top: -120px; right: -80px; background: rgba(37, 99, 235, 0.18); }
+.blob-soft-2 { width: 380px; height: 380px; bottom: -140px; left: -100px; background: rgba(6, 182, 212, 0.16); }
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(20px, -24px) scale(1.08); }
+}
+
+/* ---------- Hero 浮动卡片 / 标签 ---------- */
+.float-card { animation: floatY 6s ease-in-out infinite; }
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.float-pill {
+  position: absolute;
+  background: #fff;
+  color: #1e293b;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 12px 30px -12px rgba(15, 23, 42, 0.35);
+  animation: floatY 5s ease-in-out infinite;
+  z-index: 20;
+}
+.float-pill-1 { top: -14px;  left: -14px;  animation-delay: 0s; }
+.float-pill-2 { bottom: 56px; right: -18px; animation-delay: -1.6s; }
+.float-pill-3 { top: 54%;    right: -34px; animation-delay: -3s; }
+
+/* ---------- 业务流程时间线 ---------- */
+.workflow { display: flex; flex-direction: column; gap: 2.5rem; }
+.workflow-step { flex: 1; text-align: center; position: relative; }
+.workflow-num {
+  width: 56px; height: 56px; margin: 0 auto;
+  border-radius: 9999px;
+  display: grid; place-items: center;
+  font-weight: 800; font-size: 1.25rem; color: #fff;
+  background-image: linear-gradient(120deg, #2563eb 0%, #06b6d4 100%);
+  box-shadow: 0 10px 24px -10px rgba(37, 99, 235, 0.6);
+}
+@media (min-width: 768px) {
+  .workflow { flex-direction: row; gap: 0; }
+  .workflow::before {
+    content: ""; position: absolute; top: 28px; left: 12%; right: 12%;
+    height: 2px; background: linear-gradient(90deg, #2563eb, #06b6d4); opacity: 0.3;
+  }
+}
+
+/* ---------- 波浪分隔 ---------- */
+.wave-divider { line-height: 0; margin-top: -1px; }
+.wave-divider svg { display: block; }
+
+/* 减少动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .blob, .float-card, .float-pill { animation: none; }
+  html { scroll-behavior: auto; }
+}

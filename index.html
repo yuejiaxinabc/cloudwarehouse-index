@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== TDK 基础 SEO ===== -->
+  <title>云仓 · 智能仓储管理平台 | 开源全链路库存管理系统</title>
+  <meta name="description" content="云仓（YUNCANG Inventory Management）是面向中小制造、零售与贸易企业的开源全链路库存管理系统，涵盖商品、入库、出库、库存、盘点、库位、预警、报表 8 大模块，支持扫码、批次效期、乐观锁防超卖与微信小程序端。MIT 许可证。" />
+  <meta name="keywords" content="云仓,库存管理,仓储系统,WMS,入库,出库,盘点,库存预警,开源,Next.js,中小企业" />
+  <meta name="author" content="小岳 (xiao yue)" />
+  <link rel="canonical" href="https://github.com/yuejiaxinabc/cloud-warehouse" />
+
+  <!-- ===== Open Graph / 社交分享 ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="云仓 · 智能仓储管理平台" />
+  <meta property="og:description" content="面向中小企业的开源全链路库存管理系统，8 大核心模块，浏览器打开即用。" />
+  <meta property="og:url" content="https://github.com/yuejiaxinabc/cloud-warehouse" />
+
+  <!-- ===== Tailwind CSS (Play CDN，零构建) ===== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#2563eb',600:'#1d4ed8',700:'#1e40af',800:'#1e3a8a',900:'#172554' },
+            accent: { 500:'#06b6d4',600:'#0891b2' }
+          },
+          fontFamily: {
+            sans: ['Inter','-apple-system','BlinkMacSystemFont','PingFang SC','Microsoft YaHei','sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- ===== 自定义样式 ===== -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="bg-white text-slate-700 antialiased">
+
+  <!-- 顶部滚动进度条 -->
+  <div id="progressBar" class="fixed top-0 inset-x-0 h-1 z-[60] brand-gradient" style="width:0%"></div>
+
+  <!-- ============================ 导航栏 ============================ -->
+  <header id="navbar" class="nav-blur fixed top-0 inset-x-0 z-50">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#top" class="flex items-center gap-2 shrink-0">
+        <span class="brand-gradient w-9 h-9 rounded-xl grid place-items-center text-white font-bold text-lg shadow-sm">云</span>
+        <span class="font-semibold text-slate-900 text-lg tracking-tight">云仓 <span class="text-slate-400 font-normal text-sm">YUNCANG</span></span>
+      </a>
+
+      <!-- 桌面端菜单 -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <li><a href="#intro"    class="nav-link">项目简介</a></li>
+        <li><a href="#features" class="nav-link">产品功能</a></li>
+        <li><a href="#releases" class="nav-link">版本发布</a></li>
+        <li><a href="#changelog"class="nav-link">更新日志</a></li>
+        <li><a href="#security" class="nav-link">安全日志</a></li>
+      </ul>
+
+      <!-- 仓库入口 -->
+      <div class="hidden md:flex items-center gap-2">
+        <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-white brand-gradient brand-ring transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+          Gitee
+        </a>
+      </div>
+
+      <!-- 移动端汉堡 -->
+      <button id="menuToggle" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+
+    <!-- 移动端展开菜单 -->
+    <div id="mobileMenu" class="md:hidden bg-white/95 backdrop-blur border-t border-slate-100">
+      <ul class="px-4 py-3 space-y-1 text-sm font-medium text-slate-700">
+        <li><a href="#intro"    class="block py-2.5 px-2 rounded-lg hover:bg-slate-50">项目简介</a></li>
+        <li><a href="#features" class="block py-2.5 px-2 rounded-lg hover:bg-slate-50">产品功能</a></li>
+        <li><a href="#releases" class="block py-2.5 px-2 rounded-lg hover:bg-slate-50">版本发布</a></li>
+        <li><a href="#changelog"class="block py-2.5 px-2 rounded-lg hover:bg-slate-50">更新日志</a></li>
+        <li><a href="#security" class="block py-2.5 px-2 rounded-lg hover:bg-slate-50">安全日志</a></li>
+        <li class="flex gap-2 pt-2">
+          <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener" class="flex-1 text-center py-2.5 rounded-lg border border-slate-200 hover:bg-slate-50">GitHub</a>
+          <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener" class="flex-1 text-center py-2.5 rounded-lg text-white brand-gradient">Gitee</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============================ Hero / 项目简介 ============================ -->
+  <section id="top" class="relative pt-[68px] overflow-hidden">
+    <div class="brand-gradient grid-bg relative">
+      <!-- 装饰光斑 -->
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- 左：文案 -->
+          <div class="reveal text-white">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 text-white/90 text-xs font-medium ring-1 ring-white/25">
+              <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+              当前版本 v1.0.2 · MIT 开源
+            </span>
+            <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+              云仓 · 智能仓储<br class="hidden sm:block" />管理平台
+            </h1>
+            <p class="mt-5 text-lg text-white/85 max-w-xl leading-relaxed">
+              面向中小制造、零售与贸易企业的<span class="font-semibold text-white">全链路库存管理系统</span>。浏览器打开即用，从「货什么时候进来的」到「放在哪个货架哪个格子」，全程可追溯。
+            </p>
+            <!-- 技术栈 chips -->
+            <div class="mt-7 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-white/90 text-xs ring-1 ring-white/20">Next.js 14</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-white/90 text-xs ring-1 ring-white/20">TypeScript</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-white/90 text-xs ring-1 ring-white/20">Ant Design 5</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-white/90 text-xs ring-1 ring-white/20">Prisma</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-white/90 text-xs ring-1 ring-white/20">MySQL 8.0</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-white/90 text-xs ring-1 ring-white/20">NextAuth</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/10 text-white/90 text-xs ring-1 ring-white/20">Recharts</span>
+            </div>
+            <!-- CTA -->
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-brand-700 font-semibold text-sm shadow-lg hover:-translate-y-0.5 transition">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+                GitHub 仓库
+              </a>
+              <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 text-white font-semibold text-sm ring-1 ring-white/30 hover:bg-white/20 transition">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+                Gitee 仓库
+              </a>
+            </div>
+          </div>
+
+          <!-- 右：快速开始代码卡 + 浮动标签 -->
+          <div class="reveal relative">
+            <div class="float-card">
+              <div class="bg-slate-900/90 backdrop-blur rounded-2xl shadow-2xl overflow-hidden ring-1 ring-white/10">
+                <div class="flex items-center gap-1.5 px-4 py-3 border-b border-white/10">
+                  <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                  <span class="ml-2 text-xs text-slate-400 font-mono">快速开始 · Quick Start</span>
+                </div>
+                <pre class="px-5 py-4 text-[13px] leading-relaxed text-slate-200 font-mono overflow-x-auto"><code><span class="text-slate-500"># 1) 安装依赖（Node.js ≥ 18）</span>
+npm install
+
+<span class="text-slate-500"># 2) 配置环境变量</span>
+cp .env.example .env
+
+<span class="text-slate-500"># 3) 初始化数据库</span>
+npx prisma generate &amp;&amp; npx prisma db push
+npx ts-node prisma/seed.ts
+
+<span class="text-slate-500"># 4) 启动</span>
+npm run dev   <span class="text-emerald-400"># → http://localhost:3000</span></code></pre>
+              </div>
+            </div>
+            <!-- 浮动小标签 -->
+            <span class="float-pill float-pill-1">✓ 已通过安全审计</span>
+            <span class="float-pill float-pill-2">📦 扫码入库</span>
+            <span class="float-pill float-pill-3">📱 小程序端</span>
+            <p class="mt-4 text-xs text-white/70 text-center relative z-10">预置账号 admin / Admin@123（首次上线请立即改密）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 数据指标 ============================ -->
+  <section class="py-12 bg-white border-b border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        <div class="reveal">
+          <p class="text-4xl font-extrabold brand-gradient-text counter" data-target="8">0</p>
+          <p class="mt-1 text-sm text-slate-500">大核心业务模块</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold brand-gradient-text counter" data-target="100">0<span class="text-2xl">%</span></p>
+          <p class="mt-1 text-sm text-slate-500">全链路可追溯</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold brand-gradient-text counter" data-target="0">0<span class="text-2xl"> 元</span></p>
+          <p class="mt-1 text-sm text-slate-500">授权费（MIT 开源）</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold brand-gradient-text counter" data-target="6">0</p>
+          <p class="mt-1 text-sm text-slate-500">项核心安全机制</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 业务流程 ============================ -->
+  <section class="py-20 bg-slate-50 relative overflow-hidden">
+    <div class="blob blob-soft"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="reveal text-center max-w-2xl mx-auto">
+        <p class="text-brand-600 font-semibold text-sm tracking-wide">业务流程</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">一条链路，管住仓库全生命周期</h2>
+        <p class="mt-4 text-slate-600">从收货到对账，每一步系统自动衔接，不再靠 Excel 手动拼凑。</p>
+      </div>
+
+      <div class="mt-14 workflow">
+        <!-- Step 1 -->
+        <div class="reveal workflow-step">
+          <div class="workflow-num">1</div>
+          <h3 class="mt-4 font-semibold text-slate-900">采购入库</h3>
+          <p class="mt-1 text-sm text-slate-600">扫码收货、批次与效期登记，自动生成入库单。</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="reveal workflow-step">
+          <div class="workflow-num">2</div>
+          <h3 class="mt-4 font-semibold text-slate-900">上架库位</h3>
+          <p class="mt-1 text-sm text-slate-600">区域→货位→盒子三级库位，货架地图可视上架。</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="reveal workflow-step">
+          <div class="workflow-num">3</div>
+          <h3 class="mt-4 font-semibold text-slate-900">销售出库</h3>
+          <p class="mt-1 text-sm text-slate-600">审批流程 + 乐观锁防超卖，准确扣减库存。</p>
+        </div>
+        <!-- Step 4 -->
+        <div class="reveal workflow-step">
+          <div class="workflow-num">4</div>
+          <h3 class="mt-4 font-semibold text-slate-900">盘点对账</h3>
+          <p class="mt-1 text-sm text-slate-600">全盘/循环盘点，差异自动调整，账实一致。</p>
+        </div>
+        <!-- Step 5 -->
+        <div class="reveal workflow-step">
+          <div class="workflow-num">5</div>
+          <h3 class="mt-4 font-semibold text-slate-900">预警报表</h3>
+          <p class="mt-1 text-sm text-slate-600">四类预警 + 收发存/成本报表，决策有据。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 项目简介（概述） ============================ -->
+  <section id="intro" class="py-20 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="reveal max-w-3xl">
+        <p class="text-brand-600 font-semibold text-sm tracking-wide">项目简介</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">一套够用、好看、好上手的仓库大脑</h2>
+        <p class="mt-5 text-lg text-slate-600 leading-relaxed">
+          云仓（英文代号 <span class="font-semibold text-slate-800">YUNCANG Inventory Management</span>）是一套开源的全链路库存管理系统。它把「采购入库 → 上架库位 → 销售出库 → 盘点对账 → 预警报表」打通成一条可追溯的链路，让中小企业在不堆人的前提下，也能把仓库管得清清楚楚。
+        </p>
+      </div>
+
+      <!-- 为什么选云仓 -->
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="reveal card-hover rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-brand-50 p-6">
+          <div class="w-11 h-11 rounded-xl bg-brand-100 text-brand-600 grid place-items-center">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">开箱即用</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">浏览器打开即用，无需安装客户端，私有化部署数据自主可控。</p>
+        </div>
+        <div class="reveal card-hover rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-brand-50 p-6">
+          <div class="w-11 h-11 rounded-xl bg-brand-100 text-brand-600 grid place-items-center">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">全链路追溯</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">从入库到出库每一步可查，批次、库位、操作人全记录。</p>
+        </div>
+        <div class="reveal card-hover rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-brand-50 p-6">
+          <div class="w-11 h-11 rounded-xl bg-brand-100 text-brand-600 grid place-items-center">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">安全合规</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">三重安全审计 + 6 项核心安全机制，高危漏洞已清零。</p>
+        </div>
+        <div class="reveal card-hover rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-brand-50 p-6">
+          <div class="w-11 h-11 rounded-xl bg-brand-100 text-brand-600 grid place-items-center">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">移动协同</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">配套微信小程序端，仓管员手机即可扫码作业。</p>
+        </div>
+      </div>
+
+      <!-- 适用行业 -->
+      <div class="reveal mt-10 rounded-2xl border border-slate-100 bg-slate-50 p-6">
+        <h3 class="font-semibold text-slate-900">适用行业</h3>
+        <div class="mt-4 flex flex-wrap gap-2.5">
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm">制造业</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm">零售连锁</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm">贸易批发</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm">电商</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm">医疗器械</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm">食品生鲜</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm">五金建材</span>
+          <span class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-sm">汽车零部件</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 波浪分隔 -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-12 sm:h-16 block">
+      <path fill="#f8fafc" d="M0,40 C240,80 480,0 720,32 C960,64 1200,16 1440,48 L1440,80 L0,80 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ============================ 产品功能 ============================ -->
+  <section id="features" class="py-20 bg-slate-50 border-b border-slate-100 relative overflow-hidden">
+    <div class="blob blob-soft-2"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="reveal text-center max-w-2xl mx-auto">
+        <p class="text-brand-600 font-semibold text-sm tracking-wide">产品功能</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">核心 8 大模块</h2>
+        <p class="mt-4 text-slate-600">从商品建档到成本结转，每个环节都可追溯、可审计、可预警。</p>
+      </div>
+
+      <!-- 8 模块网格 -->
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="reveal card-hover bg-white rounded-2xl border border-slate-100 p-6">
+          <div class="w-12 h-12 rounded-xl brand-gradient grid place-items-center text-white">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">商品 / 物料管理</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">SKU、分类体系、单位换算、规格属性、条码与供应商关联。</p>
+        </div>
+
+        <div class="reveal card-hover bg-white rounded-2xl border border-slate-100 p-6">
+          <div class="w-12 h-12 rounded-xl brand-gradient grid place-items-center text-white">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">入库管理</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">采购 / 退货 / 生产 / 其他入库，支持扫码入库、批次与效期。</p>
+        </div>
+
+        <div class="reveal card-hover bg-white rounded-2xl border border-slate-100 p-6">
+          <div class="w-12 h-12 rounded-xl brand-gradient grid place-items-center text-white">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21V9m0 0l-4 4m4-4l4 4M4 7V5a2 2 0 012-2h12a2 2 0 012 2v2"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">出库管理</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">销售 / 领料出库、审批流程，<span class="font-medium text-brand-600">乐观锁防超卖</span>。</p>
+        </div>
+
+        <div class="reveal card-hover bg-white rounded-2xl border border-slate-100 p-6">
+          <div class="w-12 h-12 rounded-xl brand-gradient grid place-items-center text-white">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">库存查询</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">实时结存、可用量（on_hand − locked）、库位明细与批次追踪。</p>
+        </div>
+
+        <div class="reveal card-hover bg-white rounded-2xl border border-slate-100 p-6">
+          <div class="w-12 h-12 rounded-xl brand-gradient grid place-items-center text-white">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">盘点管理</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">全盘 / 循环盘点，差异自动调整，账实一致有保障。</p>
+        </div>
+
+        <div class="reveal card-hover bg-white rounded-2xl border border-slate-100 p-6">
+          <div class="w-12 h-12 rounded-xl brand-gradient grid place-items-center text-white">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">仓库库位</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">多仓库，区域→货位→盒子三级库位，货架地图与移库调拨。</p>
+        </div>
+
+        <div class="reveal card-hover bg-white rounded-2xl border border-slate-100 p-6">
+          <div class="w-12 h-12 rounded-xl brand-gradient grid place-items-center text-white">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">预警中心</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">低库存 / 高库存 / 临期 / 呆滞，四类自动预警。</p>
+        </div>
+
+        <div class="reveal card-hover bg-white rounded-2xl border border-slate-100 p-6">
+          <div class="w-12 h-12 rounded-xl brand-gradient grid place-items-center text-white">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+          </div>
+          <h3 class="mt-4 font-semibold text-slate-900">报表统计</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">收发存、周转率、库龄，移动加权 / FIFO 成本核算。</p>
+        </div>
+      </div>
+
+      <!-- 扩展能力 -->
+      <div class="reveal mt-10 rounded-2xl border border-slate-100 bg-white p-6">
+        <h3 class="font-semibold text-slate-900">扩展能力</h3>
+        <div class="mt-4 flex flex-wrap gap-2.5">
+          <span class="px-3 py-1.5 rounded-lg bg-brand-50 text-brand-700 text-sm font-medium">BOM 物料清单</span>
+          <span class="px-3 py-1.5 rounded-lg bg-brand-50 text-brand-700 text-sm font-medium">序列号追踪</span>
+          <span class="px-3 py-1.5 rounded-lg bg-brand-50 text-brand-700 text-sm font-medium">条码标签打印</span>
+          <span class="px-3 py-1.5 rounded-lg bg-brand-50 text-brand-700 text-sm font-medium">Excel 导出（exceljs）</span>
+          <a href="https://github.com/yuejiaxinabc/cloud-warehouse-wxapp" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-accent-500/10 text-accent-600 text-sm font-medium hover:bg-accent-500/20">📱 微信小程序端 ↗</a>
+        </div>
+      </div>
+
+      <!-- 系统底座 -->
+      <div class="reveal mt-5 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="rounded-xl border border-slate-100 bg-white p-4 text-sm text-slate-600"><span class="font-semibold text-slate-800">RBAC</span> 用户角色权限</div>
+        <div class="rounded-xl border border-slate-100 bg-white p-4 text-sm text-slate-600"><span class="font-semibold text-slate-800">操作日志</span> 审计追踪</div>
+        <div class="rounded-xl border border-slate-100 bg-white p-4 text-sm text-slate-600"><span class="font-semibold text-slate-800">API Token</span> 开放接口</div>
+        <div class="rounded-xl border border-slate-100 bg-white p-4 text-sm text-slate-600"><span class="font-semibold text-slate-800">NextAuth</span> 会话认证</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 波浪分隔 -->
+  <div class="wave-divider wave-divider-light">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-12 sm:h-16 block">
+      <path fill="#ffffff" d="M0,48 C240,16 480,64 720,40 C960,16 1200,72 1440,32 L1440,80 L0,80 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ============================ 版本发布 ============================ -->
+  <section id="releases" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="reveal max-w-2xl">
+        <p class="text-brand-600 font-semibold text-sm tracking-wide">版本发布</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">发布时间线</h2>
+        <p class="mt-4 text-slate-600">每一次发布都可追溯、可回看。安全相关版本均经过独立审计。</p>
+      </div>
+
+      <div class="mt-12 timeline space-y-10">
+        <!-- v1.0.2 -->
+        <div class="timeline-item is-latest reveal">
+          <div class="rounded-2xl border-2 border-brand-200 bg-brand-50/40 p-6">
+            <div class="flex flex-wrap items-center gap-3">
+              <h3 class="text-xl font-bold text-slate-900">v1.0.2</h3>
+              <span class="px-2.5 py-0.5 rounded-full bg-brand-600 text-white text-xs font-semibold">Latest</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-semibold">Stable</span>
+              <span class="text-sm text-slate-500 ml-auto">2026-10-27</span>
+            </div>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600 list-disc pl-5">
+              <li>持续打磨交互细节与系统稳定性。</li>
+              <li>缺陷修复与文档补全（详见 <a class="text-brand-600 hover:underline" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/UPDATE-2026-10-27.md" target="_blank" rel="noopener">docs/UPDATE-2026-10-27.md</a>）。</li>
+              <li>补齐 GitHub 发布配套：README 徽章、功能表、文档导航与安全说明。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- v1.0.1 -->
+        <div class="timeline-item reveal">
+          <div class="rounded-2xl border border-slate-100 bg-white p-6">
+            <div class="flex flex-wrap items-center gap-3">
+              <h3 class="text-xl font-bold text-slate-900">v1.0.1</h3>
+              <span class="px-2.5 py-0.5 rounded-full bg-red-100 text-red-700 text-xs font-semibold">Security</span>
+              <span class="text-sm text-slate-500 ml-auto">2026-10-11</span>
+            </div>
+            <p class="mt-3 text-sm text-slate-600">修复安全审计发现的漏洞 <span class="font-mono text-slate-800">FIX-2026-1001~1006</span>，含两处 P0 高危项，并升级关键依赖。</p>
+            <ul class="mt-3 space-y-2 text-sm text-slate-600 list-disc pl-5">
+              <li>移除 middleware 任意 token 头放行（P0 越权）。</li>
+              <li>验证码改为服务端 SVG 生成 + 一次性校验（P0）。</li>
+              <li>依赖升级：next 14.2.35 / next-auth 4.24.11；移除 puppeteer-core；xlsx → exceljs。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- v1.0.0 -->
+        <div class="timeline-item reveal">
+          <div class="rounded-2xl border border-slate-100 bg-white p-6">
+            <div class="flex flex-wrap items-center gap-3">
+              <h3 class="text-xl font-bold text-slate-900">v1.0.0</h3>
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">Baseline</span>
+              <span class="text-sm text-slate-500 ml-auto">初始版本</span>
+            </div>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600 list-disc pl-5">
+              <li>全链路库存管理首发：8 大核心模块 + 扩展能力。</li>
+              <li>系统底座：RBAC、操作日志审计、API Token、NextAuth 会话认证。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal mt-10 flex flex-wrap gap-3">
+        <a href="https://github.com/yuejiaxinabc/cloud-warehouse/releases" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50">
+          查看 GitHub Releases ↗
+        </a>
+        <a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50">
+          完整版本历史（CHANGELOG）↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 更新日志 ============================ -->
+  <section id="changelog" class="py-20 bg-slate-50 border-y border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="reveal max-w-2xl">
+        <p class="text-brand-600 font-semibold text-sm tracking-wide">更新日志</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Changelog</h2>
+        <p class="mt-4 text-slate-600">按版本聚合的变更记录，标签区分「新增 / 修复 / 优化」。</p>
+      </div>
+
+      <div class="mt-10 space-y-8">
+        <!-- v1.0.2 -->
+        <div class="reveal rounded-2xl border border-slate-100 bg-white p-6">
+          <div class="flex items-center gap-3">
+            <h3 class="text-lg font-bold text-slate-900">v1.0.2</h3>
+            <span class="text-sm text-slate-400">2026-10-27</span>
+          </div>
+          <ul class="mt-4 space-y-3 text-sm text-slate-600">
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-blue-100 text-blue-700 text-xs font-semibold">优化</span> 持续打磨交互细节与系统稳定性。</li>
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-amber-100 text-amber-700 text-xs font-semibold">修复</span> 若干缺陷修复（详见 docs/FIXLOG.md）。</li>
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs font-semibold">文档</span> 补齐发布配套：README 重写、LICENSE、CONTRIBUTING、.github 模板。</li>
+          </ul>
+        </div>
+
+        <!-- v1.0.1 -->
+        <div class="reveal rounded-2xl border border-slate-100 bg-white p-6">
+          <div class="flex items-center gap-3">
+            <h3 class="text-lg font-bold text-slate-900">v1.0.1</h3>
+            <span class="text-sm text-slate-400">2026-10-11</span>
+            <span class="px-2 py-0.5 rounded-full bg-red-100 text-red-700 text-xs font-semibold">Security</span>
+          </div>
+          <ul class="mt-4 space-y-3 text-sm text-slate-600">
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-rose-100 text-rose-700 text-xs font-semibold">修复 P0</span> 移除 middleware 任意 token 头放行，/api/v1/* 改由路由内部真实校验（越权）。</li>
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-rose-100 text-rose-700 text-xs font-semibold">修复 P0</span> 验证码答案不再下发，改为服务端 SVG 生成 + 一次性校验。</li>
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-orange-100 text-orange-700 text-xs font-semibold">修复 P1</span> login-check 降级空壳，统一登录 / 重置错误文案，防用户枚举。</li>
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-yellow-100 text-yellow-800 text-xs font-semibold">修复 P2</span> 限流 IP 取 X-Real-IP / XFF 末段，防伪造绕过。</li>
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-blue-100 text-blue-700 text-xs font-semibold">优化</span> 升级 next 14.2.35 / next-auth 4.24.11；移除 puppeteer-core；xlsx → exceljs。</li>
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-blue-100 text-blue-700 text-xs font-semibold">优化</span> 关闭未使用图片优化器；CSRF 白名单移除 http 来源。</li>
+          </ul>
+        </div>
+
+        <!-- v1.0.0 -->
+        <div class="reveal rounded-2xl border border-slate-100 bg-white p-6">
+          <div class="flex items-center gap-3">
+            <h3 class="text-lg font-bold text-slate-900">v1.0.0</h3>
+            <span class="text-sm text-slate-400">初始版本</span>
+          </div>
+          <ul class="mt-4 space-y-3 text-sm text-slate-600">
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs font-semibold">新增</span> 8 大核心模块：商品/物料、入库、出库、库存、盘点、库位、预警、报表。</li>
+            <li class="flex gap-3"><span class="shrink-0 px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs font-semibold">新增</span> 系统底座：RBAC、操作日志审计、API Token、NextAuth 会话认证。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 安全日志 ============================ -->
+  <section id="security" class="py-20 bg-white relative overflow-hidden">
+    <div class="blob blob-soft"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
+      <div class="reveal max-w-3xl">
+        <p class="text-brand-600 font-semibold text-sm tracking-wide">安全日志</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">安全，是仓库数据的底线</h2>
+        <p class="mt-4 text-slate-600">项目经过「黑盒实测 + 代码审查 + 依赖扫描」三重安全审计。v1.0.1 已修复全部已发现的高危问题，并持续披露。</p>
+      </div>
+
+      <!-- 核心安全机制 -->
+      <div class="reveal mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-slate-100 bg-slate-50 p-5">
+          <p class="font-semibold text-slate-900">密码哈希</p>
+          <p class="mt-1 text-sm text-slate-600">bcrypt(12) 强哈希存储，明文永不落库。</p>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50 p-5">
+          <p class="font-semibold text-slate-900">参数化查询</p>
+          <p class="mt-1 text-sm text-slate-600">Prisma ORM 全程参数化，杜绝 SQL 注入。</p>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50 p-5">
+          <p class="font-semibold text-slate-900">CSRF 防护</p>
+          <p class="mt-1 text-sm text-slate-600">Origin 校验 + 白名单，跨站请求被拦截。</p>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50 p-5">
+          <p class="font-semibold text-slate-900">接口限流</p>
+          <p class="mt-1 text-sm text-slate-600">基于真实客户端 IP 限流，防爆破与滥用。</p>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50 p-5">
+          <p class="font-semibold text-slate-900">安全响应头</p>
+          <p class="mt-1 text-sm text-slate-600">HTTPS / HSTS / CSP 全量启用。</p>
+        </div>
+        <div class="rounded-xl border border-slate-100 bg-slate-50 p-5">
+          <p class="font-semibold text-slate-900">库存乐观锁</p>
+          <p class="mt-1 text-sm text-slate-600">并发出库防超卖，账实一致。</p>
+        </div>
+      </div>
+
+      <!-- 漏洞修复清单 -->
+      <div class="reveal mt-12">
+        <h3 class="text-lg font-bold text-slate-900">已修复漏洞清单 · FIX-2026-1001~1006</h3>
+        <div class="mt-4 overflow-x-auto rounded-2xl border border-slate-100">
+          <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 text-slate-600">
+              <tr>
+                <th class="px-5 py-3 font-semibold">编号</th>
+                <th class="px-5 py-3 font-semibold">级别</th>
+                <th class="px-5 py-3 font-semibold">问题</th>
+                <th class="px-5 py-3 font-semibold">修复方案</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="px-5 py-3 font-mono text-slate-800">1001</td>
+                <td class="px-5 py-3"><span class="sev-P0 px-2 py-0.5 rounded text-xs font-semibold">P0</span></td>
+                <td class="px-5 py-3 text-slate-600">middleware 任意 token 头放行导致越权</td>
+                <td class="px-5 py-3 text-slate-600">移除放行逻辑，/api/v1/* 由路由内部真实校验</td>
+              </tr>
+              <tr>
+                <td class="px-5 py-3 font-mono text-slate-800">1002</td>
+                <td class="px-5 py-3"><span class="sev-P0 px-2 py-0.5 rounded text-xs font-semibold">P0</span></td>
+                <td class="px-5 py-3 text-slate-600">验证码答案随前端下发可被绕过</td>
+                <td class="px-5 py-3 text-slate-600">服务端 SVG 生成 + 一次性校验，答案不下发</td>
+              </tr>
+              <tr>
+                <td class="px-5 py-3 font-mono text-slate-800">1003</td>
+                <td class="px-5 py-3"><span class="sev-P1 px-2 py-0.5 rounded text-xs font-semibold">P1</span></td>
+                <td class="px-5 py-3 text-slate-600">login-check 可被用于用户枚举</td>
+                <td class="px-5 py-3 text-slate-600">降级空壳，统一登录 / 重置错误文案</td>
+              </tr>
+              <tr>
+                <td class="px-5 py-3 font-mono text-slate-800">1004</td>
+                <td class="px-5 py-3"><span class="sev-P2 px-2 py-0.5 rounded text-xs font-semibold">P2</span></td>
+                <td class="px-5 py-3 text-slate-600">限流 IP 可被伪造头绕过</td>
+                <td class="px-5 py-3 text-slate-600">IP 取 X-Real-IP / XFF 末段真实客户端</td>
+              </tr>
+              <tr>
+                <td class="px-5 py-3 font-mono text-slate-800">1005</td>
+                <td class="px-5 py-3"><span class="sev-INFO px-2 py-0.5 rounded text-xs font-semibold">INFO</span></td>
+                <td class="px-5 py-3 text-slate-600">关键依赖存在已知风险</td>
+                <td class="px-5 py-3 text-slate-600">next 14.2.35 / next-auth 4.24.11；移除 puppeteer-core；xlsx → exceljs</td>
+              </tr>
+              <tr>
+                <td class="px-5 py-3 font-mono text-slate-800">1006</td>
+                <td class="px-5 py-3"><span class="sev-INFO px-2 py-0.5 rounded text-xs font-semibold">INFO</span></td>
+                <td class="px-5 py-3 text-slate-600">冗余配置扩大攻击面</td>
+                <td class="px-5 py-3 text-slate-600">关闭未使用图片优化器；CSRF 白名单移除 http 来源</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 披露政策 -->
+      <div class="reveal mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6">
+        <h4 class="font-semibold text-amber-900">🔐 漏洞披露政策</h4>
+        <p class="mt-2 text-sm text-amber-800 leading-relaxed">
+          发现安全漏洞时，<span class="font-semibold">请勿直接公开 Issue</span>。请按
+          <a class="underline font-medium" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">docs/SECURITY.md</a>
+          的披露政策私下报告，我们将在确认后第一时间修复并公告。完整安全测试报告见
+          <a class="underline font-medium" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a>。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CTA 引导条 ============================ -->
+  <section class="brand-gradient grid-bg relative overflow-hidden">
+    <div class="blob blob-2"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 text-center relative">
+      <div class="reveal text-white">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">把仓库管得清清楚楚</h2>
+        <p class="mt-4 text-white/85 max-w-2xl mx-auto text-lg">私有化部署，数据自主可控。浏览器打开即用，配套微信小程序移动作业。</p>
+        <div class="mt-8 flex flex-wrap gap-3 justify-center">
+          <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-brand-700 font-semibold shadow-lg hover:-translate-y-0.5 transition">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+            去 GitHub 拿源码
+          </a>
+          <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 text-white font-semibold ring-1 ring-white/30 hover:bg-white/20 transition">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+            去 Gitee 拿源码
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 页脚 ============================ -->
+  <footer class="bg-slate-900 text-slate-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+      <div class="grid md:grid-cols-4 gap-10">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2">
+            <span class="brand-gradient w-9 h-9 rounded-xl grid place-items-center text-white font-bold">云</span>
+            <span class="font-semibold text-white text-lg">云仓 YUNCANG</span>
+          </div>
+          <p class="mt-4 text-sm text-slate-400 max-w-md leading-relaxed">
+            面向中小企业的开源全链路库存管理系统。浏览器打开即用，仓库全流程可追溯。
+          </p>
+          <div class="mt-5 flex gap-3">
+            <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-sm text-white transition">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+              GitHub
+            </a>
+            <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-sm text-white transition">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+              Gitee
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold text-sm">文档</h4>
+          <ul class="mt-4 space-y-2.5 text-sm text-slate-400">
+            <li><a class="hover:text-white transition" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
+            <li><a class="hover:text-white transition" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a></li>
+            <li><a class="hover:text-white transition" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">SECURITY</a></li>
+            <li><a class="hover:text-white transition" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/DEPLOYMENT.md" target="_blank" rel="noopener">DEPLOYMENT</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold text-sm">相关</h4>
+          <ul class="mt-4 space-y-2.5 text-sm text-slate-400">
+            <li><a class="hover:text-white transition" href="https://github.com/yuejiaxinabc/cloud-warehouse-wxapp" target="_blank" rel="noopener">微信小程序端</a></li>
+            <li><a class="hover:text-white transition" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">参与贡献</a></li>
+            <li><a class="hover:text-white transition" href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/LICENSE" target="_blank" rel="noopener">MIT 许可证</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+        <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.0.2</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button id="toTop" aria-label="回到顶部"
+          class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full brand-gradient text-white shadow-lg grid place-items-center hover:shadow-xl">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+  </button>
+
+  <!-- 交互脚本 -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
