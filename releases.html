@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>版本发布 · 发布时间线 | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.2.0（批次效期 / 补货闭环 / 现场大屏）、v1.1.1（可用性修复 + 视觉重构）、v1.0.2、v1.0.1 安全修复版（FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
+  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.2.7（自动更新 / 双通道 / 备份回滚）、v1.1.1（可用性修复 + 视觉重构）、v1.0.2、v1.0.1 安全修复版（FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/releases.html" />
 
@@ -83,12 +83,32 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.2.0 -->
+          <!-- v1.2.7 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.2.0</h3>
+                <h3>v1.2.7</h3>
                 <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">最终开源版</span>
+                <span class="tl-date">2026-11-11</span>
+              </div>
+              <p>基线 v1.2.6。<strong>这是最后一个开源版本</strong>，此后的小步更新统一由更新中心自动分发。</p>
+              <ul class="list">
+                <li><strong>更新系统</strong>：独立更新中心登记版本、更新说明与多地域下载直链；设备自动比对、测速选最快线路、sha256 强校验、失败自动回滚。</li>
+                <li><strong>主版本 / 测试版双通道</strong>：生产机只收 Stable，验证机可切 Beta 先验证；同一中心可同时推两套版本。</li>
+                <li><strong>多版本自选升级</strong>：检查更新页按版本列出「这个版本改了什么」，由用户自己选择升到哪一版；无新版显示「当前已是最新版本」。</li>
+                <li><strong>并发扣库存原子化</strong>：库存 5 被 10 单争抢由「全部成功、超卖 7 件」变为「恰 5 成功」；同一单并发过账由「10 次全过」变为「1 次通过」。</li>
+                <li><strong>备份与回滚 / 日志留痕</strong>：库 + 上传文件 + 配置定时备份，默认留 30 天；清空日志需手输确认且自动留痕。</li>
+                <li>说明文档：<span class="mono">RELEASE-1.2.7.md</span>（做了什么、如何部署、后续版本策略）。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.2.0 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.2.0</h3>
                 <span class="badge badge-stable">Stable</span>
                 <span class="tl-date">2026-10-28</span>
               </div>
@@ -250,7 +270,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.0</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.7（最终开源版）</p>
       </div>
     </div>
   </footer>

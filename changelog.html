@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>更新日志 · Changelog | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.2.0 覆盖批次效期、FEFO、补货闭环、单据附件、日结快照、现场大屏与初始化向导。" />
+  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.2.7 覆盖更新中心自动升级、主版本 / 测试版双通道、备份回滚、并发扣库存原子化与日志清空留痕。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/changelog.html" />
 
@@ -82,6 +82,73 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.2.7 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.2.7</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">最终开源版</span>
+            <span class="tl-date">2026-11-11</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>更新系统</strong>：独立「更新中心」服务（零依赖单文件），登记版本 + 更新说明 + 多地域下载直链，设备侧自动比对、测速选最快线路下载、sha256 强校验、失败自动回滚。</li>
+            <li><span class="badge badge-new">新增</span> <strong>双通道发布</strong>：主版本（Stable）与测试版（Beta）分开推送；每台设备各自订阅通道，测试机先验证、生产机只收正式版。</li>
+            <li><span class="badge badge-new">新增</span> 检查更新页改为<strong>版本列表</strong>：逐个版本显示「做了什么修改」、发布时间与包大小，由用户自己选择升级到哪一版；当前版本也有独立说明区块，无新版时显示「当前已是最新版本」。</li>
+            <li><span class="badge badge-new">新增</span> 侧栏版本提示：发现新版本时左下角出现「新版本 x.y.z · 立即前往更新」，点击直达设置页；在线设备每 10 分钟自动比对一次，无需刷新页面。</li>
+            <li><span class="badge badge-fix">修复</span> <strong>并发扣库存竞态（P0）</strong>：原「查→判断→写」改为原子条件 UPDATE；过账先做原子状态抢占。实测库存 5 被 10 单争抢由「10/10 全成功、超卖 7 件」变为「恰 5 成功 5 拒绝」，同一单并发过账 10 次由「全部通过」变为「1 通过 9 拒绝」。</li>
+            <li><span class="badge badge-fix">修复</span> 调拨扣减、盘点结算、库存锁定/解锁同步改为原子操作；盘点结算加单据行锁，杜绝重复结算。</li>
+            <li><span class="badge badge-new">新增</span> 数据备份与回滚：手动/定时备份数据库 + 上传文件 + 关键配置，默认保留 30 天可调，支持下载、恢复（恢复前自动安全备份）、删除。</li>
+            <li><span class="badge badge-new">新增</span> 日志清空留痕：按页签清理需手输「清空日志」确认，清空动作本身写系统日志（操作人 / 时间 / 条数 / 范围）。</li>
+            <li><span class="badge badge-new">新增</span> 邮件模板中心：订阅必须绑定模板，正文变量按白名单渲染，禁止「填段文字就订阅」。</li>
+            <li><span class="badge badge-fix">修复</span> 更新中心后台中文乱码（401 响应缺 charset）与页面脚本语法问题；后台管理页改为必须登录（Basic Auth）。</li>
+            <li><span class="badge badge-fix">修复</span> 出库单明细缺少实时金额：新增每行小计与底部合计，随数量、单价即时重算。</li>
+            <li><span class="badge badge-doc">文档</span><span> 新增 <span class="mono">RELEASE-1.2.7.md</span> 最终开源版说明（做了什么、如何部署、后续版本策略）。</span></li>
+          </ul>
+          <p class="desc" style="margin-top:.75rem;font-size:.9rem;"><strong>这是最后一个开源版本</strong>：此后的小步更新不再单独发包，统一通过更新中心（<span class="mono">https://update.yuejiaxin.ln.cn</span>）自动分发，设备联网即收通知。</p>
+        </div>
+
+        <!-- v1.2.6 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.2.6</h3>
+            <span class="badge badge-new">New</span>
+            <span class="tl-date">2026-11-11</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> 检查更新页增加「当前版本更新内容」区块，直接显示本版本做了什么。</li>
+            <li><span class="badge badge-new">新增</span> 「下一版本更新内容」区块：有新版时展示说明与「立即更新」按钮；无新版时该区域显示「当前已是最新版本」。</li>
+            <li><span class="badge badge-fix">修复</span> 下载直链不再在前台展示，避免暴露内部存储地址，由系统内部测速选最快线路。</li>
+          </ul>
+        </div>
+
+        <!-- v1.2.5 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.2.5</h3>
+            <span class="badge badge-new">New</span>
+            <span class="tl-date">2026-11-11</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> 数据备份与恢复、日志清空留痕、邮件模板订阅（首个可用版本）。</li>
+            <li><span class="badge badge-new">新增</span> 侧栏读取 <span class="mono">package.json</span> 版本号（不再硬编码），为后续自动更新打底。</li>
+            <li><span class="badge badge-fix">修复</span> 并发扣库存三场景（丢失更新 / 超卖 / 重复过账）全部收敛。</li>
+          </ul>
+        </div>
+
+        <!-- v1.2.4 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.2.4</h3>
+            <span class="badge badge-new">New</span>
+            <span class="tl-date">2026-11-11</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> 角色数据范围（全部 / 本部门 / 本部门及下级 / 仅本人 / 自定义）+ 组织架构管理。</li>
+            <li><span class="badge badge-new">新增</span> 字典中心、登录日志、会话版本号（停用账号 / 改密后旧会话立即失效）。</li>
+            <li><span class="badge badge-fix">修复</span> 空权限角色越权、分页参数越界、2FA 接口返回非 JSON、登录页可访问性问题。</li>
+          </ul>
+        </div>
+
         <!-- v1.2.0 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
@@ -243,7 +310,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.0</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.7（最终开源版）</p>
       </div>
     </div>
   </footer>
