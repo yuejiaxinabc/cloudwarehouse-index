@@ -148,7 +148,41 @@
           </div>
         </div>
 
-        <!-- 批次效期与现场能力 -->
+        <!-- ============================ Webhook 报文模板 ============================ -->
+    <section class="section" id="webhook">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">v1.3.5 新增</span>
+          <h2 class="title">Webhook 报文模板</h2>
+          <p class="desc">推给 ERP、电商中台的 JSON，不再由我们固定，而是由你决定推哪些字段、字段叫什么。</p>
+        </div>
+        <div class="grid cols-3 section-head-below">
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h10M4 18h7"/></svg>
+            </div>
+            <h3>占位符模板</h3>
+            <p>用 <span class="mono">{{data.orderNo}}</span>、<span class="mono">{{data.totalQty}}</span> 这类变量拼报文，字段名与层级随你定；内置模板已全部改为中文键名，对接方直接读「单号 / 仓库 / 操作人 / 商品明细」。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>保存前双重校验</h3>
+            <p>变量必须在白名单内，渲染结果必须是合法 JSON。模板写坏时发送自动回退默认结构，对方不会收到坏包。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18"/></svg>
+            </div>
+            <h3>内置三套模板</h3>
+            <p>默认完整报文、单据过账精简版、库存变动单商品版开箱即用；系统模板可改不可删，端点随时切换。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 批次效期与现场能力 -->
         <div class="section-head reveal" style="margin-top: 3rem;">
           <span class="eyebrow">v1.2.0 起</span>
           <h3 class="title" style="font-size: 1.6rem;">批次效期 · 补货闭环 · 现场能力</h3>
@@ -342,7 +376,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.2</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.1</p>
       </div>
     </div>
   </footer>

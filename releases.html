@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>版本发布 · 发布时间线 | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.3.2（API 管理 / 14 个开放接口 / 幂等写入）、v1.1.1（可用性修复 + 视觉重构）、v1.0.2、v1.0.1 安全修复版（FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
+  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.3.7.1（Webhook 失败重试 / 投递日志 / 手动补发）、v1.1.1（可用性修复 + 视觉重构）、v1.0.2、v1.0.1 安全修复版（FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/releases.html" />
 
@@ -83,12 +83,116 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.3.2 -->
+          <!-- v1.3.7.1 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.3.2</h3>
+                <h3>v1.3.7.1</h3>
                 <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.7。Webhook 从「发一次算一次」变成「有记录、会重试、能补发」。</p>
+              <ul class="list">
+                <li><strong>失败重试</strong>：六级退避，最多 6 次；端点停用即判死，不做无意义重试。</li>
+                <li><strong>投递日志</strong>：状态 / 次数 / HTTP / 耗时 / 错误 / 下次重试一目了然，可展开看报文。</li>
+                <li><strong>手动补发</strong>：单条重发与「立即重试」批量扫描。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.7 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.7</h3>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.6。把「数量」与「领用数量」的取舍规则写进报文，减少对接时的来回确认。</p>
+              <ul class="list">
+                <li><strong>字段说明</strong>：出库模板自带说明——数量做出账、领用数量做台账。</li>
+                <li><strong>编辑提示</strong>：模板配置页直接标注两个数量的用途。</li>
+                <li><strong>平滑升级</strong>：旧系统模板只补缺失说明，不动你改过的内容。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.6 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.6</h3>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.5。Webhook 报文改成中文，出库推送带齐「谁取的、何时、多少」。</p>
+              <ul class="list">
+                <li><strong>中文键名</strong>：通知类型 / 单号 / 仓库 / 操作人 / 过账时间 / 商品明细。</li>
+                <li><strong>领用信息</strong>：出库推送补齐领用人、领用数量、领用时间、部门、地点、班次。</li>
+                <li><strong>9 套模板</strong>：出库完整 / 精简 / 领用视角 / 入库完整 / 库存变动 / 商品创建 / 商品更新 / 通用信封 / 默认。</li>
+                <li><strong>去重</strong>：「安全与集成」页不再重复管理 Webhook，统一收口到设置。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.5 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.5</h3>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.4.1。Webhook 终于能「按对方要的格式推」了。</p>
+              <ul class="list">
+                <li><strong>报文模板化</strong>：推送 JSON 由模板决定，<span class="mono">{{data.orderNo}}</span> 这类占位符自由选字段与命名。</li>
+                <li><strong>内置三模板</strong>：默认完整报文 / 单据过账精简版 / 库存变动单商品版；系统模板可改不可删。</li>
+                <li><strong>管理页</strong>：设置 → Webhook 订阅，端点与模板一处管理，支持预览渲染。</li>
+                <li><strong>双重校验</strong>：变量白名单 + 渲染后必须合法 JSON；模板写坏时自动回退默认结构，不影响对方接收。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.4.1 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.4.1</h3>
+                <span class="badge badge-fix">Fix</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>修三个实际使用中暴露的问题，并补上调用日志。</p>
+              <ul class="list">
+                <li><strong>密钥复制</strong>：HTTP 下 <span class="mono">navigator.clipboard</span> 不可用，改为三级降级复制。</li>
+                <li><strong>调用日志</strong>：记录密钥、路径、状态码、耗时、来源 IP，保留 30 天。</li>
+                <li><strong>幽灵预警</strong>：只统计未删除商品的库存行，删商品时清理零库存行。</li>
+                <li><strong>四段版本</strong>：支持 1.3.4.1 这类版本号比较。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.4 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.4</h3>
+                <span class="badge badge-new">New</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>把限流补齐到「签发票据」和「密钥管理」这两处之前遗漏的地方。</p>
+              <ul class="list">
+                <li><strong>验证码签发</strong>：同 IP 每分钟 20 次。</li>
+                <li><strong>密钥配额</strong>：总量 20 个，创建每小时 10 个，列表每分钟 60 次。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.2 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.2</h3>
                 <span class="badge badge-stable">Stable</span>
                 <span class="tl-date">2026-11-12</span>
               </div>
@@ -324,7 +428,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.2</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.1</p>
       </div>
     </div>
   </footer>

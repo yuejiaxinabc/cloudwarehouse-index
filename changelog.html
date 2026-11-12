@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>更新日志 · Changelog | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.3.2 覆盖 API 调用说明与免责声明；v1.3.0 起提供 API 密钥体系、14 个开放接口与写入幂等。" />
+  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.3.7.1 给 Webhook 加了失败重试与投递日志；v1.3.4.1 补上开放接口调用日志；v1.3.0 起提供 API 密钥体系、14 个开放接口与写入幂等。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/changelog.html" />
 
@@ -82,12 +82,104 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.3.7.1 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.7.1</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>Webhook 失败重试</strong>：推送不再一次失败就丢，按 1 分钟 → 5 → 15 分钟 → 1 小时 → 6 → 24 小时退避，最多 6 次。</li>
+            <li><span class="badge badge-new">新增</span> <strong>投递日志</strong>：端点、事件、状态、尝试次数、HTTP 状态码、耗时、错误原因与下次重试时间，可展开看完整报文。</li>
+            <li><span class="badge badge-new">新增</span> 按状态筛选（成功 / 待重试 / 已失败）、单条手动重发、「立即重试」一键扫描积压。</li>
+            <li><span class="badge badge-new">新增</span> 三重触发：业务事件补偿扫描、打开日志页扫描、可选外部定时任务 <span class="mono">/api/cron/webhook-retry</span>。</li>
+            <li><span class="badge badge-fix">优化</span> 端点停用或删除后，其未完成投递自动判死；成功记录保留 60 天。</li>
+          </ul>
+        </div>
+
+        <!-- v1.3.7 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.7</h3>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> 出库类 Webhook 模板新增「字段说明」：<strong>数量=出库出账量</strong>（库存扣减依据），<strong>领用数量=实际领用量</strong>（人员/部门台账依据），两者不一致时的取舍规则直接写进报文。</li>
+            <li><span class="badge badge-new">新增</span> 模板编辑页加提示，说明两个数量的用途差别，配置时不用靠猜。</li>
+            <li><span class="badge badge-fix">优化</span> 已部署的旧系统模板启动时自动补写说明，<strong>只补缺失项、不覆盖手工调整过的内容</strong>。</li>
+          </ul>
+        </div>
+
+        <!-- v1.3.6 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.6</h3>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> Webhook 模板全部改<strong>中文键名</strong>：通知类型、单号、仓库、操作人、过账时间、商品明细，对接方直接读中文即可。</li>
+            <li><span class="badge badge-new">新增</span> 出库过账推送补全领用信息：<strong>领用人、领用数量、领用时间、使用部门、使用地点、班次、部门负责人</strong>。</li>
+            <li><span class="badge badge-new">新增</span> 入库过账推送补全：入库人、过账时间、仓库、批次号、成本价、合计数量与金额。</li>
+            <li><span class="badge badge-new">新增</span> 内置模板从 3 个扩到 <strong>9 个</strong>：出库完整 / 出库精简 / 出库领用视角 / 入库完整 / 库存变动 / 商品创建 / 商品更新 / 通用信封 / 默认完整。</li>
+            <li><span class="badge badge-fix">调整</span> 移除「安全与集成」页里重复的 Webhook 管理入口，该页只保留两步验证等登录安全项。</li>
+            <li><span class="badge badge-fix">修复</span> 设置页检查更新支持四段版本号（如 1.3.6.1）正确识别为更新。</li>
+          </ul>
+        </div>
+
+        <!-- v1.3.5 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.5</h3>
+            <span class="badge badge-new">New</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>Webhook 报文模板</strong>：推给对接方的 JSON 不再写死，用 <span class="mono">{{data.orderNo}}</span> 这类占位符自己决定字段与命名。</li>
+            <li><span class="badge badge-new">新增</span> 内置三个模板：默认完整报文、单据过账精简版、库存变动单商品版；系统模板可改不可删。</li>
+            <li><span class="badge badge-new">新增</span> 「设置 → Webhook 订阅」页面：端点管理（地址 / 事件 / 启停 / 最近推送状态）与模板管理（编辑、预览渲染）。</li>
+            <li><span class="badge badge-new">新增</span> 模板保存前双重校验：变量必须在白名单内、渲染后必须是合法 JSON；模板写坏时发送自动回退默认结构。</li>
+            <li><span class="badge badge-fix">修复</span> 增量 SQL 中的 <span class="mono">ALTER TABLE</span> 改为幂等写法，重复更新不再报「列已存在」导致回滚。</li>
+          </ul>
+        </div>
+
+        <!-- v1.3.4.1 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.4.1</h3>
+            <span class="badge badge-fix">Fix</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> 创建密钥后无法复制：HTTP 访问时浏览器不提供 <span class="mono">navigator.clipboard</span>，改为三级降级（剪贴板 API → execCommand → 弹窗全选手动复制）。</li>
+            <li><span class="badge badge-new">新增</span> 开放接口调用日志：记录密钥、方法、路径、状态码、耗时、来源 IP 与错误，保留 30 天。</li>
+            <li><span class="badge badge-fix">修复</span> 没有商品却报缺货预警：只统计商品仍存在且未删除的库存行；删除商品时清理在手为 0 的库存行。</li>
+            <li><span class="badge badge-fix">修复</span> 版本比较支持四段（1.3.4.1 &gt; 1.3.4），此前四段版本号被判为「已是最新」。</li>
+          </ul>
+        </div>
+
+        <!-- v1.3.4 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.4</h3>
+            <span class="badge badge-new">New</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> 验证码签发接口限流：同 IP 每分钟 20 次，超出返回 429 并提示剩余秒数。</li>
+            <li><span class="badge badge-new">新增</span> API 密钥数量上限 20 个，创建接口按 IP 每小时 10 个，列表接口每分钟 60 次。</li>
+            <li><span class="badge badge-fix">注意</span> 密钥达到上限后新建按钮变灰并提示先清理不用的密钥；服务端同样拦截，绕过前端无效。</li>
+          </ul>
+        </div>
+
         <!-- v1.3.2 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.3.2</h3>
-            <span class="badge badge-new">Latest</span>
-            <span class="badge badge-stable">Stable</span>
+            <span class="badge badge-new">New</span>
             <span class="tl-date">2026-11-12</span>
           </div>
           <ul class="entry-list">
@@ -360,7 +452,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.2</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.1</p>
       </div>
     </div>
   </footer>
