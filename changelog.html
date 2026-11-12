@@ -82,11 +82,41 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.4.0.18 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.18</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>出库返库</strong>：已过账的出库单也能把未使用商品退回仓库，按行填数量与货位，自动生成退货入库单并过账。</li>
+            <li><span class="badge badge-new">新增</span> 报表中心「<strong>退还件</strong>」：返库单列表 + 单数/数量/金额合计。</li>
+            <li><span class="badge badge-fix">调整</span> 出库撤销按状态分权：未过账有出库权限即可撤销（自动释放锁定量）；已过账仅管理员，撤销即反过账回补库存。</li>
+            <li><span class="badge badge-fix">修复</span> 查看 BOM 报 404：补上 BOM 详情页，可查看与就地编辑。</li>
+            <li><span class="badge badge-new">新增</span> 货架地图「列」独立选择框并支持<strong>多选</strong>，按列看行、点行看货位；修复点不进去的问题。</li>
+            <li><span class="badge badge-opt">优化</span> 界面改为蓝色主调，页脚留白加大；更新完成后自动提示并刷新，普通用户版本号不再显示旧值。</li>
+          </ul>
+        </div>
+        <!-- v1.4.0.8 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.8</h3>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> 下载导入模板失败（模板接口引用了不存在的模型，改为读 category / unit 表）。</li>
+            <li><span class="badge badge-fix">修复</span> 新建 BOM 仍报错（商品/物料 id 是字符串，schema 要求 number，已用 coerce 兼容）。</li>
+            <li><span class="badge badge-new">新增</span> <strong>货位里的小货位</strong>：建仓按「每货位小货位数」生成（C-01-09-22-01…），货架地图详情按格子展示有货/空置/停用；老仓库可一键「补齐小货位」。</li>
+            <li><span class="badge badge-new">新增</span> 扫码入库遇到不存在的商品，新建表单与「新建商品」一致（分类/单位/规格/品牌/型号/成本方法/保质期/批次/序列号）。</li>
+          </ul>
+        </div>
         <!-- v1.4.0.6 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.4.0.6</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-13</span>
           </div>
@@ -628,7 +658,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.6</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.18</p>
       </div>
     </div>
   </footer>

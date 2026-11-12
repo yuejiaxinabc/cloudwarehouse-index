@@ -925,3 +925,6 @@ img.brand-logo { background: none; box-shadow: none; border-radius: 0; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .float-anim, .float-pill, .hero-badge .dot { animation: none; }
 }
+
+/* v1.4.0.15 页脚留白 */
+footer { padding-top: 2.6rem; padding-bottom: 3rem; }
