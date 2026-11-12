@@ -928,3 +928,10 @@ img.brand-logo { background: none; box-shadow: none; border-radius: 0; }
 
 /* v1.4.0.15 页脚留白 */
 footer { padding-top: 2.6rem; padding-bottom: 3rem; }
+
+/* v1.4.1 测试版徽标 */
+.badge-beta {
+  background: #EEF2FF;
+  color: #4338CA;
+  border: 1px solid #C7D2FE;
+}

@@ -83,391 +83,39 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.4.0.23 -->
+          <!-- v1.4.1 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.4.0.23</h3>
+                <h3>v1.4.1</h3>
                 <span class="badge badge-latest">Latest</span>
-                <span class="badge badge-stable">Stable</span>
+                <span class="badge badge-stable">稳定版</span>
                 <span class="tl-date">2026-11-13</span>
               </div>
-              <p>基线 v1.4.0.18。紧急修掉详情页白屏，并把回收站与安全项一次收口。</p>
+              <p>1.4.0 系列的第一个稳定正版。三位版本为正式版；四位版本只作为测试版走 Beta 通道，稳定版才更新一键安装脚本与离线包。</p>
               <ul class="list">
-                <li><strong>白屏修复</strong>：出库单详情的 Hook 顺序问题。</li>
-                <li><strong>回收站</strong>：级联清理 + 明确原因，不再「可能存在关联数据」。</li>
-                <li><strong>安全</strong>：登出即失效、消毒、可用量校验、上传权限点。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.4.0.18 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.4.0.18</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-13</span>
-              </div>
-              <p>基线 v1.4.0.8。这一版把「退货链路」补齐：返库、退还件报表、撤销分权。</p>
-              <ul class="list">
-                <li><strong>出库返库</strong>：已过账单按行退回，自动生成退货入库并过账。</li>
-                <li><strong>撤销分权</strong>：未过账直接撤，已过账仅管理员（反过账）。</li>
-                <li><strong>退还件报表</strong>：返库记录与合计一页看清。</li>
-                <li><strong>其他</strong>：BOM 详情页、货架地图列多选、蓝色主题、自动刷新。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.4.0.8 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.4.0.8</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-13</span>
-              </div>
-              <p>基线 v1.4.0.6。三个报错收口 + 小货位落地。</p>
-              <ul class="list">
-                <li><strong>模板下载</strong>、<strong>新建 BOM</strong> 两个卡点修复。</li>
-                <li><strong>小货位</strong>：货位下按格生成，地图详情可见。</li>
-                <li><strong>扫码新建商品</strong>改用完整商品表单。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.4.0.6 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.4.0.6</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-13</span>
-              </div>
-              <p>基线 v1.4.0.3。建仓不再预生成满配，改由用户按需填。</p>
-              <ul class="list">
-                <li><strong>规模自选</strong>：架 / 列 / 行 / 货位四个数字，实时算总量。</li>
-                <li><strong>默认 1664 位</strong>：几秒建完，不再等 13 万个货位。</li>
-                <li><strong>商品页报错修复</strong> + 建仓进度条 + 货架地图预加载。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.4.0.3 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.4.0.3</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-13</span>
-              </div>
-              <p>基线 v1.4.0.1。把新货架规则带来的建仓超时修掉。</p>
-              <ul class="list">
-                <li><strong>建仓超时</strong>：13 万货位 + 5 秒事务 → 放宽到 3 分钟。</li>
-                <li><strong>建仓更快</strong>：批插 5000/批，可用 SHELF_BATCH_SIZE 调整。</li>
-                <li><strong>规模可配</strong>：建仓可指定列 / 行 / 货位。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.4.0.1 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.4.0.1</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-13</span>
-              </div>
-              <p>基线 v1.3.9.3。15 项体验修正 + 1 个只做扫码出库的新角色。</p>
-              <ul class="list">
-                <li><strong>新角色</strong>：扫码员 —— 扫码出库 + 工作台查询，其余无权限。</li>
-                <li><strong>货架新规则</strong>：货架-列-行-货位（C-01-09-22），列/行 10、货位 50。</li>
-                <li><strong>单据完善</strong>：出库选客户、入库选供应商（选填）、采购申请加制造商与品牌。</li>
-                <li><strong>三处数据修复</strong>：导入批次不入库、对账少一行、序列号恒为 0。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.3.9.3 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.9.3</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.9.2。域名报不上去这件事修透了：多来源解析 + 安装脚本写死对外地址。</p>
-              <ul class="list">
-                <li><strong>多来源解析</strong>：APP_PUBLIC_URL → NEXTAUTH_URL → nginx server_name → 证书域名。</li>
-                <li><strong>安装脚本写值</strong>：绑定域名写 https://域名，只走 IP 写 http://IP，老机器补齐。</li>
-                <li><strong>无证书记录</strong>：绑定域名但没申请证书也写域名。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.3.9.2 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.9.2</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.9.1。修掉「点更新就报连不上远端」的最后一段路：配置写法不再决定成败。</p>
-              <ul class="list">
-                <li><strong>多地址可用</strong>：自更新脚本拆开 <span class="mono">UPDATE_HUB_URL</span> 的逗号列表，逐个探测 <span class="mono">/healthz</span> 取第一个活的地址。</li>
-                <li><strong>看得见在连谁</strong>：更新日志打印实际选中的更新中心地址。</li>
-                <li><strong>旧机器自救</strong>：把配置改成单地址 <span class="mono">https://update.yuejiaxin.ln.cn</span> 即可立刻恢复。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.3.9.1 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.9.1</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.9。设备清单变成「看一眼就明白」：谁在哪台机器、绑的什么域名、跑哪一版、还在不在线。</p>
-              <ul class="list">
-                <li><strong>访问域名入列</strong>：绑定过就显示可点域名，只走 IP 就写「—（IP 访问）」。</li>
-                <li><strong>免鉴定</strong>：入网即显示；同一 IP 只记一条，出口后多台机器合并成一行。</li>
-                <li><strong>安装不报活</strong>：安装脚本只装本体，心跳交给程序自己，每 5 分钟一次。</li>
-                <li><strong>离线包瘦身</strong>：去掉 macOS 的 ._* 与 darwin 引擎，84MB → 64MB。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.3.9 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.9</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.8。把「自动更新」这条路彻底修通：能连上、能落地、能重启。</p>
-              <ul class="list">
-                <li><strong>连得上</strong>：安装脚本写入更新中心地址，程序兜底不再只打本机 9958。</li>
-                <li><strong>落得下</strong>：更新工作目录搬到应用自己的 backups 下，服务用户可写。</li>
-                <li><strong>重启得了</strong>：安装脚本写入最小化 polkit 授权，只放行更新任务与服务自身。</li>
-                <li><strong>装得省心</strong>：补装 rsync，装完自检更新中心连通性，不通只提示不中断。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.3.8 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.8</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.7.5。云仓开始「报到」：装在哪、什么版本、还在不在线，更新中心一页看清。</p>
-              <ul class="list">
-                <li><strong>入网心跳</strong>：每 5 分钟上报主机名 / 版本 / 通道 / 端口 / 域名 / 系统。</li>
-                <li><strong>在线判定</strong>：10 分钟内有心跳算在线，24 小时内活过算离线，更久算长期离线。</li>
-                <li><strong>人工鉴定</strong>：新机器先进「待鉴定」，确认后才进已安装清单。</li>
-                <li><strong>安装脚本同步</strong>：装完即登记 systemd 定时器，换 IP 自动跟上来。</li>
-              </ul>
-            </div>
-          </div>
-          <!-- v1.3.7.5 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.7.5</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.7.4。搬到 HTTPS，一扫之前所有「浏览器不给用」的毛病。</p>
-              <ul class="list">
-                <li><strong>正式地址</strong>：<span class="mono">https://yc.yuejiaxin.ln.cn</span>，HTTP 与 IP 访问自动跳转。</li>
-                <li><strong>能力解锁</strong>：实时相机、剪贴板、Secure Cookie、HTTP/2、HSTS。</li>
-                <li><strong>域名收敛</strong>：下线库存看板域名，站点入口统一。</li>
+                <li><strong>出库返库</strong>：已过账也能退回未使用商品；报表中心新增「退还件」。</li>
+                <li><strong>撤销分权</strong>：未过账有出库权限即可撤，已过账仅管理员（反过账）。</li>
+                <li><strong>修复</strong>：回收站彻底删除、出库单详情白屏、BOM 参数异常与 404。</li>
+                <li><strong>货架地图</strong>：列多选、按行看货位、三级按需取数。</li>
+                <li><strong>安全</strong>：登出即失效、资料消毒、可用量校验、上传权限点。</li>
               </ul>
             </div>
           </div>
 
-          <!-- v1.3.7.4 -->
+          <!-- v1.4.0 -->
           <div class="tl-item reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.3.7.4</h3>
-                <span class="badge badge-stable">Stable</span>
+                <h3>v1.4.0</h3>
+                <span class="badge badge-stable">稳定版</span>
                 <span class="tl-date">2026-11-12</span>
               </div>
-              <p>基线 v1.3.7.3。扫码在 HTTP 环境下不再是死路。</p>
+              <p>货架编码四级化 + 建仓规模自填。</p>
               <ul class="list">
-                <li><strong>根因定位</strong>：<span class="mono">getUserMedia</span> 只在 HTTPS / localhost 可用。</li>
-                <li><strong>拍照识别</strong>：<span class="mono">input[type=file][capture]</span> 不受此限制，唤起系统相机拍一张再解码。</li>
-                <li><strong>错误说人话</strong>：五类常见故障分别给出可执行的处理建议。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.7.3 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.7.3</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.7.2。把「商品查不到」与「报表 404」两处实际卡点修掉。</p>
-              <ul class="list">
-                <li><strong>诊断字段</strong>：商品接口返回总数 / 已删 / 可读，支持 includeDeleted。</li>
-                <li><strong>报表落地</strong>：低库存清单 + 库存金额汇总。</li>
-                <li><strong>数据干净</strong>：不再返回已删除商品的孤儿库存与批次。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.7.2 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.7.2</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.7.1。日志归日志，配置归配置。</p>
-              <ul class="list">
-                <li><strong>统一入口</strong>：API 调用与 Webhook 投递都进「操作日志」页签。</li>
-                <li><strong>配置收敛</strong>：设置页只管密钥、端点与模板。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.7.1 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.7.1</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.7。Webhook 从「发一次算一次」变成「有记录、会重试、能补发」。</p>
-              <ul class="list">
-                <li><strong>失败重试</strong>：六级退避，最多 6 次；端点停用即判死，不做无意义重试。</li>
-                <li><strong>投递日志</strong>：状态 / 次数 / HTTP / 耗时 / 错误 / 下次重试一目了然，可展开看报文。</li>
-                <li><strong>手动补发</strong>：单条重发与「立即重试」批量扫描。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.7 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.7</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.6。把「数量」与「领用数量」的取舍规则写进报文，减少对接时的来回确认。</p>
-              <ul class="list">
-                <li><strong>字段说明</strong>：出库模板自带说明——数量做出账、领用数量做台账。</li>
-                <li><strong>编辑提示</strong>：模板配置页直接标注两个数量的用途。</li>
-                <li><strong>平滑升级</strong>：旧系统模板只补缺失说明，不动你改过的内容。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.6 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.6</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.5。Webhook 报文改成中文，出库推送带齐「谁取的、何时、多少」。</p>
-              <ul class="list">
-                <li><strong>中文键名</strong>：通知类型 / 单号 / 仓库 / 操作人 / 过账时间 / 商品明细。</li>
-                <li><strong>领用信息</strong>：出库推送补齐领用人、领用数量、领用时间、部门、地点、班次。</li>
-                <li><strong>9 套模板</strong>：出库完整 / 精简 / 领用视角 / 入库完整 / 库存变动 / 商品创建 / 商品更新 / 通用信封 / 默认。</li>
-                <li><strong>去重</strong>：「安全与集成」页不再重复管理 Webhook，统一收口到设置。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.5 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.5</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.4.1。Webhook 终于能「按对方要的格式推」了。</p>
-              <ul class="list">
-                <li><strong>报文模板化</strong>：推送 JSON 由模板决定，<span class="mono">{{data.orderNo}}</span> 这类占位符自由选字段与命名。</li>
-                <li><strong>内置三模板</strong>：默认完整报文 / 单据过账精简版 / 库存变动单商品版；系统模板可改不可删。</li>
-                <li><strong>管理页</strong>：设置 → Webhook 订阅，端点与模板一处管理，支持预览渲染。</li>
-                <li><strong>双重校验</strong>：变量白名单 + 渲染后必须合法 JSON；模板写坏时自动回退默认结构，不影响对方接收。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.4.1 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.4.1</h3>
-                <span class="badge badge-fix">Fix</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>修三个实际使用中暴露的问题，并补上调用日志。</p>
-              <ul class="list">
-                <li><strong>密钥复制</strong>：HTTP 下 <span class="mono">navigator.clipboard</span> 不可用，改为三级降级复制。</li>
-                <li><strong>调用日志</strong>：记录密钥、路径、状态码、耗时、来源 IP，保留 30 天。</li>
-                <li><strong>幽灵预警</strong>：只统计未删除商品的库存行，删商品时清理零库存行。</li>
-                <li><strong>四段版本</strong>：支持 1.3.4.1 这类版本号比较。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.4 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.4</h3>
-                <span class="badge badge-new">New</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>把限流补齐到「签发票据」和「密钥管理」这两处之前遗漏的地方。</p>
-              <ul class="list">
-                <li><strong>验证码签发</strong>：同 IP 每分钟 20 次。</li>
-                <li><strong>密钥配额</strong>：总量 20 个，创建每小时 10 个，列表每分钟 60 次。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.2 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.2</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.1。这一版把「对外对接」讲清楚：能力边界、调用方式、免责边界都写在系统里。</p>
-              <ul class="list">
-                <li><strong>API 调用说明</strong>：关于页集中说明认证方式、权限范围、数据范围、限速与 IP 白名单、写入幂等、可用接口清单。</li>
-                <li><strong>免责与声明</strong>：自行二次开发不保障数据持久化与一致性；使用者对上传内容的版权合规自负；服务按现状提供。</li>
-                <li><strong>关于入口</strong>：右上角用户菜单新增「关于」，右侧显示当前版本号；页脚直挂服务协议与隐私政策。</li>
-                <li><strong>许可表述</strong>：关于页不再标注 MIT，改为版权声明。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.3.1 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.3.1</h3>
-                <span class="badge badge-new">New</span>
-                <span class="tl-date">2026-11-12</span>
-              </div>
-              <p>基线 v1.3.0。开放接口补齐到 14 个，并修掉两个真实缺陷。</p>
-              <ul class="list">
-                <li><strong>接口扩充</strong>：新增仓库与货位、批次效期、往来单位、基础资料、单据查询、库存汇总报表、密钥自检；写接口增加调拨与盘点。</li>
-                <li><strong>权限细化</strong>：scope 扩到 11 项，按基础数据 / 仓储 / 库存 / 单据 / 写入 / 分析分组。</li>
-                <li><strong>图标修复</strong>：补齐 favicon（16/32/48/64）与 apple-icon，主图标改透明通道 512px。</li>
-                <li><strong>更新器修复</strong>：构建前补 <span class="mono">prisma generate</span>，避免新增模型导致接口 500、页面下拉框空白。</li>
+                <li><strong>货架-列-行-货位</strong>四级编码，货位下再分小货位。</li>
+                <li>建仓按用户填写的架 / 列 / 行 / 货位数生成，秒建并显示进度。</li>
+                <li>新增扫码员角色；更新通道可切稳定版 / 测试版。</li>
               </ul>
             </div>
           </div>
@@ -486,26 +134,6 @@
                 <li><strong>写入能力</strong>：<span class="mono">POST /open/stock-in</span>、<span class="mono">/open/stock-out</span>，默认草稿，可选自动过账。</li>
                 <li><strong>幂等</strong>：<span class="mono">Idempotency-Key</span> 24 小时内同键只执行一次，重试不重复建单。</li>
                 <li><strong>审计</strong>：写操作以密钥创建者身份执行并记日志，创建者停用即失去写权限。</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- v1.2.7 -->
-          <div class="tl-item reveal">
-            <div class="tl-card">
-              <div class="tl-head">
-                <h3>v1.2.7</h3>
-                <span class="badge badge-stable">稳定基线</span>
-                <span class="tl-date">2026-11-11</span>
-              </div>
-              <p>基线 v1.2.6。<strong>这是最后一个开源版本</strong>，此后的小步更新统一由更新中心自动分发。</p>
-              <ul class="list">
-                <li><strong>更新系统</strong>：独立更新中心登记版本、更新说明与多地域下载直链；设备自动比对、测速选最快线路、sha256 强校验、失败自动回滚。</li>
-                <li><strong>主版本 / 测试版双通道</strong>：生产机只收 Stable，验证机可切 Beta 先验证；同一中心可同时推两套版本。</li>
-                <li><strong>多版本自选升级</strong>：检查更新页按版本列出「这个版本改了什么」，由用户自己选择升到哪一版；无新版显示「当前已是最新版本」。</li>
-                <li><strong>并发扣库存原子化</strong>：库存 5 被 10 单争抢由「全部成功、超卖 7 件」变为「恰 5 成功」；同一单并发过账由「10 次全过」变为「1 次通过」。</li>
-                <li><strong>备份与回滚 / 日志留痕</strong>：库 + 上传文件 + 配置定时备份，默认留 30 天；清空日志需手输确认且自动留痕。</li>
-                <li>说明文档：<span class="mono">RELEASE-1.2.7.md</span>（做了什么、如何部署、后续版本策略）。</li>
               </ul>
             </div>
           </div>
@@ -530,73 +158,99 @@
             </div>
           </div>
 
-          <!-- v1.1.1 -->
+          <!-- v1.1.0 -->
           <div class="tl-item reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.1.1</h3>
-                <span class="badge badge-fix">Fix</span>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-10-28</span>
+                <h3>v1.1.0</h3>
+                <span class="badge badge-stable">稳定版</span>
+                <span class="tl-date">2026-10-20</span>
               </div>
-              <p>基线 v1.0.2。修掉「新建商品必然失败」这条阻断核心流程的 P0，补齐操作审计落库，并重做品牌标识与整体界面。</p>
+              <p>首个稳定基线：单据闭环、扫码、权限矩阵。</p>
               <ul class="list">
-                <li><strong>P0 新建商品必然失败</strong>：补全 API 导入链，初始库存改为落 <span class="mono">locations + location_stocks</span>，异常以业务错误回显。</li>
-                <li><strong>操作日志补全</strong>：登录、仓库、单位、分类、供应商的增删改全部落审计日志并带操作人。</li>
-                <li><strong>验证码提示精确化</strong>：新增只校验不消费的校验接口（带 IP 限流），区分「验证码错误 / 已过期」，账号密码错误仍统一文案。</li>
-                <li><strong>视觉与结构重构</strong>：新增 LogoMark 矢量标识、侧边栏分组折叠导航（可收窄至 72px 并记忆）、统一设计系统、登录页左右分栏品牌页。</li>
-                <li>逐项说明见 <a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/UPDATE-2026-10-28.md" target="_blank" rel="noopener">docs/UPDATE-2026-10-28.md</a>。</li>
+                <li>入库 / 出库 / 调拨 / 盘点全流程与过账。</li>
+                <li>扫码出入库、条码打印、批次与效期台账。</li>
+                <li>权限矩阵与数据范围、操作与登录日志。</li>
               </ul>
             </div>
           </div>
 
-          <!-- v1.0.2 -->
+        </div>
+
+        <h3 style="margin: 2.4rem 0 .6rem; font-size: 1.05rem; color: var(--text-muted);">测试版（Beta）</h3>
+        <p style="margin: 0 0 1.2rem; color: var(--text-muted); font-size: .9rem;">
+          四位版本号（1.4.0.x）为测试版，只在 Beta 通道推送；<strong>只有稳定版（三位）才更新一键安装脚本与离线包</strong>。
+        </p>
+        <div class="timeline">
+          <!-- v1.4.0.23 -->
           <div class="tl-item reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.0.2</h3>
-                <span class="badge badge-stable">Stable</span>
-                <span class="tl-date">2026-10-27</span>
+                <h3>v1.4.0.23</h3>
+                <span class="badge badge-beta">Beta</span>
+                <span class="tl-date">2026-11-13</span>
               </div>
+              <p>基线 v1.4.0.18。紧急修掉详情页白屏，并把回收站与安全项一次收口。</p>
               <ul class="list">
-                <li>持续打磨交互细节与系统稳定性。</li>
-                <li>缺陷修复与文档补全（详见 <a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/UPDATE-2026-10-27.md" target="_blank" rel="noopener">docs/UPDATE-2026-10-27.md</a>）。</li>
-                <li>补齐 GitHub 发布配套：README 徽章、功能表、文档导航与安全说明。</li>
+                <li><strong>白屏修复</strong>：出库单详情的 Hook 顺序问题。</li>
+                <li><strong>回收站</strong>：级联清理 + 明确原因，不再「可能存在关联数据」。</li>
+                <li><strong>安全</strong>：登出即失效、消毒、可用量校验、上传权限点。</li>
               </ul>
             </div>
           </div>
 
-          <!-- v1.0.1 -->
+          <!-- v1.4.0.18 -->
           <div class="tl-item reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.0.1</h3>
-                <span class="badge badge-security">Security</span>
-                <span class="tl-date">2026-10-11</span>
+                <h3>v1.4.0.18</h3>
+                <span class="badge badge-beta">Beta</span>
+                <span class="tl-date">2026-11-13</span>
               </div>
-              <p>修复安全审计发现的漏洞 <span class="mono" style="font-family: var(--font-mono); color: var(--ink-900);">FIX-2026-1001~1006</span>，含两处 P0 高危项，并升级关键依赖。</p>
+              <p>基线 v1.4.0.8。这一版把「退货链路」补齐：返库、退还件报表、撤销分权。</p>
               <ul class="list">
-                <li>移除 middleware 任意 token 头放行（P0 越权）。</li>
-                <li>验证码改为服务端 SVG 生成 + 一次性校验（P0）。</li>
-                <li>依赖升级：next 14.2.35 / next-auth 4.24.11；移除 puppeteer-core；xlsx → exceljs。</li>
+                <li><strong>出库返库</strong>：已过账单按行退回，自动生成退货入库并过账。</li>
+                <li><strong>撤销分权</strong>：未过账直接撤，已过账仅管理员（反过账）。</li>
+                <li><strong>退还件报表</strong>：返库记录与合计一页看清。</li>
+                <li><strong>其他</strong>：BOM 详情页、货架地图列多选、蓝色主题、自动刷新。</li>
               </ul>
             </div>
           </div>
 
-          <!-- v1.0.0 -->
+          <!-- v1.4.0.8 -->
           <div class="tl-item reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.0.0</h3>
-                <span class="badge badge-baseline">Baseline</span>
-                <span class="tl-date">初始版本</span>
+                <h3>v1.4.0.8</h3>
+                <span class="badge badge-beta">Beta</span>
+                <span class="tl-date">2026-11-13</span>
               </div>
+              <p>基线 v1.4.0.6。三个报错收口 + 小货位落地。</p>
               <ul class="list">
-                <li>全链路库存管理首发：8 大核心模块 + 扩展能力。</li>
-                <li>系统底座：RBAC、操作日志审计、API Token、NextAuth 会话认证。</li>
+                <li><strong>模板下载</strong>、<strong>新建 BOM</strong> 两个卡点修复。</li>
+                <li><strong>小货位</strong>：货位下按格生成，地图详情可见。</li>
+                <li><strong>扫码新建商品</strong>改用完整商品表单。</li>
               </ul>
             </div>
           </div>
+
+          <!-- v1.4.0.3 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.4.0.3</h3>
+                <span class="badge badge-beta">Beta</span>
+                <span class="tl-date">2026-11-13</span>
+              </div>
+              <p>基线 v1.4.0.1。把新货架规则带来的建仓超时修掉。</p>
+              <ul class="list">
+                <li><strong>建仓超时</strong>：13 万货位 + 5 秒事务 → 放宽到 3 分钟。</li>
+                <li><strong>建仓更快</strong>：批插 5000/批，可用 SHELF_BATCH_SIZE 调整。</li>
+                <li><strong>规模可配</strong>：建仓可指定列 / 行 / 货位。</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
 
         <div class="reveal" style="margin-top: 3rem; display: flex; flex-wrap: wrap; gap: .85rem;">
@@ -676,7 +330,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.23</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.1</p>
       </div>
     </div>
   </footer>

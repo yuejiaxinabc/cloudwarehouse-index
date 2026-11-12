@@ -82,351 +82,40 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
-        <!-- v1.4.0.23 -->
+        <!-- v1.4.1 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
-            <h3>v1.4.0.23</h3>
+            <h3>v1.4.1</h3>
             <span class="badge badge-new">Latest</span>
-            <span class="badge badge-stable">Stable</span>
+            <span class="badge badge-stable">稳定版</span>
             <span class="tl-date">2026-11-13</span>
           </div>
           <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> <strong>出库单详情白屏</strong>（Application error）：返库功能的 Hook 被写在条件 return 之后，已移到组件顶部。</li>
-            <li><span class="badge badge-fix">修复</span> <strong>回收站彻底删除失败</strong>：按依赖顺序清理货位/库存/批次/序列号/BOM；被单据引用时给出具体原因，全程事务。</li>
-            <li><span class="badge badge-opt">安全</span> 登出即失效（sessionVersion bump）、客户资料消毒、Open API 校验可用量、上传加权限点、畸形请求返回 400。</li>
+            <li><span class="badge badge-new">新增</span> <strong>出库返库</strong>：已过账的出库单也能退回未使用商品，自动生成退货入库并过账；报表中心新增「退还件」。</li>
+            <li><span class="badge badge-fix">调整</span> <strong>出库撤销分权</strong>：未过账有出库权限即可撤销（自动释放锁定量）；已过账仅管理员，撤销即反过账回补库存。</li>
+            <li><span class="badge badge-fix">修复</span> 回收站彻底删除失败（按依赖顺序清理并给出具体原因）、出库单详情白屏、BOM 创建与修改参数异常、BOM 详情页 404。</li>
+            <li><span class="badge badge-new">新增</span> 货架地图「列」独立选择框并支持<strong>多选</strong>：按列看行、点行看货位、点货位看小货位；三级按需取数，十几万货位也不卡。</li>
+            <li><span class="badge badge-opt">安全</span> 登出即失效、客户资料服务端消毒、Open API 建单校验可用量、上传加权限点、畸形请求返回 400。</li>
+            <li><span class="badge badge-opt">体验</span> 更新完成自动提示并刷新；版本号显示正确；新增「接收远程更新」开关；界面蓝色主调。</li>
+            <li><span class="badge badge-doc">规则</span> <strong>版本号固定</strong>：三位版本（1.4.1）为稳定正版，<strong>一键安装脚本与离线包只在稳定版更新</strong>；四位版本（1.4.0.x）只作为测试版发到 Beta 通道。</li>
           </ul>
         </div>
-        <!-- v1.4.0.18 -->
+        <!-- v1.4.0 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
-            <h3>v1.4.0.18</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-13</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> <strong>出库返库</strong>：已过账的出库单也能把未使用商品退回仓库，按行填数量与货位，自动生成退货入库单并过账。</li>
-            <li><span class="badge badge-new">新增</span> 报表中心「<strong>退还件</strong>」：返库单列表 + 单数/数量/金额合计。</li>
-            <li><span class="badge badge-fix">调整</span> 出库撤销按状态分权：未过账有出库权限即可撤销（自动释放锁定量）；已过账仅管理员，撤销即反过账回补库存。</li>
-            <li><span class="badge badge-fix">修复</span> 查看 BOM 报 404：补上 BOM 详情页，可查看与就地编辑。</li>
-            <li><span class="badge badge-new">新增</span> 货架地图「列」独立选择框并支持<strong>多选</strong>，按列看行、点行看货位；修复点不进去的问题。</li>
-            <li><span class="badge badge-opt">优化</span> 界面改为蓝色主调，页脚留白加大；更新完成后自动提示并刷新，普通用户版本号不再显示旧值。</li>
-          </ul>
-        </div>
-        <!-- v1.4.0.8 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.4.0.8</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-13</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> 下载导入模板失败（模板接口引用了不存在的模型，改为读 category / unit 表）。</li>
-            <li><span class="badge badge-fix">修复</span> 新建 BOM 仍报错（商品/物料 id 是字符串，schema 要求 number，已用 coerce 兼容）。</li>
-            <li><span class="badge badge-new">新增</span> <strong>货位里的小货位</strong>：建仓按「每货位小货位数」生成（C-01-09-22-01…），货架地图详情按格子展示有货/空置/停用；老仓库可一键「补齐小货位」。</li>
-            <li><span class="badge badge-new">新增</span> 扫码入库遇到不存在的商品，新建表单与「新建商品」一致（分类/单位/规格/品牌/型号/成本方法/保质期/批次/序列号）。</li>
-          </ul>
-        </div>
-        <!-- v1.4.0.6 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.4.0.6</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-13</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">调整</span> <strong>新建仓库的货架规模由用户自己填</strong>：货架数（A-Z）、每架列数、每架行数、每行货位数，表单实时显示「将生成 N 个货位」。</li>
-            <li><span class="badge badge-opt">优化</span> 默认 26 架 × 4 列 × 4 行 × 4 货位 = <strong>1664 个货位</strong>，建仓几秒完成，不再预生成 13 万个。</li>
-            <li><span class="badge badge-fix">修复</span> 商品管理页面报「请求参数格式错误」；建仓进度条按货架推进显示。</li>
-            <li><span class="badge badge-opt">优化</span> 货架地图后台预加载 + 5 分钟缓存，第二次打开直接命中。</li>
-          </ul>
-        </div>
-        <!-- v1.4.0.3 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.4.0.3</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-13</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> 新建仓库报「数据库事务超时」：新货架规则下一个仓库要生成 <strong>13 万个货位</strong>（26 架 × 10 列 × 10 行 × 50 位），而 Prisma 事务默认只给 5 秒。</li>
-            <li><span class="badge badge-opt">优化</span> 建仓事务放宽到 3 分钟（排队上限 1 分钟），批量插入 2000 → 5000/批，建仓明显更快；「补齐货架」接口同步放宽。</li>
-            <li><span class="badge badge-new">新增</span> 建仓可按需指定货架规模（列 / 行 / 货位），不传就是 10×10×50 默认值。</li>
-            <li><span class="badge badge-new">配套</span> 一键安装脚本随包执行 <span class="mono">db-changes.sql</span>（只加不删），新列与新角色装完即到位。</li>
-          </ul>
-        </div>
-        <!-- v1.4.0.1 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.4.0.1</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-13</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> <strong>扫码员角色</strong>：只能扫码出库，工作台可查商品/库存/货位，其余写操作一律没有。</li>
-            <li><span class="badge badge-new">调整</span> 出库单「部门负责人」改为<strong>从客户列表选择</strong>（必填）；入库单明确供应商为选填。</li>
-            <li><span class="badge badge-new">新增</span> 备件购买申请增加<strong>制造商、品牌</strong>（必填）并在列表展示。</li>
-            <li><span class="badge badge-fix">修复</span> 新建 BOM 报 Required：表单字段与接口校验、服务层对不上。</li>
-            <li><span class="badge badge-new">新增</span> 个人资料菜单加「关于」，直达官网；商品导入模板的分类/单位改为系统配置下拉。</li>
-            <li><span class="badge badge-new">调整</span> <strong>货架编码改为「货架-列-行-货位」</strong>（C-01-09-22：列/行上限 10、货位上限 50），新建仓库与货架地图同步。</li>
-            <li><span class="badge badge-new">新增</span> 商品列表展示品牌型号、成本方法、安全库存、保质期（未设置为「永久」）、所属仓库与存放货位。</li>
-            <li><span class="badge badge-fix">修复</span> 导入启用批次但库存页无批次；账实对账「记录数 2 只显示 1 行」；入库后序列号恒为 0。</li>
-            <li><span class="badge badge-opt">优化</span> 工作台预警 Top 最多 5 条；成本核算图表高度收窄；重置令牌目标账号改下拉；隐私政策与服务协议补充「发往远端的数据与用途」。</li>
-          </ul>
-        </div>
-        <!-- v1.3.9.3 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.9.3</h3>
-            <span class="badge badge-stable">Stable</span>
+            <h3>v1.4.0</h3>
+            <span class="badge badge-stable">稳定版</span>
             <span class="tl-date">2026-11-12</span>
           </div>
           <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> 入网服务器界面看不到域名：原来只认 <span class="mono">NEXTAUTH_URL</span>，很多机器那里还是 <span class="mono">http://IP</span> 或没配，域名就报不上去。现在按 <span class="mono">APP_PUBLIC_URL → NEXTAUTH_URL → nginx 的 server_name → 证书目录</span> 依次解析，只要真绑了域名就能报到更新中心。</li>
-            <li><span class="badge badge-new">新增</span> 安装脚本把对外地址写进 <span class="mono">.env</span>（<span class="mono">APP_PUBLIC_URL</span> / <span class="mono">APP_DOMAIN</span>）：绑域名写 <span class="mono">https://域名</span>，只走 IP 写 <span class="mono">http://IP</span>；老机器升级时自动补齐。</li>
-            <li><span class="badge badge-fix">修复</span> 绑定域名但没申请证书的情况也写域名（之前只有证书成功才写）。</li>
-            <li><span class="badge badge-opt">优化</span> 更新中心的域名列对只有 url、没有 domain 的旧数据也能反推出域名显示。</li>
+            <li><span class="badge badge-new">新增</span> <strong>货架编码四级化</strong>：货架-列-行-货位（如 C-01-09-22），货位下再分小货位（C-01-09-22-01…）。</li>
+            <li><span class="badge badge-new">新增</span> 建仓规模由用户自填（几架 / 几列 / 几行 / 每行货位 / 每货位小货位数），秒建仓库、后台生成货位并显示进度，不再预生成满配。</li>
+            <li><span class="badge badge-new">新增</span> <strong>扫码员</strong>角色；货架地图预热与 5 分钟缓存，按货架分批取数。</li>
+            <li><span class="badge badge-new">新增</span> 检查更新页可切换稳定版 / 测试版通道，按版本逐条列出改了什么。</li>
+            <li><span class="badge badge-opt">优化</span> 一键安装脚本自动执行增量库变更（只加不删）；离线包只带 Linux 运行所需，去掉 macOS 冗余。</li>
+            <li><span class="badge badge-doc">说明</span> 1.4.0.1 ~ 1.4.0.23 属于这一大版本的测试批次，不再单独列出。</li>
           </ul>
         </div>
-        <!-- v1.3.9.2 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.9.2</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> <strong>点「立即更新」就报「无法访问远端服务器」</strong>：自更新脚本把 <span class="mono">.env</span> 里的 <span class="mono">UPDATE_HUB_URL</span> 整串直接拼进 URL。程序侧本来就支持逗号分隔的多地址轮询，脚本却只认一个地址 —— 只要配置写成 <span class="mono">https://…,http://…,http://127.0.0.1:9958</span>，第一步读取更新中心元数据必然失败，页面于是弹「无法访问远端服务器」。现在脚本会把地址拆开逐个探测 <span class="mono">/healthz</span>，取第一个可用的，写多个、写单个、写空都能工作。</li>
-            <li><span class="badge badge-opt">优化</span> 更新日志新增一行「更新中心: &lt;实际地址&gt;」，以后再遇到连不上，一眼能看出它到底在连谁。</li>
-            <li><span class="badge badge-doc">说明</span> 已装机器若正卡在这个报错上，把 <span class="mono">.env</span> 的 <span class="mono">UPDATE_HUB_URL</span> 改成单地址 <span class="mono">https://update.yuejiaxin.ln.cn</span> 即可立刻恢复；升到本版本后多地址也不会再触发该问题。</li>
-          </ul>
-        </div>
-        <!-- v1.3.9.1 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.9.1</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 入网服务器界面加「访问域名」：安装时绑定过域名的机器，直接把域名报到更新中心并显示成可点击链接；只用 IP 访问的机器如实标「—（IP 访问）」。
-            <li><span class="badge badge-opt">调整</span> 去掉人工鉴定：机器入网即出现在列表，不再需要「鉴定通过」才能进首页；同一 IP 只记一条，一个出口后面有多台机器自动合并成一行。
-            <li><span class="badge badge-fix">调整</span> 一键安装脚本不再上报新服务器：只装云仓本体，不再写心跳定时器；入网与在线判断交给程序自己（启动 15 秒首报，之后每 5 分钟）。
-            <li><span class="badge badge-fix">修复</span> 离线安装包不再夹带 macOS 的 ._* 与 darwin 版 Prisma 引擎（多出来 20MB，Linux 上用不到），体积从 84MB 降到 64MB；打包流程加体检，混进苹果文件直接失败。
-          </ul>
-        </div>
-        <!-- v1.3.9 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.9</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> <strong>无法连接远端更新</strong>：安装脚本没写更新中心地址，程序兜底去连本机 <span class="mono">127.0.0.1:9958</span>（多数机器上并没有更新中心），「检查更新」直接报「无法访问远端服务器」。安装脚本现在自动写入该地址，程序侧也改为按「配置项 → 公开更新中心 → 本机 9958」依次尝试，配置缺失不再必然失败。</li>
-            <li><span class="badge badge-fix">修复</span> <strong>点「立即更新」没反应</strong>：更新工作目录原定 <span class="mono">/opt/cw-update-work</span>，而服务以 cloudwarehouse 用户运行，无权在 <span class="mono">/opt</span> 下建目录，接口直接 500、任务永远停在 running。工作目录改到应用自己的 <span class="mono">backups/update-work</span>，由安装脚本创建并授权。</li>
-            <li><span class="badge badge-fix">修复</span> <strong>更新卡在重启</strong>：服务用户没有 systemd 权限，<span class="mono">systemd-run</span> 起任务、<span class="mono">systemctl restart</span> 自己都会被 polkit 拒绝。安装脚本现在写入最小化授权规则，只放行 <span class="mono">cw-update-*</span> 与 <span class="mono">cloud-warehouse</span> 两类 unit，卸载时一并清理。</li>
-            <li><span class="badge badge-fix">优化</span> 安装脚本补装 <span class="mono">rsync</span>（更新做代码快照与失败回滚依赖它），并在结尾检测更新中心连通性，不通只提示、不阻断安装。</li>
-            <li><span class="badge badge-doc">说明</span> 已装机器正常点「检查更新 → 立即更新」即可；若旧机器点更新仍无反应（当时没有 polkit 授权），重跑一次安装脚本补齐：<span class="mono">curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash --upgrade</span>。</li>
-          </ul>
-        </div>
-        <!-- v1.3.8 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.8</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> <strong>入网心跳</strong>：装好的云仓每 5 分钟向更新中心报一次「我在」——主机名、版本、更新通道、端口、域名、系统，更新中心据此判断这台机器在线还是离线。</li>
-            <li><span class="badge badge-new">新增</span> 更新中心新增「新入网服务器」页：新机器按 IP 自动出现并标「待鉴定」，人工确认后进入「已安装服务器」清单；首页只看发布更新包、已安装 IP 与当前更新通道。</li>
-            <li><span class="badge badge-fix">优化</span> 打开「检查更新」或切换更新通道时立刻补报一次心跳，版本与通道的变更在更新中心即时可见，不必等下一个 5 分钟。</li>
-            <li><span class="badge badge-doc">说明</span> 心跳只带本机随机 installId 与运行信息，不含任何业务数据、账号与密码；上报失败静默重试，不影响登录、开单与库存等主流程。</li>
-            <li><span class="badge badge-fix">配套</span> 一键安装脚本同步升级：装完自动登记每 5 分钟一次的 systemd 定时器（无 systemd 时退回 cron），换 IP 也能自己跟上来。</li>
-          </ul>
-        </div>
-        <!-- v1.3.7.5 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.7.5</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> <strong>启用 HTTPS</strong>：正式域名 <span class="mono">https://yc.yuejiaxin.ln.cn</span>，Let’s Encrypt 证书自动续期，用 IP 访问自动跳转。</li>
-            <li><span class="badge badge-fix">修复</span> 安全上下文具备后，实时相机扫码、剪贴板复制、Cookie Secure、HTTP/2 与 HSTS 全部生效。</li>
-            <li><span class="badge badge-new">新增</span> 关于页「在线体验」卡片；README 补上在线地址。</li>
-            <li><span class="badge badge-fix">调整</span> 下线 <span class="mono">stock.yuejiaxin.ln.cn</span> 域名。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.7.4 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.7.4</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> 扫码出入库「调用相机失败」：HTTP 下浏览器不提供实时相机 API，原来只抛一句英文技术错误。</li>
-            <li><span class="badge badge-new">新增</span> HTTP 环境自动切换<strong>「拍照识别」</strong>：用系统相机拍一张，前端本地解码，不需要实时相机。</li>
-            <li><span class="badge badge-new">新增</span> 相机错误按原因中文化：权限被拒 / 没有摄像头 / 被其他应用占用 / 分辨率不支持 / 安全限制。</li>
-            <li><span class="badge badge-fix">优化</span> 每个失败界面都提供「拍照识别」与「手动输入编码」两条退路。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.7.3 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.7.3</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> 商品接口新增 <span class="mono">diagnostics</span>：直接返回「共有多少 / 被删了多少 / 可读多少」，不再让人对着 <span class="mono">total:0</span> 猜是不是接口坏了；支持 <span class="mono">includeDeleted=1</span> 查看已删除商品。</li>
-            <li><span class="badge badge-fix">修复</span> 实时库存与批次效期不再返回挂在已删除商品上的孤儿记录。</li>
-            <li><span class="badge badge-new">新增</span> 报表能力落地：<strong>低库存与缺货清单</strong>、<strong>库存金额汇总</strong>两个接口，<span class="mono">report:read</span> 名副其实。</li>
-            <li><span class="badge badge-doc">说明</span> 开放 API 密钥只用于 <span class="mono">/api/v1/open/*</span> 业务数据对接，不等同后台管理员登录态。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.7.2 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.7.2</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> <strong>API 调用日志</strong>与 <strong>Webhook 投递日志</strong>统一迁到「操作日志」页，作为独立页签。</li>
-            <li><span class="badge badge-new">新增</span> 操作日志现在有五类：系统、操作、库存、登录、API 调用、Webhook 投递，排查时一个页面看全。</li>
-            <li><span class="badge badge-fix">调整</span> 设置里的「API 管理」「Webhook 订阅」只留配置（密钥 / 端点 / 模板），日志不再重复展示。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.7.1 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.7.1</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> <strong>Webhook 失败重试</strong>：推送不再一次失败就丢，按 1 分钟 → 5 → 15 分钟 → 1 小时 → 6 → 24 小时退避，最多 6 次。</li>
-            <li><span class="badge badge-new">新增</span> <strong>投递日志</strong>：端点、事件、状态、尝试次数、HTTP 状态码、耗时、错误原因与下次重试时间，可展开看完整报文。</li>
-            <li><span class="badge badge-new">新增</span> 按状态筛选（成功 / 待重试 / 已失败）、单条手动重发、「立即重试」一键扫描积压。</li>
-            <li><span class="badge badge-new">新增</span> 三重触发：业务事件补偿扫描、打开日志页扫描、可选外部定时任务 <span class="mono">/api/cron/webhook-retry</span>。</li>
-            <li><span class="badge badge-fix">优化</span> 端点停用或删除后，其未完成投递自动判死；成功记录保留 60 天。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.7 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.7</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 出库类 Webhook 模板新增「字段说明」：<strong>数量=出库出账量</strong>（库存扣减依据），<strong>领用数量=实际领用量</strong>（人员/部门台账依据），两者不一致时的取舍规则直接写进报文。</li>
-            <li><span class="badge badge-new">新增</span> 模板编辑页加提示，说明两个数量的用途差别，配置时不用靠猜。</li>
-            <li><span class="badge badge-fix">优化</span> 已部署的旧系统模板启动时自动补写说明，<strong>只补缺失项、不覆盖手工调整过的内容</strong>。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.6 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.6</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> Webhook 模板全部改<strong>中文键名</strong>：通知类型、单号、仓库、操作人、过账时间、商品明细，对接方直接读中文即可。</li>
-            <li><span class="badge badge-new">新增</span> 出库过账推送补全领用信息：<strong>领用人、领用数量、领用时间、使用部门、使用地点、班次、部门负责人</strong>。</li>
-            <li><span class="badge badge-new">新增</span> 入库过账推送补全：入库人、过账时间、仓库、批次号、成本价、合计数量与金额。</li>
-            <li><span class="badge badge-new">新增</span> 内置模板从 3 个扩到 <strong>9 个</strong>：出库完整 / 出库精简 / 出库领用视角 / 入库完整 / 库存变动 / 商品创建 / 商品更新 / 通用信封 / 默认完整。</li>
-            <li><span class="badge badge-fix">调整</span> 移除「安全与集成」页里重复的 Webhook 管理入口，该页只保留两步验证等登录安全项。</li>
-            <li><span class="badge badge-fix">修复</span> 设置页检查更新支持四段版本号（如 1.3.6.1）正确识别为更新。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.5 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.5</h3>
-            <span class="badge badge-new">New</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> <strong>Webhook 报文模板</strong>：推给对接方的 JSON 不再写死，用 <span class="mono">{{data.orderNo}}</span> 这类占位符自己决定字段与命名。</li>
-            <li><span class="badge badge-new">新增</span> 内置三个模板：默认完整报文、单据过账精简版、库存变动单商品版；系统模板可改不可删。</li>
-            <li><span class="badge badge-new">新增</span> 「设置 → Webhook 订阅」页面：端点管理（地址 / 事件 / 启停 / 最近推送状态）与模板管理（编辑、预览渲染）。</li>
-            <li><span class="badge badge-new">新增</span> 模板保存前双重校验：变量必须在白名单内、渲染后必须是合法 JSON；模板写坏时发送自动回退默认结构。</li>
-            <li><span class="badge badge-fix">修复</span> 增量 SQL 中的 <span class="mono">ALTER TABLE</span> 改为幂等写法，重复更新不再报「列已存在」导致回滚。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.4.1 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.4.1</h3>
-            <span class="badge badge-fix">Fix</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-fix">修复</span> 创建密钥后无法复制：HTTP 访问时浏览器不提供 <span class="mono">navigator.clipboard</span>，改为三级降级（剪贴板 API → execCommand → 弹窗全选手动复制）。</li>
-            <li><span class="badge badge-new">新增</span> 开放接口调用日志：记录密钥、方法、路径、状态码、耗时、来源 IP 与错误，保留 30 天。</li>
-            <li><span class="badge badge-fix">修复</span> 没有商品却报缺货预警：只统计商品仍存在且未删除的库存行；删除商品时清理在手为 0 的库存行。</li>
-            <li><span class="badge badge-fix">修复</span> 版本比较支持四段（1.3.4.1 &gt; 1.3.4），此前四段版本号被判为「已是最新」。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.4 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.4</h3>
-            <span class="badge badge-new">New</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 验证码签发接口限流：同 IP 每分钟 20 次，超出返回 429 并提示剩余秒数。</li>
-            <li><span class="badge badge-new">新增</span> API 密钥数量上限 20 个，创建接口按 IP 每小时 10 个，列表接口每分钟 60 次。</li>
-            <li><span class="badge badge-fix">注意</span> 密钥达到上限后新建按钮变灰并提示先清理不用的密钥；服务端同样拦截，绕过前端无效。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.2 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.2</h3>
-            <span class="badge badge-new">New</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 关于页新增<strong>「API 调用说明」</strong>：认证方式、权限范围、数据范围、限速与 IP 白名单、写入幂等、可用接口清单集中说明，对接方不必再来问。</li>
-            <li><span class="badge badge-new">新增</span> <strong>免责与声明</strong>：自行二次开发不保障数据持久化与一致性；使用者对上传内容的版权合规自负；服务按现状提供。</li>
-            <li><span class="badge badge-new">新增</span> 右上角用户菜单新增「关于」入口，右侧直接显示当前版本号，点击直达设置 → 关于。</li>
-            <li><span class="badge badge-new">新增</span> 关于页底部直挂「服务协议」「隐私政策」入口。</li>
-            <li><span class="badge badge-fix">调整</span> 关于页不再标注 MIT 许可，改为版权声明。</li>
-          </ul>
-        </div>
-
-        <!-- v1.3.1 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.3.1</h3>
-            <span class="badge badge-new">New</span>
-            <span class="tl-date">2026-11-12</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 开放接口从 5 个扩到 <strong>14 个</strong>：新增仓库与货位、批次效期、往来单位、基础资料、单据查询（入库/出库/调拨/盘点）、库存汇总报表、密钥自检。</li>
-            <li><span class="badge badge-new">新增</span> 写接口：<span class="mono">POST /open/transfer</span> 建调拨单、<span class="mono">POST /open/stocktake</span> 建盘点单，均支持幂等键。</li>
-            <li><span class="badge badge-new">新增</span> 权限范围扩到 11 项，按「基础数据 / 仓储 / 库存 / 单据 / 写入 / 分析」分组。</li>
-            <li><span class="badge badge-fix">修复</span> 浏览器标签页图标：补齐标准 favicon（16/32/48/64）与 apple-icon，主图标改为带透明通道的 512px，收藏夹与 iOS 桌面正常显示。</li>
-            <li><span class="badge badge-fix">修复</span> 「API 管理」权限范围下拉为空——根因是更新脚本未执行 <span class="mono">prisma generate</span>，新模型在运行时不存在导致接口 500；更新器已补该步骤。</li>
-          </ul>
-        </div>
-
         <!-- v1.3.0 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
@@ -442,72 +131,6 @@
             <li><span class="badge badge-new">新增</span> 写操作以密钥创建者身份执行并写审计日志，创建者停用则密钥写权限同时失效。</li>
             <li><span class="badge badge-fix">安全</span> 读接口按 scope 鉴权：越权 403、超限速 429、白名单外 403、密钥无效统一 401（不区分原因，防枚举）。</li>
             <li><span class="badge badge-doc">文档</span> 新增 <span class="mono">api_keys</span> 与 <span class="mono">api_idempotency</span> 两张表，随包自带增量 SQL，更新时自动建表、只加不删。</li>
-          </ul>
-        </div>
-
-        <!-- v1.2.7 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.2.7</h3>
-            <span class="badge badge-stable">稳定基线</span>
-            <span class="tl-date">2026-11-11</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> <strong>更新系统</strong>：独立「更新中心」服务（零依赖单文件），登记版本 + 更新说明 + 多地域下载直链，设备侧自动比对、测速选最快线路下载、sha256 强校验、失败自动回滚。</li>
-            <li><span class="badge badge-new">新增</span> <strong>双通道发布</strong>：主版本（Stable）与测试版（Beta）分开推送；每台设备各自订阅通道，测试机先验证、生产机只收正式版。</li>
-            <li><span class="badge badge-new">新增</span> 检查更新页改为<strong>版本列表</strong>：逐个版本显示「做了什么修改」、发布时间与包大小，由用户自己选择升级到哪一版；当前版本也有独立说明区块，无新版时显示「当前已是最新版本」。</li>
-            <li><span class="badge badge-new">新增</span> 侧栏版本提示：发现新版本时左下角出现「新版本 x.y.z · 立即前往更新」，点击直达设置页；在线设备每 10 分钟自动比对一次，无需刷新页面。</li>
-            <li><span class="badge badge-fix">修复</span> <strong>并发扣库存竞态（P0）</strong>：原「查→判断→写」改为原子条件 UPDATE；过账先做原子状态抢占。实测库存 5 被 10 单争抢由「10/10 全成功、超卖 7 件」变为「恰 5 成功 5 拒绝」，同一单并发过账 10 次由「全部通过」变为「1 通过 9 拒绝」。</li>
-            <li><span class="badge badge-fix">修复</span> 调拨扣减、盘点结算、库存锁定/解锁同步改为原子操作；盘点结算加单据行锁，杜绝重复结算。</li>
-            <li><span class="badge badge-new">新增</span> 数据备份与回滚：手动/定时备份数据库 + 上传文件 + 关键配置，默认保留 30 天可调，支持下载、恢复（恢复前自动安全备份）、删除。</li>
-            <li><span class="badge badge-new">新增</span> 日志清空留痕：按页签清理需手输「清空日志」确认，清空动作本身写系统日志（操作人 / 时间 / 条数 / 范围）。</li>
-            <li><span class="badge badge-new">新增</span> 邮件模板中心：订阅必须绑定模板，正文变量按白名单渲染，禁止「填段文字就订阅」。</li>
-            <li><span class="badge badge-fix">修复</span> 更新中心后台中文乱码（401 响应缺 charset）与页面脚本语法问题；后台管理页改为必须登录（Basic Auth）。</li>
-            <li><span class="badge badge-fix">修复</span> 出库单明细缺少实时金额：新增每行小计与底部合计，随数量、单价即时重算。</li>
-            <li><span class="badge badge-doc">文档</span><span> 新增 <span class="mono">RELEASE-1.2.7.md</span> 版本说明（做了什么、如何部署、后续版本策略）。</span></li>
-          </ul>
-          <p class="desc" style="margin-top:.75rem;font-size:.9rem;"><strong>这是最后一个开源版本</strong>：此后的小步更新不再单独发包，统一通过更新中心（<span class="mono">https://update.yuejiaxin.ln.cn</span>）自动分发，设备联网即收通知。</p>
-        </div>
-
-        <!-- v1.2.6 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.2.6</h3>
-            <span class="badge badge-new">New</span>
-            <span class="tl-date">2026-11-11</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 检查更新页增加「当前版本更新内容」区块，直接显示本版本做了什么。</li>
-            <li><span class="badge badge-new">新增</span> 「下一版本更新内容」区块：有新版时展示说明与「立即更新」按钮；无新版时该区域显示「当前已是最新版本」。</li>
-            <li><span class="badge badge-fix">修复</span> 下载直链不再在前台展示，避免暴露内部存储地址，由系统内部测速选最快线路。</li>
-          </ul>
-        </div>
-
-        <!-- v1.2.5 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.2.5</h3>
-            <span class="badge badge-new">New</span>
-            <span class="tl-date">2026-11-11</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 数据备份与恢复、日志清空留痕、邮件模板订阅（首个可用版本）。</li>
-            <li><span class="badge badge-new">新增</span> 侧栏读取 <span class="mono">package.json</span> 版本号（不再硬编码），为后续自动更新打底。</li>
-            <li><span class="badge badge-fix">修复</span> 并发扣库存三场景（丢失更新 / 超卖 / 重复过账）全部收敛。</li>
-          </ul>
-        </div>
-
-        <!-- v1.2.4 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.2.4</h3>
-            <span class="badge badge-new">New</span>
-            <span class="tl-date">2026-11-11</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 角色数据范围（全部 / 本部门 / 本部门及下级 / 仅本人 / 自定义）+ 组织架构管理。</li>
-            <li><span class="badge badge-new">新增</span> 字典中心、登录日志、会话版本号（停用账号 / 改密后旧会话立即失效）。</li>
-            <li><span class="badge badge-fix">修复</span> 空权限角色越权、分页参数越界、2FA 接口返回非 JSON、登录页可访问性问题。</li>
           </ul>
         </div>
 
@@ -536,72 +159,20 @@
           </ul>
         </div>
 
-        <!-- v1.1.1 -->
+        <!-- v1.1.0 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
-            <h3>v1.1.1</h3>
-            <span class="badge badge-fix">Fix</span>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-10-28</span>
+            <h3>v1.1.0</h3>
+            <span class="badge badge-stable">稳定版</span>
+            <span class="tl-date">2026-10-20</span>
           </div>
           <ul class="entry-list">
-            <li><span class="badge badge-security">修复 P0</span><span> 新建商品必然失败：<span class="mono">/api/products</span> POST 使用未导入的 handleApiError 导致空响应 500，初始库存仍走已废弃的 boxes 表。</span></li>
-            <li><span class="badge badge-fix">修复</span> 操作日志永远空白：登录与仓库 / 单位 / 分类 / 供应商增删改全部补写审计日志，并带操作人 userId。</li>
-            <li><span class="badge badge-fix">修复</span> 新建商品弹窗关闭后表单残留：销毁时重置字段并清空仓库 / 货位 / 图片。</li>
-            <li><span class="badge badge-fix">修复</span> 验证码错误提示不精确：新增只校验不消费的校验接口（带 IP 限流），账号密码错误仍统一文案。</li>
-            <li><span class="badge badge-opt">优化</span> 宽表格横向滚动：商品表合并「图片 + 名称 + 编码」列、仓库表收窄列宽，1280px 下操作列不再被挤出屏幕。</li>
-            <li><span class="badge badge-new">新增</span> 品牌与界面重构：LogoMark 矢量标识、侧边栏分组折叠导航、统一设计系统、登录页左右分栏。</li>
-            <li><span class="badge badge-new">新增</span> 基础主数据预置：种子脚本内置 10 个计量单位与 6 个商品分类（幂等）。</li>
+            <li><span class="badge badge-new">新增</span> 单据闭环：入库 / 出库 / 调拨 / 盘点，草稿 → 锁定 → 过账全流程与逆向处理。</li>
+            <li><span class="badge badge-new">新增</span> 扫码出入库、条码打印；批次、序列号与效期基础台账。</li>
+            <li><span class="badge badge-new">新增</span> 权限矩阵与数据范围（仓库 / 组织隔离）；操作日志与登录日志全留痕。</li>
+            <li><span class="badge badge-new">新增</span> 多仓库、库位管理与库存台账（在手 / 锁定 / 可用）。</li>
           </ul>
         </div>
-
-        <!-- v1.0.2 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.0.2</h3>
-            <span class="badge badge-stable">Stable</span>
-            <span class="tl-date">2026-10-27</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-opt">优化</span> 持续打磨交互细节与系统稳定性。</li>
-            <li><span class="badge badge-fix">修复</span> 若干缺陷修复（详见 docs/FIXLOG.md）。</li>
-            <li><span class="badge badge-doc">文档</span> 补齐发布配套：README 重写、LICENSE、CONTRIBUTING、.github 模板。</li>
-          </ul>
-        </div>
-
-        <!-- v1.0.1 -->
-        <div class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="tl-head">
-            <h3>v1.0.1</h3>
-            <span class="badge badge-security">Security</span>
-            <span class="tl-date">2026-10-11</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-security">修复 P0</span> 移除 middleware 任意 token 头放行，/api/v1/* 改由路由内部真实校验（越权）。</li>
-            <li><span class="badge badge-security">修复 P0</span> 验证码答案不再下发，改为服务端 SVG 生成 + 一次性校验。</li>
-            <li><span class="badge badge-fix">修复 P1</span> login-check 降级空壳，统一登录 / 重置错误文案，防用户枚举。</li>
-            <li><span class="badge badge-fix">修复 P2</span> 限流 IP 取 X-Real-IP / XFF 末段，防伪造绕过。</li>
-            <li><span class="badge badge-opt">优化</span> 升级 next 14.2.35 / next-auth 4.24.11；移除 puppeteer-core；xlsx → exceljs。</li>
-            <li><span class="badge badge-opt">优化</span> 关闭未使用图片优化器；CSRF 白名单移除 http 来源。</li>
-          </ul>
-        </div>
-
-        <!-- v1.0.0 -->
-        <div class="card reveal">
-          <div class="tl-head">
-            <h3>v1.0.0</h3>
-            <span class="badge badge-baseline">Baseline</span>
-            <span class="tl-date">初始版本</span>
-          </div>
-          <ul class="entry-list">
-            <li><span class="badge badge-new">新增</span> 8 大核心模块：商品/物料、入库、出库、库存、盘点、库位、预警、报表。</li>
-            <li><span class="badge badge-new">新增</span> 系统底座：RBAC、操作日志审计、API Token、NextAuth 会话认证。</li>
-          </ul>
-        </div>
-
-        <p class="reveal" style="margin-top: 2.5rem; font-size: .9rem;">
-          更完整的变更历史见仓库 <a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener">docs/CHANGELOG.md</a>。
-        </p>
       </div>
     </section>
 
@@ -616,6 +187,67 @@
             去 GitHub 拿源码
           </a>
           <a class="btn btn-ghost btn-lg" href="pricing.html">了解部署服务</a>
+        </div>
+        <h3 style="margin: 2rem 0 1rem; font-size: 1.05rem; color: var(--text-muted);">测试版（Beta）</h3>
+        <p style="margin: 0 0 1rem; color: var(--text-muted); font-size: 0.9rem;">
+          四位版本号（如 1.4.0.23）为测试版，只在 Beta 通道推送，<strong>不更新一键安装脚本与离线包</strong>；稳定版为三位版本。
+        </p>
+        <!-- v1.4.0.23 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.23</h3>
+            <span class="badge badge-beta">Beta</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> <strong>出库单详情白屏</strong>（Application error）：返库功能的 Hook 被写在条件 return 之后，已移到组件顶部。</li>
+            <li><span class="badge badge-fix">修复</span> <strong>回收站彻底删除失败</strong>：按依赖顺序清理货位/库存/批次/序列号/BOM；被单据引用时给出具体原因，全程事务。</li>
+            <li><span class="badge badge-opt">安全</span> 登出即失效（sessionVersion bump）、客户资料消毒、Open API 校验可用量、上传加权限点、畸形请求返回 400。</li>
+          </ul>
+        </div>
+        <!-- v1.4.0.18 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.18</h3>
+            <span class="badge badge-beta">Beta</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>出库返库</strong>：已过账的出库单也能把未使用商品退回仓库，按行填数量与货位，自动生成退货入库单并过账。</li>
+            <li><span class="badge badge-new">新增</span> 报表中心「<strong>退还件</strong>」：返库单列表 + 单数/数量/金额合计。</li>
+            <li><span class="badge badge-fix">调整</span> 出库撤销按状态分权：未过账有出库权限即可撤销（自动释放锁定量）；已过账仅管理员，撤销即反过账回补库存。</li>
+            <li><span class="badge badge-fix">修复</span> 查看 BOM 报 404：补上 BOM 详情页，可查看与就地编辑。</li>
+            <li><span class="badge badge-new">新增</span> 货架地图「列」独立选择框并支持<strong>多选</strong>，按列看行、点行看货位；修复点不进去的问题。</li>
+            <li><span class="badge badge-opt">优化</span> 界面改为蓝色主调，页脚留白加大；更新完成后自动提示并刷新，普通用户版本号不再显示旧值。</li>
+          </ul>
+        </div>
+        <!-- v1.4.0.8 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.8</h3>
+            <span class="badge badge-beta">Beta</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> 下载导入模板失败（模板接口引用了不存在的模型，改为读 category / unit 表）。</li>
+            <li><span class="badge badge-fix">修复</span> 新建 BOM 仍报错（商品/物料 id 是字符串，schema 要求 number，已用 coerce 兼容）。</li>
+            <li><span class="badge badge-new">新增</span> <strong>货位里的小货位</strong>：建仓按「每货位小货位数」生成（C-01-09-22-01…），货架地图详情按格子展示有货/空置/停用；老仓库可一键「补齐小货位」。</li>
+            <li><span class="badge badge-new">新增</span> 扫码入库遇到不存在的商品，新建表单与「新建商品」一致（分类/单位/规格/品牌/型号/成本方法/保质期/批次/序列号）。</li>
+          </ul>
+        </div>
+        <!-- v1.4.0.3 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.3</h3>
+            <span class="badge badge-beta">Beta</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> 新建仓库报「数据库事务超时」：新货架规则下一个仓库要生成 <strong>13 万个货位</strong>（26 架 × 10 列 × 10 行 × 50 位），而 Prisma 事务默认只给 5 秒。</li>
+            <li><span class="badge badge-opt">优化</span> 建仓事务放宽到 3 分钟（排队上限 1 分钟），批量插入 2000 → 5000/批，建仓明显更快；「补齐货架」接口同步放宽。</li>
+            <li><span class="badge badge-new">新增</span> 建仓可按需指定货架规模（列 / 行 / 货位），不传就是 10×10×50 默认值。</li>
+            <li><span class="badge badge-new">配套</span> 一键安装脚本随包执行 <span class="mono">db-changes.sql</span>（只加不删），新列与新角色装完即到位。</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -671,7 +303,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.23</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.1</p>
       </div>
     </div>
   </footer>
