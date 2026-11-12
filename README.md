@@ -105,7 +105,7 @@ sudo certbot --nginx -d your-domain.com   # 自动签发并开启 HTTPS/HSTS
 
 | 项 | 值 |
 |----|----|
-| 站点展示版本 | **v1.3.9.2** |
+| 站点展示版本 | **v1.4.0.1** |
 | 主仓库 HEAD | `4d1e676`（2026-10-28，「更新版本」） |
 | 主仓库 `package.json` version | `1.2.0` |
 | GitHub Releases | 1.1.1 / 1.0.2 / 1.0.0（1.2.0 已并入 main，Release tag 可后续补建） |

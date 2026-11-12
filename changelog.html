@@ -82,11 +82,44 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.4.0.1 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.1</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>扫码员角色</strong>：只能扫码出库，工作台可查商品/库存/货位，其余写操作一律没有。</li>
+            <li><span class="badge badge-new">调整</span> 出库单「部门负责人」改为<strong>从客户列表选择</strong>（必填）；入库单明确供应商为选填。</li>
+            <li><span class="badge badge-new">新增</span> 备件购买申请增加<strong>制造商、品牌</strong>（必填）并在列表展示。</li>
+            <li><span class="badge badge-fix">修复</span> 新建 BOM 报 Required：表单字段与接口校验、服务层对不上。</li>
+            <li><span class="badge badge-new">新增</span> 个人资料菜单加「关于」，直达官网；商品导入模板的分类/单位改为系统配置下拉。</li>
+            <li><span class="badge badge-new">调整</span> <strong>货架编码改为「货架-列-行-货位」</strong>（C-01-09-22：列/行上限 10、货位上限 50），新建仓库与货架地图同步。</li>
+            <li><span class="badge badge-new">新增</span> 商品列表展示品牌型号、成本方法、安全库存、保质期（未设置为「永久」）、所属仓库与存放货位。</li>
+            <li><span class="badge badge-fix">修复</span> 导入启用批次但库存页无批次；账实对账「记录数 2 只显示 1 行」；入库后序列号恒为 0。</li>
+            <li><span class="badge badge-opt">优化</span> 工作台预警 Top 最多 5 条；成本核算图表高度收窄；重置令牌目标账号改下拉；隐私政策与服务协议补充「发往远端的数据与用途」。</li>
+          </ul>
+        </div>
+        <!-- v1.3.9.3 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.9.3</h3>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> 入网服务器界面看不到域名：原来只认 <span class="mono">NEXTAUTH_URL</span>，很多机器那里还是 <span class="mono">http://IP</span> 或没配，域名就报不上去。现在按 <span class="mono">APP_PUBLIC_URL → NEXTAUTH_URL → nginx 的 server_name → 证书目录</span> 依次解析，只要真绑了域名就能报到更新中心。</li>
+            <li><span class="badge badge-new">新增</span> 安装脚本把对外地址写进 <span class="mono">.env</span>（<span class="mono">APP_PUBLIC_URL</span> / <span class="mono">APP_DOMAIN</span>）：绑域名写 <span class="mono">https://域名</span>，只走 IP 写 <span class="mono">http://IP</span>；老机器升级时自动补齐。</li>
+            <li><span class="badge badge-fix">修复</span> 绑定域名但没申请证书的情况也写域名（之前只有证书成功才写）。</li>
+            <li><span class="badge badge-opt">优化</span> 更新中心的域名列对只有 url、没有 domain 的旧数据也能反推出域名显示。</li>
+          </ul>
+        </div>
         <!-- v1.3.9.2 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.3.9.2</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-12</span>
           </div>
@@ -567,7 +600,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.9.2</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.1</p>
       </div>
     </div>
   </footer>
