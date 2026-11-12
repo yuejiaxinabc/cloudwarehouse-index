@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>更新日志 · Changelog | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.3.7.2 把 API 调用日志与 Webhook 投递日志统一收进操作日志页；v1.3.4.1 补上开放接口调用日志；v1.3.0 起提供 API 密钥体系、14 个开放接口与写入幂等。" />
+  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.3.7.3 新增接口自描述端点，AI 也能直接读取能力清单；v1.3.4.1 补上开放接口调用日志；v1.3.0 起提供 API 密钥体系、14 个开放接口与写入幂等。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/changelog.html" />
 
@@ -82,11 +82,26 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.3.7.3 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.7.3</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> 商品接口新增 <span class="mono">diagnostics</span>：直接返回「共有多少 / 被删了多少 / 可读多少」，不再让人对着 <span class="mono">total:0</span> 猜是不是接口坏了；支持 <span class="mono">includeDeleted=1</span> 查看已删除商品。</li>
+            <li><span class="badge badge-fix">修复</span> 实时库存与批次效期不再返回挂在已删除商品上的孤儿记录。</li>
+            <li><span class="badge badge-new">新增</span> 报表能力落地：<strong>低库存与缺货清单</strong>、<strong>库存金额汇总</strong>两个接口，<span class="mono">report:read</span> 名副其实。</li>
+            <li><span class="badge badge-doc">说明</span> 开放 API 密钥只用于 <span class="mono">/api/v1/open/*</span> 业务数据对接，不等同后台管理员登录态。</li>
+          </ul>
+        </div>
+
         <!-- v1.3.7.2 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.3.7.2</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-12</span>
           </div>
@@ -466,7 +481,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.2</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.3</p>
       </div>
     </div>
   </footer>

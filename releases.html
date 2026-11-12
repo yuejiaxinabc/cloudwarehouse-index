@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>版本发布 · 发布时间线 | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.3.7.2（日志统一入口 / 六类日志页签）、v1.1.1（可用性修复 + 视觉重构）、v1.0.2、v1.0.1 安全修复版（FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
+  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.3.7.3（接口自描述 / AI 可直接读 / 14 个开放接口）、v1.1.1（可用性修复 + 视觉重构）、v1.0.2、v1.0.1 安全修复版（FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/releases.html" />
 
@@ -83,12 +83,29 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.3.7.2 -->
+          <!-- v1.3.7.3 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.3.7.2</h3>
+                <h3>v1.3.7.3</h3>
                 <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.7.2。把「商品查不到」与「报表 404」两处实际卡点修掉。</p>
+              <ul class="list">
+                <li><strong>诊断字段</strong>：商品接口返回总数 / 已删 / 可读，支持 includeDeleted。</li>
+                <li><strong>报表落地</strong>：低库存清单 + 库存金额汇总。</li>
+                <li><strong>数据干净</strong>：不再返回已删除商品的孤儿库存与批次。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.7.2 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.7.2</h3>
                 <span class="badge badge-stable">Stable</span>
                 <span class="tl-date">2026-11-12</span>
               </div>
@@ -444,7 +461,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.2</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.3</p>
       </div>
     </div>
   </footer>
