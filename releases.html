@@ -83,12 +83,29 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.3.7.3 -->
+          <!-- v1.3.7.4 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.3.7.3</h3>
+                <h3>v1.3.7.4</h3>
                 <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.7.3。扫码在 HTTP 环境下不再是死路。</p>
+              <ul class="list">
+                <li><strong>根因定位</strong>：<span class="mono">getUserMedia</span> 只在 HTTPS / localhost 可用。</li>
+                <li><strong>拍照识别</strong>：<span class="mono">input[type=file][capture]</span> 不受此限制，唤起系统相机拍一张再解码。</li>
+                <li><strong>错误说人话</strong>：五类常见故障分别给出可执行的处理建议。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.7.3 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.7.3</h3>
                 <span class="badge badge-stable">Stable</span>
                 <span class="tl-date">2026-11-12</span>
               </div>
@@ -448,7 +465,7 @@
         <div class="footer-col">
           <h4>项目文档</h4>
           <ul>
-                        <li><a href="http://82.156.236.221/" target="_blank" rel="noopener">在线演示 ↗</a></li>
+                        <li><a href="https://yc.yuejiaxin.ln.cn/" target="_blank" rel="noopener">在线演示 ↗</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">SECURITY</a></li>
@@ -461,7 +478,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.3</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.4</p>
       </div>
     </div>
   </footer>

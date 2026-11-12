@@ -82,11 +82,26 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.3.7.4 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.7.4</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> 扫码出入库「调用相机失败」：HTTP 下浏览器不提供实时相机 API，原来只抛一句英文技术错误。</li>
+            <li><span class="badge badge-new">新增</span> HTTP 环境自动切换<strong>「拍照识别」</strong>：用系统相机拍一张，前端本地解码，不需要实时相机。</li>
+            <li><span class="badge badge-new">新增</span> 相机错误按原因中文化：权限被拒 / 没有摄像头 / 被其他应用占用 / 分辨率不支持 / 安全限制。</li>
+            <li><span class="badge badge-fix">优化</span> 每个失败界面都提供「拍照识别」与「手动输入编码」两条退路。</li>
+          </ul>
+        </div>
+
         <!-- v1.3.7.3 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.3.7.3</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-12</span>
           </div>
@@ -468,7 +483,7 @@
         <div class="footer-col">
           <h4>项目文档</h4>
           <ul>
-                        <li><a href="http://82.156.236.221/" target="_blank" rel="noopener">在线演示 ↗</a></li>
+                        <li><a href="https://yc.yuejiaxin.ln.cn/" target="_blank" rel="noopener">在线演示 ↗</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">SECURITY</a></li>
@@ -481,7 +496,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.3</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.4</p>
       </div>
     </div>
   </footer>
