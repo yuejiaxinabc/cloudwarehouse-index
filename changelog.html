@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>更新日志 · Changelog | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.3.7.1 给 Webhook 加了失败重试与投递日志；v1.3.4.1 补上开放接口调用日志；v1.3.0 起提供 API 密钥体系、14 个开放接口与写入幂等。" />
+  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.3.7.2 把 API 调用日志与 Webhook 投递日志统一收进操作日志页；v1.3.4.1 补上开放接口调用日志；v1.3.0 起提供 API 密钥体系、14 个开放接口与写入幂等。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/changelog.html" />
 
@@ -82,11 +82,25 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.3.7.2 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.7.2</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>API 调用日志</strong>与 <strong>Webhook 投递日志</strong>统一迁到「操作日志」页，作为独立页签。</li>
+            <li><span class="badge badge-new">新增</span> 操作日志现在有五类：系统、操作、库存、登录、API 调用、Webhook 投递，排查时一个页面看全。</li>
+            <li><span class="badge badge-fix">调整</span> 设置里的「API 管理」「Webhook 订阅」只留配置（密钥 / 端点 / 模板），日志不再重复展示。</li>
+          </ul>
+        </div>
+
         <!-- v1.3.7.1 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.3.7.1</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-12</span>
           </div>
@@ -452,7 +466,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.1</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.2</p>
       </div>
     </div>
   </footer>
