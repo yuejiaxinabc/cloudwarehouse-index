@@ -67,7 +67,7 @@
             <span class="install-tag install-tag-offline">离线安装</span>
             <h2>无需联网，适合内网 / 无外网服务器</h2>
           </div>
-          <p class="install-desc">包内已含构建好的运行时（Next standalone + Prisma 引擎 + 建表 SQL），服务器上不需要 npm install，也不需要访问外网。约 2 分钟。</p>
+          <p class="install-desc">包内已含构建好的运行时（Next standalone + Prisma 引擎 + 建表 SQL），服务器上不需要 npm install，也不需要访问外网。约 2 分钟。<strong>离线模式不申请 SSL 证书</strong>（无外网签不了），需要时联网后执行 <code>certbot --nginx -d 域名</code> 补上。</p>
 
           <div class="cmd">
             <code>wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code>
@@ -81,7 +81,7 @@
           <div class="install-meta">
             <div><span>版本</span><b>1.3.7.5</b></div>
             <div><span>体积</span><b>35 MB</b></div>
-            <div><span>SHA256</span><b class="mono">c66a3e58…cf4343</b></div>
+            <div><span>SHA256</span><b class="mono">73e25f7e…e2f745</b></div>
             <div><span>备用镜像</span><b>南京 / 成都</b></div>
           </div>
           <p class="install-note">下载后建议先校验：<code>sha256sum cloudwarehouse-offline-1.3.7.5.tar.gz</code></p>
@@ -101,7 +101,7 @@
 [########################] 100%  完成</code></pre>
           <div class="facts-grid" style="margin-top:1rem">
             <div class="fact"><h3>环境检测优先</h3><p>先检查 Node / 数据库 / nginx，缺什么装什么；都齐了就直接部署最新代码，不重复折腾。</p></div>
-            <div class="fact"><h3>域名可选</h3><p>装到一半会问「是否绑定域名」，选 1 输入域名自动申请免费 HTTPS 证书，选 2 跳过用 IP 访问。</p></div>
+            <div class="fact"><h3>域名与 SSL 都可选</h3><p>安装开始就问是否绑定域名；绑了之后再问是否申请免费 HTTPS 证书。跳过域名则应用直接映射到 80 端口。</p></div>
             <div class="fact"><h3>也可参数化</h3><p>无人值守时用 <code>--domain=wms.example.com</code> 或 <code>--no-domain</code> 跳过交互。</p></div>
             <div class="fact"><h3>可重复执行</h3><p>已装过的机器再跑一次等于升级：保留数据库、.env、备份与上传文件，只替换代码。</p></div>
           </div>
