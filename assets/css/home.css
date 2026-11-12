@@ -147,7 +147,11 @@
   color: #cbd5e1;
 }
 
-.hi-body .cmd-block code.cmd-text { font-size: .7rem; letter-spacing: -.01em; }
+.hero-grid { grid-template-columns: .98fr 1.12fr; }
+@media (max-width: 1024px) { .hero-grid { grid-template-columns: 1fr; } }
+.hi-body .cmd-block code.cmd-text { font-size: .705rem; letter-spacing: -.01em; }
+.hi-body .cmd-block { padding-right: .75rem; }
+.hi-copy { margin-left: auto; }
 .hi-body .cmd-block { gap: .45rem; padding-left: .7rem; }
 .hi-body .cmd-prompt { font-size: .74rem; }
 .hi-body .copy-btn { padding: .3rem .55rem; }
@@ -260,6 +264,25 @@
 .stage-cmd code.cmd-text { font-size: .855rem; }
 .stage-cmd .cmd-prompt { font-size: .9rem; }
 
+.stage-alt {
+  display: grid;
+  justify-items: center;
+  gap: .3rem;
+  margin-top: .9rem;
+  font-size: .75rem;
+  color: var(--ink-500);
+}
+.stage-alt span { display: inline-flex; align-items: baseline; gap: .4rem; }
+.stage-alt span > b { font-weight: 600; color: var(--ink-600); }
+.stage-alt code {
+  font-family: var(--font-mono);
+  font-size: .71rem;
+  padding: .12rem .4rem;
+  border-radius: 5px;
+  background: #f1f5f9;
+  color: var(--ink-700);
+}
+
 .stage-steps {
   display: flex;
   flex-wrap: wrap;
@@ -352,7 +375,14 @@
   background: #f1f5f9;
   color: var(--ink-900);
 }
-.stage-args .stage-links { margin-top: .75rem; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem .9rem; }
+.stage-args .stage-links {
+  flex-basis: 100%;
+  margin-top: .75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem .9rem;
+}
 .stage-args .stage-links a { font-weight: 600; font-size: .8rem; }
 
 /* ---------- 流程增强 ---------- */
@@ -376,10 +406,12 @@
 @media (max-width: 640px) {
   .cmd-block code.cmd-text {
     white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
     overflow-x: visible;
+    font-size: .74rem;
   }
+  .hi-body .cmd-block code.cmd-text { font-size: .66rem; }
   .stage-card { padding: 2.2rem 1.15rem 1.9rem; border-radius: 20px; }
   .stage-facts > div:hover, .flow-step:hover { transform: none; }
 }
