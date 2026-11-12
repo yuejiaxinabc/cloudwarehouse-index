@@ -11,7 +11,7 @@
 ```
 cloudwarehouse-index/
 ├── index.html            # 首页：Hero、数据指标、业务流程、项目简介、功能精选、部署服务速览
-├── features.html         # 产品功能：8 大核心模块、v1.3.7.4 新增能力、扩展能力、系统底座、适用行业
+├── features.html         # 产品功能：8 大核心模块、v1.3.7.5 新增能力、扩展能力、系统底座、适用行业
 ├── pricing.html          # 部署服务：私有化部署单次 ¥299（服务包含/不包含、流程、FAQ）
 ├── releases.html         # 版本发布：发布时间线（v1.3.7 / v1.3.6 / v1.3.5 / v1.3.4.1 / v1.3.0）
 ├── changelog.html        # 更新日志：按版本聚合的变更记录
@@ -88,7 +88,7 @@ sudo certbot --nginx -d your-domain.com   # 自动签发并开启 HTTPS/HSTS
 
 | 需求 | 改哪里 |
 |------|--------|
-| 改文案 / 版本号 | 对应页面内搜索 `v1.3.7.4` 等关键字；注意**每个页面页脚都有版本号**，全局替换最快（发布新版本时同步 `releases.html` 与 `changelog.html`） |
+| 改文案 / 版本号 | 对应页面内搜索 `v1.3.7.5` 等关键字；注意**每个页面页脚都有版本号**，全局替换最快（发布新版本时同步 `releases.html` 与 `changelog.html`） |
 | 改配色 / 设计令牌 | `assets/css/style.css` 顶部 `:root` 变量（品牌色、渐变、圆角、阴影都在这里） |
 | 加功能卡片 | `features.html` 中复制任意 `.card` 卡片块 |
 | 加版本 / 日志 | `releases.html` 复制 `.tl-item` 条目；`changelog.html` 复制版本卡片 |
@@ -105,7 +105,7 @@ sudo certbot --nginx -d your-domain.com   # 自动签发并开启 HTTPS/HSTS
 
 | 项 | 值 |
 |----|----|
-| 站点展示版本 | **v1.3.7.4** |
+| 站点展示版本 | **v1.3.7.5** |
 | 主仓库 HEAD | `4d1e676`（2026-10-28，「更新版本」） |
 | 主仓库 `package.json` version | `1.2.0` |
 | GitHub Releases | 1.1.1 / 1.0.2 / 1.0.0（1.2.0 已并入 main，Release tag 可后续补建） |
@@ -117,7 +117,7 @@ sudo certbot --nginx -d your-domain.com   # 自动签发并开启 HTTPS/HSTS
 2. 本站全局替换页脚版本号（`当前版本 vX.Y.Z`，6 个页面）；
 3. `releases.html` 顶部插入时间线条目，`Latest` 徽章移到新版本，旧版降为 `Stable`；
 4. `changelog.html` 顶部插入版本卡片，按「新增 / 修复 / 优化 / 安全 / 文档」分标签；
-5. `features.html` 的「v1.3.7.4 新增能力」区块与首页能力区同步增删；
+5. `features.html` 的「v1.3.7.5 新增能力」区块与首页能力区同步增删；
 6. `security.html` 仅在出现安全相关修复时补表行与机制卡；
 7. 更新 `sitemap.xml` 的 `lastmod`，提交推送，GitHub Pages 由 `.github/workflows/static.yml` 自动部署。
 

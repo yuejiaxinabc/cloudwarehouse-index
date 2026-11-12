@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>部署安装 · 云仓 YUNCANG</title>
+  <meta name="description" content="云仓 Linux 一键安装：在线安装一条命令搞定，也支持离线安装包。自动装 Node、MySQL、nginx，建库建表、配置服务与反代，支持 Ubuntu / Debian / CentOS / Rocky / Alma。" />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.svg" alt="云仓" width="32" height="32" />
+        <span class="brand-name">云仓<em>YUNCANG</em></span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="features.html">产品功能</a>
+        <a href="install.html" class="active" aria-current="page">部署安装</a>
+        <a href="releases.html">版本发布</a>
+        <a href="changelog.html">更新日志</a>
+        <a href="security.html">安全日志</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-outline btn-sm" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">Gitee</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="band-dark hero">
+      <div class="container">
+        <span class="hero-badge"><span class="dot"></span> Linux 一键部署</span>
+        <h1 class="hero-title">两条命令<br />装完就能用</h1>
+        <p class="hero-lead">
+          纯净系统也行。<strong>在线安装</strong>一条命令：环境检测 → 下载运行时包 → 建库建表 → 起服务 → 配反代。
+          <br /><strong>离线安装</strong>下载同一个包，解压执行即可，全程不联网。
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- 在线安装 -->
+        <div class="install-block">
+          <div class="install-head">
+            <span class="install-tag install-tag-online">在线安装</span>
+            <h2>需要联网，一条命令</h2>
+          </div>
+          <p class="install-desc">脚本先做环境检测（缺什么装什么），再下载预构建运行时包解压部署，不需要在服务器上 npm install 或编译。约 2 分钟。</p>
+          <div class="cmd">
+            <code>curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash</code>
+            <button class="cmd-copy" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash">复制</button>
+          </div>
+          <p class="install-note">最短写法：<code>curl -fsSL https://update.yuejiaxin.ln.cn/i | sudo bash</code></p>
+          <p class="install-note">无人值守带域名：<code>curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash -s -- --domain=wms.example.com</code></p>
+          <p class="install-note">跳过域名交互加 <code>--no-domain</code>；已装机器升级加 <code>--upgrade</code></p>
+        </div>
+
+        <!-- 离线安装 -->
+        <div class="install-block">
+          <div class="install-head">
+            <span class="install-tag install-tag-offline">离线安装</span>
+            <h2>无需联网，适合内网 / 无外网服务器</h2>
+          </div>
+          <p class="install-desc">包内已含构建好的运行时（Next standalone + Prisma 引擎 + 建表 SQL），服务器上不需要 npm install，也不需要访问外网。约 2 分钟。</p>
+
+          <div class="cmd">
+            <code>wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code>
+            <button class="cmd-copy" data-copy="wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz">复制</button>
+          </div>
+          <div class="cmd">
+            <code>tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz &amp;&amp; sudo bash cloudwarehouse/install.sh --offline</code>
+            <button class="cmd-copy" data-copy="tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz && sudo bash cloudwarehouse/install.sh --offline">复制</button>
+          </div>
+
+          <div class="install-meta">
+            <div><span>版本</span><b>1.3.7.5</b></div>
+            <div><span>体积</span><b>35 MB</b></div>
+            <div><span>SHA256</span><b class="mono">c66a3e58…cf4343</b></div>
+            <div><span>备用镜像</span><b>南京 / 成都</b></div>
+          </div>
+          <p class="install-note">下载后建议先校验：<code>sha256sum cloudwarehouse-offline-1.3.7.5.tar.gz</code></p>
+        </div>
+
+        <!-- 过程 -->
+        <div class="install-facts">
+          <h2>安装过程看得见</h2>
+          <p class="install-desc">全程有进度条，不用猜卡在哪一步：</p>
+          <pre style="background:#0B1220;color:#CBD5E1;padding:1rem 1.1rem;border-radius:10px;font-size:.8rem;line-height:1.9;overflow-x:auto"><code>[####....................]   8%  环境检测
+[#######.................]  17%  安装 Node.js 20
+        └ 完成，用时 18s
+[##########..............]  33%  准备数据库
+[#############...........]  50%  在线模式：下载预构建运行时包
+[################........]  67%  部署运行时文件
+[####################....]  83%  配置系统服务
+[########################] 100%  完成</code></pre>
+          <div class="facts-grid" style="margin-top:1rem">
+            <div class="fact"><h3>环境检测优先</h3><p>先检查 Node / 数据库 / nginx，缺什么装什么；都齐了就直接部署最新代码，不重复折腾。</p></div>
+            <div class="fact"><h3>域名可选</h3><p>装到一半会问「是否绑定域名」，选 1 输入域名自动申请免费 HTTPS 证书，选 2 跳过用 IP 访问。</p></div>
+            <div class="fact"><h3>也可参数化</h3><p>无人值守时用 <code>--domain=wms.example.com</code> 或 <code>--no-domain</code> 跳过交互。</p></div>
+            <div class="fact"><h3>可重复执行</h3><p>已装过的机器再跑一次等于升级：保留数据库、.env、备份与上传文件，只替换代码。</p></div>
+          </div>
+        </div>
+
+        <!-- 说明 -->
+        <div class="install-facts">
+          <h2>安装脚本会做什么</h2>
+          <div class="facts-grid">
+            <div class="fact"><h3>识别系统</h3><p>Ubuntu / Debian / CentOS / RHEL / Rocky / Alma / Fedora，自动选包管理器</p></div>
+            <div class="fact"><h3>装齐依赖</h3><p>Node 20、MySQL 或 MariaDB、nginx、curl 等基础组件</p></div>
+            <div class="fact"><h3>建库建表</h3><p>创建库与专用账号，导入 67 张表结构，不写入任何演示数据</p></div>
+            <div class="fact"><h3>随机密钥</h3><p>NEXTAUTH_SECRET 与数据库密码现场生成，写入 600 权限的 .env</p></div>
+            <div class="fact"><h3>守护进程</h3><p>systemd 服务 cloud-warehouse，崩溃自动重启，开机自启</p></div>
+            <div class="fact"><h3>反向代理</h3><p>nginx 反代到 127.0.0.1:3000，预留 ACME 目录方便加 HTTPS</p></div>
+          </div>
+        </div>
+
+        <div class="install-facts">
+          <h2>装完之后</h2>
+          <div class="facts-grid">
+            <div class="fact"><h3>访问</h3><p><code>http://服务器IP</code> 或你传入的域名</p></div>
+            <div class="fact"><h3>初始账号</h3><p><code>admin / Admin@123</code>，登录后立即改密</p></div>
+            <div class="fact"><h3>管理服务</h3><p><code>systemctl status cloud-warehouse</code></p></div>
+            <div class="fact"><h3>看日志</h3><p><code>journalctl -u cloud-warehouse -f</code></p></div>
+            <div class="fact"><h3>加 HTTPS</h3><p><code>certbot --nginx -d 你的域名</code>（扫码等功能需要 HTTPS）</p></div>
+            <div class="fact"><h3>数据库密码</h3><p>见 <code>/opt/cloud-warehouse/.env</code>（600 权限）</p></div>
+          </div>
+        </div>
+
+        <div class="install-caution">
+          <h3>两个前提</h3>
+          <ul>
+            <li><strong>系统要求</strong>：64 位 Linux，内存 ≥ 2 GB，磁盘 ≥ 10 GB，root 权限。</li>
+            <li><strong>端口占用</strong>：80 端口给 nginx，3000 给应用。脚本会覆盖已有的 <code>/etc/nginx</code> 中同名配置，但不会动其它站点。</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.5</p>
+      <p class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="features.html">产品功能</a>
+        <a href="releases.html">版本发布</a>
+        <a href="changelog.html">更新日志</a>
+        <a href="security.html">安全日志</a>
+      </p>
+    </div>
+  </footer>
+
+  <style>
+    .install-block { margin-bottom: 2.5rem; padding: 1.6rem 1.8rem; border: 1px solid var(--border, #E2E8F0); border-radius: 16px; background: #fff; }
+    .install-head { display: flex; align-items: center; gap: .7rem; margin-bottom: .6rem; }
+    .install-head h2 { font-size: 1.15rem; margin: 0; }
+    .install-tag { font-size: .72rem; font-weight: 600; padding: .2rem .6rem; border-radius: 999px; }
+    .install-tag-online { background: #E0F2FE; color: #0369A1; }
+    .install-tag-offline { background: #FEF3C7; color: #92400E; }
+    .install-desc { color: #475569; font-size: .92rem; line-height: 1.8; margin: 0 0 1rem; }
+    .cmd { display: flex; align-items: center; gap: .6rem; background: #0B1220; border-radius: 10px; padding: .75rem 1rem; margin-bottom: .7rem; overflow-x: auto; }
+    .cmd code { color: #E2E8F0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86rem; white-space: nowrap; }
+    .cmd-copy { margin-left: auto; flex: none; background: #1E293B; color: #CBD5E1; border: 1px solid #334155; border-radius: 7px; padding: .28rem .7rem; font-size: .75rem; cursor: pointer; }
+    .cmd-copy:hover { background: #334155; color: #F8FAFC; }
+    .install-note { color: #64748B; font-size: .82rem; margin: .3rem 0 0; }
+    .install-note code { background: #F1F5F9; padding: .1rem .35rem; border-radius: 4px; font-size: .8rem; }
+    .install-meta { display: flex; flex-wrap: wrap; gap: 1.4rem; margin: .9rem 0 .2rem; padding: .8rem 1rem; background: #F8FAFC; border-radius: 10px; }
+    .install-meta > div { display: flex; flex-direction: column; gap: .15rem; }
+    .install-meta span { font-size: .72rem; color: #94A3B8; }
+    .install-meta b { font-size: .85rem; color: #1E293B; }
+    .install-meta .mono { font-family: ui-monospace, monospace; font-size: .76rem; }
+    .install-facts { margin-bottom: 2.2rem; }
+    .install-facts h2 { font-size: 1.1rem; margin: 0 0 1rem; }
+    .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .fact { border: 1px solid var(--border, #E2E8F0); border-radius: 12px; padding: 1rem 1.1rem; background: #fff; }
+    .fact h3 { font-size: .92rem; margin: 0 0 .4rem; color: #0F172A; }
+    .fact p { font-size: .84rem; color: #64748B; line-height: 1.75; margin: 0; }
+    .fact code { background: #F1F5F9; padding: .1rem .3rem; border-radius: 4px; font-size: .78rem; }
+    .install-caution { border-left: 3px solid #F59E0B; background: #FFFBEB; border-radius: 0 12px 12px 0; padding: 1rem 1.2rem; }
+    .install-caution h3 { font-size: .95rem; margin: 0 0 .5rem; }
+    .install-caution ul { margin: 0; padding-left: 1.1rem; }
+    .install-caution li { font-size: .86rem; color: #57534E; line-height: 1.85; }
+    .install-caution code { background: #FEF3C7; padding: .1rem .3rem; border-radius: 4px; font-size: .8rem; }
+  </style>
+
+  <script>
+    document.querySelectorAll(".cmd-copy").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var text = btn.getAttribute("data-copy");
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = text; ta.style.position = "fixed"; ta.style.top = "-9999px";
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); btn.textContent = "已复制"; } catch (e) { btn.textContent = "请手动复制"; }
+          document.body.removeChild(ta);
+          setTimeout(function () { btn.textContent = "复制"; }, 1600);
+        }
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(function () {
+            btn.textContent = "已复制";
+            setTimeout(function () { btn.textContent = "复制"; }, 1600);
+          }).catch(fallback);
+        } else { fallback(); }
+      });
+    });
+  </script>
+</body>
+</html>
