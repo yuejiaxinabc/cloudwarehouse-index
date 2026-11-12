@@ -83,12 +83,44 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.4.0.1 -->
+          <!-- v1.4.0.6 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.4.0.1</h3>
+                <h3>v1.4.0.6</h3>
                 <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-13</span>
+              </div>
+              <p>基线 v1.4.0.3。建仓不再预生成满配，改由用户按需填。</p>
+              <ul class="list">
+                <li><strong>规模自选</strong>：架 / 列 / 行 / 货位四个数字，实时算总量。</li>
+                <li><strong>默认 1664 位</strong>：几秒建完，不再等 13 万个货位。</li>
+                <li><strong>商品页报错修复</strong> + 建仓进度条 + 货架地图预加载。</li>
+              </ul>
+            </div>
+          </div>
+          <!-- v1.4.0.3 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.4.0.3</h3>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-13</span>
+              </div>
+              <p>基线 v1.4.0.1。把新货架规则带来的建仓超时修掉。</p>
+              <ul class="list">
+                <li><strong>建仓超时</strong>：13 万货位 + 5 秒事务 → 放宽到 3 分钟。</li>
+                <li><strong>建仓更快</strong>：批插 5000/批，可用 SHELF_BATCH_SIZE 调整。</li>
+                <li><strong>规模可配</strong>：建仓可指定列 / 行 / 货位。</li>
+              </ul>
+            </div>
+          </div>
+          <!-- v1.4.0.1 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.4.0.1</h3>
                 <span class="badge badge-stable">Stable</span>
                 <span class="tl-date">2026-11-13</span>
               </div>
@@ -595,7 +627,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.1</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.6</p>
       </div>
     </div>
   </footer>

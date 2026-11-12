@@ -68,7 +68,7 @@
     <!-- ============================ Hero ============================ -->
     <section class="band-dark hero">
       <div class="container">
-        <span class="hero-badge"><span class="dot"></span>Linux 部署安装 · 离线包 v1.3.9.3 · 最新版 v1.4.0.1 在线更新</span>
+        <span class="hero-badge"><span class="dot"></span>Linux 部署安装 · 离线包 v1.4.0.3 · 最新版 v1.4.0.1 在线更新</span>
         <h1 class="hero-title">一条命令，<br />装到干净的服务器</h1>
         <p class="hero-lead">
           不用先装 Node、不用手动建库、不用碰 nginx。命令跑完就能打开浏览器登录：<strong>环境检测 → 装依赖 → 建库建表 → 起服务 → 配反代</strong>，约 2 ~ 5 分钟。内网机器也有离线包。
@@ -145,9 +145,9 @@
           </p>
 
           <div class="install-meta">
-            <div><span>文件名</span><b class="mono">cloudwarehouse-offline-1.3.9.3.tar.gz</b></div>
+            <div><span>文件名</span><b class="mono">cloudwarehouse-offline-1.4.0.3.tar.gz</b></div>
             <div><span>体积</span><b>63 MB</b></div>
-            <div><span>SHA256</span><b class="mono">5e42ed57…e390db</b></div>
+            <div><span>SHA256</span><b class="mono">084e55e1…10007d</b></div>
             <div><span>内含 Node</span><b>v20.18.1 x64</b></div>
           </div>
 
@@ -157,8 +157,8 @@
             <strong>在能上网的电脑上下载这个包</strong>
             <div class="cmd-block">
               <span class="cmd-prompt" aria-hidden="true">$</span>
-              <code class="cmd-text">curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.9.3.tar.gz</code>
-              <button class="copy-btn" type="button" data-copy="curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.9.3.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+              <code class="cmd-text">curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.4.0.3.tar.gz</code>
+              <button class="copy-btn" type="button" data-copy="curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.4.0.3.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
             </div>
             <p class="install-note">Windows / Mac 也可以直接用浏览器打开这个地址下载。下载后拷进 U 盘。</p>
           </div></div>
@@ -181,10 +181,10 @@
             <strong>把包复制到服务器并解压</strong>
             <div class="cmd-block">
               <span class="cmd-prompt" aria-hidden="true">$</span>
-              <code class="cmd-text">cp /mnt/usb/cloudwarehouse-offline-1.3.9.3.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.3.9.3.tar.gz</code>
-              <button class="copy-btn" type="button" data-copy="cp /mnt/usb/cloudwarehouse-offline-1.3.9.3.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.3.9.3.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+              <code class="cmd-text">cp /mnt/usb/cloudwarehouse-offline-1.4.0.3.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.4.0.3.tar.gz</code>
+              <button class="copy-btn" type="button" data-copy="cp /mnt/usb/cloudwarehouse-offline-1.4.0.3.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.4.0.3.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
             </div>
-            <p class="install-note">离线包当前是 v1.3.9.3；装完联网后在「设置 → 检查更新」升到 v1.4.0.1 即可。建议先校验：<code>sha256sum cloudwarehouse-offline-1.3.9.3.tar.gz</code>，应等于 <code>5e42ed57…e390db</code></p>
+            <p class="install-note">离线包已同步到 v1.4.0.3，装完即最新版。建议先校验：<code>sha256sum cloudwarehouse-offline-1.4.0.3.tar.gz</code>，应等于 <code>084e55e1…10007d</code></p>
           </div></div>
 
           <div class="usb-step"><span class="usb-num">4</span><div>
@@ -342,7 +342,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.1</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.6</p>
       </div>
     </div>
   </footer>

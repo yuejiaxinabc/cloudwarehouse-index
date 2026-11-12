@@ -82,11 +82,39 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.4.0.6 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.6</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">调整</span> <strong>新建仓库的货架规模由用户自己填</strong>：货架数（A-Z）、每架列数、每架行数、每行货位数，表单实时显示「将生成 N 个货位」。</li>
+            <li><span class="badge badge-opt">优化</span> 默认 26 架 × 4 列 × 4 行 × 4 货位 = <strong>1664 个货位</strong>，建仓几秒完成，不再预生成 13 万个。</li>
+            <li><span class="badge badge-fix">修复</span> 商品管理页面报「请求参数格式错误」；建仓进度条按货架推进显示。</li>
+            <li><span class="badge badge-opt">优化</span> 货架地图后台预加载 + 5 分钟缓存，第二次打开直接命中。</li>
+          </ul>
+        </div>
+        <!-- v1.4.0.3 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.3</h3>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> 新建仓库报「数据库事务超时」：新货架规则下一个仓库要生成 <strong>13 万个货位</strong>（26 架 × 10 列 × 10 行 × 50 位），而 Prisma 事务默认只给 5 秒。</li>
+            <li><span class="badge badge-opt">优化</span> 建仓事务放宽到 3 分钟（排队上限 1 分钟），批量插入 2000 → 5000/批，建仓明显更快；「补齐货架」接口同步放宽。</li>
+            <li><span class="badge badge-new">新增</span> 建仓可按需指定货架规模（列 / 行 / 货位），不传就是 10×10×50 默认值。</li>
+            <li><span class="badge badge-new">配套</span> 一键安装脚本随包执行 <span class="mono">db-changes.sql</span>（只加不删），新列与新角色装完即到位。</li>
+          </ul>
+        </div>
         <!-- v1.4.0.1 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.4.0.1</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-13</span>
           </div>
@@ -600,7 +628,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.1</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.6</p>
       </div>
     </div>
   </footer>
