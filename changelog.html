@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>更新日志 · Changelog | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.2.7 覆盖更新中心自动升级、主版本 / 测试版双通道、备份回滚、并发扣库存原子化与日志清空留痕。" />
+  <meta name="description" content="云仓（YUNCANG）按版本聚合的更新日志：新增、修复、优化与安全修复记录，标签区分变更类型。最新 v1.3.2 覆盖 API 调用说明与免责声明；v1.3.0 起提供 API 密钥体系、14 个开放接口与写入幂等。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/changelog.html" />
 
@@ -82,12 +82,62 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.3.2 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.2</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> 关于页新增<strong>「API 调用说明」</strong>：认证方式、权限范围、数据范围、限速与 IP 白名单、写入幂等、可用接口清单集中说明，对接方不必再来问。</li>
+            <li><span class="badge badge-new">新增</span> <strong>免责与声明</strong>：自行二次开发不保障数据持久化与一致性；使用者对上传内容的版权合规自负；服务按现状提供。</li>
+            <li><span class="badge badge-new">新增</span> 右上角用户菜单新增「关于」入口，右侧直接显示当前版本号，点击直达设置 → 关于。</li>
+            <li><span class="badge badge-new">新增</span> 关于页底部直挂「服务协议」「隐私政策」入口。</li>
+            <li><span class="badge badge-fix">调整</span> 关于页不再标注 MIT 许可，改为版权声明。</li>
+          </ul>
+        </div>
+
+        <!-- v1.3.1 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.1</h3>
+            <span class="badge badge-new">New</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> 开放接口从 5 个扩到 <strong>14 个</strong>：新增仓库与货位、批次效期、往来单位、基础资料、单据查询（入库/出库/调拨/盘点）、库存汇总报表、密钥自检。</li>
+            <li><span class="badge badge-new">新增</span> 写接口：<span class="mono">POST /open/transfer</span> 建调拨单、<span class="mono">POST /open/stocktake</span> 建盘点单，均支持幂等键。</li>
+            <li><span class="badge badge-new">新增</span> 权限范围扩到 11 项，按「基础数据 / 仓储 / 库存 / 单据 / 写入 / 分析」分组。</li>
+            <li><span class="badge badge-fix">修复</span> 浏览器标签页图标：补齐标准 favicon（16/32/48/64）与 apple-icon，主图标改为带透明通道的 512px，收藏夹与 iOS 桌面正常显示。</li>
+            <li><span class="badge badge-fix">修复</span> 「API 管理」权限范围下拉为空——根因是更新脚本未执行 <span class="mono">prisma generate</span>，新模型在运行时不存在导致接口 500；更新器已补该步骤。</li>
+          </ul>
+        </div>
+
+        <!-- v1.3.0 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.0</h3>
+            <span class="badge badge-new">New</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>设置 → API 管理</strong>：可视化创建 / 启停 / 轮换 / 删除密钥；明文只在创建时显示一次，库内只存哈希与前缀。</li>
+            <li><span class="badge badge-new">新增</span> 密钥支持五层约束：权限范围（scope）、仓库范围、IP 白名单、每分钟限速、有效期。</li>
+            <li><span class="badge badge-new">新增</span> 开放接口写能力：<span class="mono">POST /open/stock-in</span> 与 <span class="mono">/open/stock-out</span>，默认建草稿，<span class="mono">autoPost</span> 可选立即过账。</li>
+            <li><span class="badge badge-new">新增</span> <strong>写入幂等</strong>：<span class="mono">Idempotency-Key</span> 24 小时内同键只执行一次，重试不会重复建单；同键换请求体返回 409。</li>
+            <li><span class="badge badge-new">新增</span> 写操作以密钥创建者身份执行并写审计日志，创建者停用则密钥写权限同时失效。</li>
+            <li><span class="badge badge-fix">安全</span> 读接口按 scope 鉴权：越权 403、超限速 429、白名单外 403、密钥无效统一 401（不区分原因，防枚举）。</li>
+            <li><span class="badge badge-doc">文档</span> 新增 <span class="mono">api_keys</span> 与 <span class="mono">api_idempotency</span> 两张表，随包自带增量 SQL，更新时自动建表、只加不删。</li>
+          </ul>
+        </div>
+
         <!-- v1.2.7 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.2.7</h3>
-            <span class="badge badge-new">Latest</span>
-            <span class="badge badge-stable">最终开源版</span>
+            <span class="badge badge-stable">稳定基线</span>
             <span class="tl-date">2026-11-11</span>
           </div>
           <ul class="entry-list">
@@ -102,7 +152,7 @@
             <li><span class="badge badge-new">新增</span> 邮件模板中心：订阅必须绑定模板，正文变量按白名单渲染，禁止「填段文字就订阅」。</li>
             <li><span class="badge badge-fix">修复</span> 更新中心后台中文乱码（401 响应缺 charset）与页面脚本语法问题；后台管理页改为必须登录（Basic Auth）。</li>
             <li><span class="badge badge-fix">修复</span> 出库单明细缺少实时金额：新增每行小计与底部合计，随数量、单价即时重算。</li>
-            <li><span class="badge badge-doc">文档</span><span> 新增 <span class="mono">RELEASE-1.2.7.md</span> 最终开源版说明（做了什么、如何部署、后续版本策略）。</span></li>
+            <li><span class="badge badge-doc">文档</span><span> 新增 <span class="mono">RELEASE-1.2.7.md</span> 版本说明（做了什么、如何部署、后续版本策略）。</span></li>
           </ul>
           <p class="desc" style="margin-top:.75rem;font-size:.9rem;"><strong>这是最后一个开源版本</strong>：此后的小步更新不再单独发包，统一通过更新中心（<span class="mono">https://update.yuejiaxin.ln.cn</span>）自动分发，设备联网即收通知。</p>
         </div>
@@ -310,7 +360,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.7（最终开源版）</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.2</p>
       </div>
     </div>
   </footer>

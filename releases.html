@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>版本发布 · 发布时间线 | 云仓 YUNCANG</title>
-  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.2.7（自动更新 / 双通道 / 备份回滚）、v1.1.1（可用性修复 + 视觉重构）、v1.0.2、v1.0.1 安全修复版（FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
+  <meta name="description" content="云仓（YUNCANG）版本发布时间线：v1.3.2（API 管理 / 14 个开放接口 / 幂等写入）、v1.1.1（可用性修复 + 视觉重构）、v1.0.2、v1.0.1 安全修复版（FIX-2026-1001~1006）、v1.0.0 全链路库存管理首发。每一次发布都可追溯、可回看。" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/releases.html" />
 
@@ -83,13 +83,67 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.2.7 -->
+          <!-- v1.3.2 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.2.7</h3>
+                <h3>v1.3.2</h3>
                 <span class="badge badge-latest">Latest</span>
-                <span class="badge badge-stable">最终开源版</span>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.1。这一版把「对外对接」讲清楚：能力边界、调用方式、免责边界都写在系统里。</p>
+              <ul class="list">
+                <li><strong>API 调用说明</strong>：关于页集中说明认证方式、权限范围、数据范围、限速与 IP 白名单、写入幂等、可用接口清单。</li>
+                <li><strong>免责与声明</strong>：自行二次开发不保障数据持久化与一致性；使用者对上传内容的版权合规自负；服务按现状提供。</li>
+                <li><strong>关于入口</strong>：右上角用户菜单新增「关于」，右侧显示当前版本号；页脚直挂服务协议与隐私政策。</li>
+                <li><strong>许可表述</strong>：关于页不再标注 MIT，改为版权声明。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.1 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.1</h3>
+                <span class="badge badge-new">New</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.0。开放接口补齐到 14 个，并修掉两个真实缺陷。</p>
+              <ul class="list">
+                <li><strong>接口扩充</strong>：新增仓库与货位、批次效期、往来单位、基础资料、单据查询、库存汇总报表、密钥自检；写接口增加调拨与盘点。</li>
+                <li><strong>权限细化</strong>：scope 扩到 11 项，按基础数据 / 仓储 / 库存 / 单据 / 写入 / 分析分组。</li>
+                <li><strong>图标修复</strong>：补齐 favicon（16/32/48/64）与 apple-icon，主图标改透明通道 512px。</li>
+                <li><strong>更新器修复</strong>：构建前补 <span class="mono">prisma generate</span>，避免新增模型导致接口 500、页面下拉框空白。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.3.0 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.0</h3>
+                <span class="badge badge-new">New</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.2.7。首次提供完整的 API 密钥体系与对外开放写能力。</p>
+              <ul class="list">
+                <li><strong>API 管理</strong>：可视化建密钥，明文只显示一次；五层约束（scope / 仓库 / IP / 限速 / 有效期）。</li>
+                <li><strong>写入能力</strong>：<span class="mono">POST /open/stock-in</span>、<span class="mono">/open/stock-out</span>，默认草稿，可选自动过账。</li>
+                <li><strong>幂等</strong>：<span class="mono">Idempotency-Key</span> 24 小时内同键只执行一次，重试不重复建单。</li>
+                <li><strong>审计</strong>：写操作以密钥创建者身份执行并记日志，创建者停用即失去写权限。</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v1.2.7 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.2.7</h3>
+                <span class="badge badge-stable">稳定基线</span>
                 <span class="tl-date">2026-11-11</span>
               </div>
               <p>基线 v1.2.6。<strong>这是最后一个开源版本</strong>，此后的小步更新统一由更新中心自动分发。</p>
@@ -270,7 +324,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.7（最终开源版）</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.2</p>
       </div>
     </div>
   </footer>

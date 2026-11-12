@@ -6,7 +6,7 @@
 
   <!-- ===== TDK 基础 SEO ===== -->
   <title>云仓 · 智能仓储管理平台 | 开源全链路库存管理系统</title>
-  <meta name="description" content="云仓（YUNCANG）是面向中小制造、零售与贸易企业的开源全链路库存管理系统，涵盖商品、入库、出库、库存、盘点、库位、预警、报表 8 大核心模块；v1.2.7 起支持后台自动更新（主版本 / 测试版双通道）与数据备份回滚，并发扣库存改为原子操作，支持扫码与微信小程序端。MIT 许可证。" />
+  <meta name="description" content="云仓（YUNCANG）是面向中小制造、零售与贸易企业的开源全链路库存管理系统，涵盖商品、入库、出库、库存、盘点、库位、预警、报表 8 大核心模块；v1.3.2 起提供完整的 API 密钥体系：可创建带权限范围、仓库范围、IP 白名单、限速与有效期的密钥，开放 14 个读写接口并支持写入幂等；同时保留自动更新、数据备份回滚与并发扣库存原子化。支持扫码与微信小程序端。" />
   <meta name="keywords" content="云仓,库存管理,仓储系统,WMS,入库,出库,盘点,库存预警,批次效期,FEFO,补货建议,开源,Next.js,中小企业" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/" />
@@ -82,7 +82,7 @@
           <div class="reveal">
             <span class="hero-badge">
               <span class="dot"></span>
-              当前版本 v1.2.7 · 最终开源版
+              当前版本 v1.3.2 · 稳定版
             </span>
             <h1 class="hero-title">云仓 · 智能仓储<br />管理平台</h1>
             <p class="hero-lead">
@@ -299,6 +299,42 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
       </div>
     </section>
 
+  <!-- ============================ v1.3.x 开放能力 ============================ -->
+  <section class="section" id="open-api">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">v1.3.0 ~ v1.3.2 新增</span>
+        <h2 class="title">对外开放接口与密钥体系</h2>
+        <p class="desc">给 ERP、BI、门店系统一组可控的口子：既能读也能写，但每个密钥只能碰你授权的数据和动作。</p>
+      </div>
+      <div class="grid cols-3 section-head-below">
+        <div class="card card-hover reveal">
+          <div class="card-icon solid">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a4 4 0 10-3.9 5H7v3H4v3h6v-3h1.1A4 4 0 0015 17a4 4 0 000-8z"/></svg>
+          </div>
+          <h3>密钥五层约束</h3>
+          <p>每个密钥独立配置：权限范围（scope）、仓库范围、IP 白名单、每分钟限速、有效期。明文只在创建时显示一次，库内只存哈希。</p>
+        </div>
+        <div class="card card-hover reveal">
+          <div class="card-icon solid">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10"/></svg>
+          </div>
+          <h3>14 个读写接口</h3>
+          <p>读 10 个：商品、基础资料、往来单位、仓库货位、库存、批次效期、流水、单据、报表、自检。写 4 个：入库、出库、调拨、盘点。</p>
+        </div>
+        <div class="card card-hover reveal">
+          <div class="card-icon solid">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>写入幂等与审计</h3>
+          <p>写接口支持 Idempotency-Key，24 小时内同键只执行一次，网络重试不会重复建单；写操作以密钥创建者身份执行并留审计日志。</p>
+        </div>
+      </div>
+      <p class="desc center" style="margin-top: 1.5rem;">
+        完整接口清单与调用示例在系统内「设置 → API 管理」，对接方无需额外文档。
+      </p>
+    </div>
+  </section>
     <!-- ============================ v1.2.4 ~ v1.2.7 新增能力 ============================ -->
     <section class="section">
       <div class="container">
@@ -448,7 +484,7 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.2.7（最终开源版）</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.2</p>
       </div>
     </div>
   </footer>
