@@ -83,12 +83,45 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.3.9 -->
+          <!-- v1.3.9.2 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.3.9</h3>
+                <h3>v1.3.9.2</h3>
                 <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.9.1。修掉「点更新就报连不上远端」的最后一段路：配置写法不再决定成败。</p>
+              <ul class="list">
+                <li><strong>多地址可用</strong>：自更新脚本拆开 <span class="mono">UPDATE_HUB_URL</span> 的逗号列表，逐个探测 <span class="mono">/healthz</span> 取第一个活的地址。</li>
+                <li><strong>看得见在连谁</strong>：更新日志打印实际选中的更新中心地址。</li>
+                <li><strong>旧机器自救</strong>：把配置改成单地址 <span class="mono">https://update.yuejiaxin.ln.cn</span> 即可立刻恢复。</li>
+              </ul>
+            </div>
+          </div>
+          <!-- v1.3.9.1 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.9.1</h3>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.9。设备清单变成「看一眼就明白」：谁在哪台机器、绑的什么域名、跑哪一版、还在不在线。</p>
+              <ul class="list">
+                <li><strong>访问域名入列</strong>：绑定过就显示可点域名，只走 IP 就写「—（IP 访问）」。</li>
+                <li><strong>免鉴定</strong>：入网即显示；同一 IP 只记一条，出口后多台机器合并成一行。</li>
+                <li><strong>安装不报活</strong>：安装脚本只装本体，心跳交给程序自己，每 5 分钟一次。</li>
+                <li><strong>离线包瘦身</strong>：去掉 macOS 的 ._* 与 darwin 引擎，84MB → 64MB。</li>
+              </ul>
+            </div>
+          </div>
+          <!-- v1.3.9 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.9</h3>
                 <span class="badge badge-stable">Stable</span>
                 <span class="tl-date">2026-11-12</span>
               </div>
@@ -529,7 +562,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.9</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.9.2</p>
       </div>
     </div>
   </footer>

@@ -82,11 +82,38 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.3.9.2 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.9.2</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> <strong>点「立即更新」就报「无法访问远端服务器」</strong>：自更新脚本把 <span class="mono">.env</span> 里的 <span class="mono">UPDATE_HUB_URL</span> 整串直接拼进 URL。程序侧本来就支持逗号分隔的多地址轮询，脚本却只认一个地址 —— 只要配置写成 <span class="mono">https://…,http://…,http://127.0.0.1:9958</span>，第一步读取更新中心元数据必然失败，页面于是弹「无法访问远端服务器」。现在脚本会把地址拆开逐个探测 <span class="mono">/healthz</span>，取第一个可用的，写多个、写单个、写空都能工作。</li>
+            <li><span class="badge badge-opt">优化</span> 更新日志新增一行「更新中心: &lt;实际地址&gt;」，以后再遇到连不上，一眼能看出它到底在连谁。</li>
+            <li><span class="badge badge-doc">说明</span> 已装机器若正卡在这个报错上，把 <span class="mono">.env</span> 的 <span class="mono">UPDATE_HUB_URL</span> 改成单地址 <span class="mono">https://update.yuejiaxin.ln.cn</span> 即可立刻恢复；升到本版本后多地址也不会再触发该问题。</li>
+          </ul>
+        </div>
+        <!-- v1.3.9.1 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.9.1</h3>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> 入网服务器界面加「访问域名」：安装时绑定过域名的机器，直接把域名报到更新中心并显示成可点击链接；只用 IP 访问的机器如实标「—（IP 访问）」。
+            <li><span class="badge badge-opt">调整</span> 去掉人工鉴定：机器入网即出现在列表，不再需要「鉴定通过」才能进首页；同一 IP 只记一条，一个出口后面有多台机器自动合并成一行。
+            <li><span class="badge badge-fix">调整</span> 一键安装脚本不再上报新服务器：只装云仓本体，不再写心跳定时器；入网与在线判断交给程序自己（启动 15 秒首报，之后每 5 分钟）。
+            <li><span class="badge badge-fix">修复</span> 离线安装包不再夹带 macOS 的 ._* 与 darwin 版 Prisma 引擎（多出来 20MB，Linux 上用不到），体积从 84MB 降到 64MB；打包流程加体检，混进苹果文件直接失败。
+          </ul>
+        </div>
         <!-- v1.3.9 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.3.9</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-12</span>
           </div>
@@ -384,7 +411,6 @@
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.2.0</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-10-28</span>
           </div>
@@ -541,7 +567,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.9</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.9.2</p>
       </div>
     </div>
   </footer>
