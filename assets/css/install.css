@@ -155,3 +155,16 @@
   .install-block .cmd-block { padding: .58rem .5rem .58rem .7rem; }
   .install-block .cmd-block .copy-btn { padding: .3rem .5rem; }
 }
+
+/* ---------- 离线安装：U 盘导入步骤 ---------- */
+.steps-h { font-size: 1rem; margin: 1.6rem 0 1rem; color: #0F172A; }
+.usb-step { display: flex; gap: .9rem; margin-bottom: 1.4rem; align-items: flex-start; }
+.usb-num {
+  flex: none; width: 26px; height: 26px; border-radius: 50%;
+  background: #EFF6FF; color: #2563EB;
+  font-size: .8rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+.usb-step > div { flex: 1; min-width: 0; }
+.usb-step strong { display: block; font-size: .92rem; margin-bottom: .6rem; color: #1E293B; }

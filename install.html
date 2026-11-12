@@ -82,6 +82,21 @@
       </div>
     </section>
 
+    <!-- ============================ 硬性要求 ============================ -->
+    <section class="section" id="requirements" style="padding-top:0">
+      <div class="container">
+        <div class="install-caution" style="border-left-color:#DC2626;background:#FEF2F2">
+          <h3>装之前先看：硬性要求</h3>
+          <ul>
+            <li><strong style="color:#991B1B">内存 ≥ 4 GB</strong>：源码安装要跑 <code>npm install</code> + <code>next build</code>，实测 4 GB 以下会 OOM 或极慢。脚本会检测，不够直接终止并提示。</li>
+            <li><strong>系统</strong>：64 位 Linux（Ubuntu / Debian / CentOS / RHEL / Rocky / Alma / Fedora）。</li>
+            <li><strong>磁盘 ≥ 20 GB</strong>：源码 + 依赖 + 构建产物约 3 GB，数据库另算。</li>
+            <li><strong>root 权限</strong>：会写 /opt、/etc/systemd、/etc/nginx。</li>
+            <li><strong>内存不足的出路</strong>：改用<a href="#offline" style="color:#991B1B;text-decoration:underline">离线包</a>，不编译，2 GB 也能跑。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
     <!-- ============================ 在线安装 ============================ -->
     <section class="section" id="online">
       <div class="container">
@@ -122,37 +137,77 @@
         <div class="install-block">
           <div class="install-head">
             <span class="install-tag install-tag-offline">离线安装</span>
-            <h2>适合内网 / 无外网的服务器</h2>
+            <h2>没有外网 / 内存不足时走这条</h2>
           </div>
           <p class="install-desc">
-            包内已含构建好的运行时（Next standalone + Prisma 引擎 + 建表 SQL），<strong>服务器上不需要联网</strong>，也不需要 <code>npm install</code>。两条命令：先下载，再解压执行。
+            包内已含<strong>构建好的运行时</strong>（Next standalone + Prisma 引擎）+ <strong>Node 20 运行时</strong> + 建表与初始数据 SQL。
+            目标机不需要 <code>npm install</code>、不需要编译、不需要外网。内存 2 GB 也能跑。
           </p>
-            <div class="cmd-block">
-              <span class="cmd-prompt" aria-hidden="true">$</span>
-              <code class="cmd-text">wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code>
-              <button class="copy-btn" type="button" data-copy="wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz" aria-label="复制命令"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制下载命令</span></button>
-            </div>
-            <div class="cmd-block">
-              <span class="cmd-prompt" aria-hidden="true">$</span>
-              <code class="cmd-text">tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz && sudo bash cloudwarehouse/install.sh --offline</code>
-              <button class="copy-btn" type="button" data-copy="tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz &amp;&amp; sudo bash cloudwarehouse/install.sh --offline" aria-label="复制命令"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制安装命令</span></button>
-            </div>
 
           <div class="install-meta">
-            <div><span>版本</span><b>1.3.7.5</b></div>
-            <div><span>体积</span><b>42.1 MB</b></div>
-            <div><span>SHA256</span><b class="mono">a9da72cc…92edca</b></div>
-            <div><span>备用镜像</span><b>南京 / 成都</b></div>
+            <div><span>文件名</span><b class="mono">cloudwarehouse-offline-1.3.7.5.tar.gz</b></div>
+            <div><span>体积</span><b>81 MB</b></div>
+            <div><span>SHA256</span><b class="mono">f61dbbae…af2687</b></div>
+            <div><span>内含 Node</span><b>v20.18.1 x64</b></div>
           </div>
 
-          <p class="install-note">下载后建议先校验：<code>sha256sum cloudwarehouse-offline-1.3.7.5.tar.gz</code>，应为 <code>a9da72cc24deaa958c5f0812b2c18654d2c314ee3abffd2468752f73b092edca</code></p>
-          <p class="install-note">南京镜像：<code>https://update-1307293667.cos.ap-nanjing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code></p>
-          <p class="install-note">成都镜像：<code>https://updatea-1307293667.cos.ap-chengdu.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code></p>
-          <p class="install-note"><strong>离线模式不申请 SSL 证书</strong>（无外网签不了）；联网后补：<code>certbot --nginx -d 你的域名</code></p>
+          <h3 class="steps-h">用 U 盘导入，四步完成</h3>
+
+          <div class="usb-step"><span class="usb-num">1</span><div>
+            <strong>在能上网的电脑上下载这个包</strong>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code>
+              <button class="copy-btn" type="button" data-copy="curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+            </div>
+            <p class="install-note">Windows / Mac 也可以直接用浏览器打开这个地址下载。下载后拷进 U 盘。</p>
+          </div></div>
+
+          <div class="usb-step"><span class="usb-num">2</span><div>
+            <strong>把 U 盘插到目标服务器，找到并挂载它</strong>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">lsblk                    # 看新增的是 sdb 还是 sdc</code>
+            </div>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">mkdir -p /mnt/usb && mount /dev/sdb1 /mnt/usb    # sdb1 换成实际分区</code>
+              <button class="copy-btn" type="button" data-copy="mkdir -p /mnt/usb && mount /dev/sdb1 /mnt/usb" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+            </div>
+            <p class="install-note">U 盘是 NTFS 格式时改用：<code>mount -t ntfs-3g /dev/sdb1 /mnt/usb</code>（需先 <code>apt install ntfs-3g</code>）</p>
+          </div></div>
+
+          <div class="usb-step"><span class="usb-num">3</span><div>
+            <strong>把包复制到服务器并解压</strong>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">cp /mnt/usb/cloudwarehouse-offline-1.3.7.5.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz</code>
+              <button class="copy-btn" type="button" data-copy="cp /mnt/usb/cloudwarehouse-offline-1.3.7.5.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+            </div>
+            <p class="install-note">建议先校验：<code>sha256sum cloudwarehouse-offline-1.3.7.5.tar.gz</code>，应等于 <code>f61dbbae…af2687</code></p>
+          </div></div>
+
+          <div class="usb-step"><span class="usb-num">4</span><div>
+            <strong>执行安装</strong>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">sudo bash cloudwarehouse/install.sh --offline</code>
+              <button class="copy-btn" type="button" data-copy="sudo bash cloudwarehouse/install.sh --offline" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+            </div>
+            <p class="install-note">过程中同样会问域名（回车跳过即可），约 2 分钟完成。装完可用 <code>umount /mnt/usb</code> 拔盘。</p>
+          </div></div>
+
+          <div class="install-caution" style="margin-top:1.4rem">
+            <h3>离线安装仍需注意</h3>
+            <ul>
+              <li><strong>数据库要能装</strong>：包里不含 MySQL/MariaDB。目标机需能访问内网 apt/yum 源，或已预装（<code>mysqld</code>／<code>mariadbd</code> 在 PATH 里）。</li>
+              <li><strong>不申请 SSL 证书</strong>：离线环境无法完成域名验证，需要 HTTPS 时联网后执行 <code>certbot --nginx -d 你的域名</code>。</li>
+              <li><strong>内存 2 GB 可用</strong>：这条路不编译，只解压运行。</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
-
     <!-- ============================ 卸载 ============================ -->
     <section class="section" id="uninstall">
       <div class="container">

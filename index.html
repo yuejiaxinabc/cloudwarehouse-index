@@ -186,7 +186,9 @@
           <span class="stage-kicker">部署安装 · Linux</span>
           <h2>一行命令，装进任何干净的服务器</h2>
           <p class="stage-lead">
-            复制下面这条命令，粘贴到一台<strong>刚装好的 Linux</strong> 上回车即可。脚本先做环境检测，缺什么装什么：<strong>Node 20、MySQL / MariaDB、nginx</strong> 全部自动就位，随后建库建表、生成随机密钥、写入 systemd 守护、配好反向代理。约 2 ~ 5 分钟，不用碰数据库和 nginx 配置。
+            复制下面这条命令，粘贴到一台<strong>刚装好的 Linux</strong> 上回车即可。脚本先做环境检测，缺什么装什么：<strong>Node 20、MySQL / MariaDB、nginx</strong> 全部自动就位，随后建库建表、生成随机密钥、写入 systemd 守护、配好反向代理。
+            <strong>约 8 ~ 10 分钟</strong>（要编译前端），不需要碰数据库和 nginx 配置。
+            <strong style="color:#B91C1C">硬性要求：内存 4 GB 以上</strong>，不够脚本会直接终止并提示改用离线包。
           </p>
 
           <div class="stage-cmd">
@@ -219,6 +221,7 @@
             <span>Rocky / Alma 8+</span>
             <span>Fedora</span>
             <span class="neg">纯净系统即可，无需预装环境</span>
+            <span class="neg" style="color:#B91C1C">内存 ≥ 4 GB</span>
           </div>
 
           <div class="stage-facts">
@@ -228,7 +231,7 @@
             </div>
             <div>
               <h4>建库建表</h4>
-              <p>创建库与专用账号，导入 67 张表结构，不写入任何演示数据。</p>
+              <p>创建库与专用账号，导入 67 张表结构，并写入管理员账号等初始数据。</p>
             </div>
             <div>
               <h4>随机密钥</h4>
