@@ -16,18 +16,8 @@
   border-color: rgba(37, 99, 235, .22);
   box-shadow: 0 26px 60px -40px rgba(37, 99, 235, .55);
 }
-.install-block.is-primary::before {
-  content: "";
-  position: absolute;
-  left: 2rem; right: 2rem; top: 0;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--grad);
-  opacity: .8;
-}
 @media (max-width: 640px) {
   .install-block { padding: 1.4rem 1.15rem; border-radius: 16px; }
-  .install-block.is-primary::before { left: 1.15rem; right: 1.15rem; }
 }
 
 .install-head { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; }
@@ -152,3 +142,16 @@
   transition: background-color .2s ease, color .2s ease;
 }
 .jump-row a:hover { background: rgba(255,255,255,.16); color: #fff; text-decoration: none; }
+
+/* ---------- 窄屏：命令保持单行、块内横向滚动，避免 URL 被拆断 ---------- */
+@media (max-width: 640px) {
+  .install-block .cmd-block code.cmd-text {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    font-size: .76rem;
+  }
+  .install-block .cmd-block { padding: .58rem .5rem .58rem .7rem; }
+  .install-block .cmd-block .copy-btn { padding: .3rem .5rem; }
+}

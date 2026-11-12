@@ -3,19 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>部署安装 · 云仓 YUNCANG</title>
-  <meta name="description" content="云仓 Linux 一键安装：在线安装一条命令搞定，也支持离线安装包。自动装 Node、MySQL、nginx，建库建表、配置服务与反代，支持 Ubuntu / Debian / CentOS / Rocky / Alma。" />
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <meta name="description" content="云仓 Linux 部署安装：一条命令在干净的服务器上装完（自动装 Node 20、MySQL、nginx，建库建表、配置服务与反代），另提供离线安装包与卸载命令，支持 Ubuntu / Debian / CentOS / Rocky / Alma。" />
+  <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/install.html" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/code-block.css" />
+  <link rel="stylesheet" href="assets/css/install.css" />
 </head>
+
 <body>
-  <header class="site-header">
+
+  <!-- ============================ 导航栏 ============================ -->
+  <header id="siteHeader" class="site-header header-dark">
     <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img src="assets/logo.svg" alt="云仓" width="32" height="32" />
-        <span class="brand-name">云仓<em>YUNCANG</em></span>
+      <a class="brand" href="index.html" aria-label="云仓首页">
+        <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
+        <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
       </a>
-      <nav class="nav">
+
+      <nav class="main-nav" aria-label="主导航">
         <a href="index.html">首页</a>
         <a href="features.html">产品功能</a>
         <a href="install.html" class="active" aria-current="page">部署安装</a>
@@ -23,215 +32,271 @@
         <a href="changelog.html">更新日志</a>
         <a href="security.html">安全日志</a>
       </nav>
+
       <div class="header-actions">
-        <a class="btn btn-outline btn-sm" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">Gitee</a>
+        <a class="btn-github" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+          Gitee
+        </a>
+        <button id="menuToggle" class="menu-toggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
       </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="features.html">产品功能</a></li>
+        <li><a href="install.html" class="active" aria-current="page">部署安装</a></li>
+        <li><a href="releases.html">版本发布</a></li>
+        <li><a href="changelog.html">更新日志</a></li>
+        <li><a href="security.html">安全日志</a></li>
+        <li class="mobile-cta">
+          <a class="btn btn-outline btn-sm" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">Gitee</a>
+        </li>
+      </ul>
     </div>
   </header>
 
   <main>
+    <!-- ============================ Hero ============================ -->
     <section class="band-dark hero">
       <div class="container">
-        <span class="hero-badge"><span class="dot"></span> Linux 一键部署</span>
-        <h1 class="hero-title">两条命令<br />装完就能用</h1>
+        <span class="hero-badge"><span class="dot"></span>Linux 部署安装 · v1.3.7.5</span>
+        <h1 class="hero-title">一条命令，<br />装到干净的服务器</h1>
         <p class="hero-lead">
-          纯净系统也行。<strong>在线安装</strong>一条命令：环境检测 → 下载运行时包 → 建库建表 → 起服务 → 配反代。
-          <br /><strong>离线安装</strong>下载同一个包，解压执行即可，全程不联网。
+          不用先装 Node、不用手动建库、不用碰 nginx。命令跑完就能打开浏览器登录：<strong>环境检测 → 装依赖 → 建库建表 → 起服务 → 配反代</strong>，约 2 ~ 5 分钟。内网机器也有离线包。
+        </p>
+        <div class="jump-row">
+          <a href="#online">在线安装</a>
+          <a href="#offline">离线安装</a>
+          <a href="#uninstall">卸载</a>
+          <a href="#after">装完之后</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 在线安装 ============================ -->
+    <section class="section" id="online">
+      <div class="container">
+        <div class="install-block is-primary">
+          <div class="install-head">
+            <span class="install-tag install-tag-online">推荐 · 在线安装</span>
+            <h2>需要联网，一条命令</h2>
+          </div>
+          <p class="install-desc">
+            在<strong>刚装好的 Linux</strong> 上执行，脚本先做环境检测（缺什么装什么），再下载预构建运行时包解压部署 —— 不需要在服务器上 <code>npm install</code>，也不需要编译。
+          </p>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash</code>
+              <button class="copy-btn" type="button" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash" aria-label="复制命令"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制命令</span></button>
+            </div>
+          <p class="install-note">已是 root 可以去掉 <code>sudo</code>；服务器没有 <code>curl</code> 时，把 <code>curl -fsSL</code> 换成 <code>wget -qO-</code>。</p>
+          <p class="install-note">无人值守绑域名：在命令末尾加 <code>-s -- --domain=wms.example.com</code>，脚本会一并申请免费 HTTPS。</p>
+          <p class="install-note">跳过域名交互加 <code>--no-domain</code>；已装过的机器原地升级加 <code>--upgrade</code>（保留数据库与配置）。</p>
+        </div>
+
+        <div class="install-meta" style="margin-top:1.25rem">
+          <div><span>系统要求</span><b>64 位 Linux · ≥ 2 GB 内存 · ≥ 10 GB 磁盘</b></div>
+          <div><span>权限</span><b>root（sudo）</b></div>
+          <div><span>端口</span><b>80 / 443 给 nginx，3000 给应用</b></div>
+          <div><span>预计耗时</span><b>2 ~ 5 分钟</b></div>
+        </div>
+
+        <p class="install-desc" style="margin-top:1.1rem">
+          适用发行版：<strong>Ubuntu 20.04+ / Debian 11+ / CentOS 7+ / RHEL / Rocky / Alma / Fedora</strong>，脚本自动识别包管理器（apt / dnf / yum）。
         </p>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ============================ 离线安装 ============================ -->
+    <section class="section section-soft" id="offline">
       <div class="container">
-
-        <!-- 在线安装 -->
-        <div class="install-block">
-          <div class="install-head">
-            <span class="install-tag install-tag-online">在线安装</span>
-            <h2>需要联网，一条命令</h2>
-          </div>
-          <p class="install-desc">脚本先做环境检测（缺什么装什么），再下载预构建运行时包解压部署，不需要在服务器上 npm install 或编译。约 2 分钟。</p>
-          <div class="cmd">
-            <code>curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash</code>
-            <button class="cmd-copy" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash">复制</button>
-          </div>
-          <p class="install-note">最短写法：<code>curl -fsSL https://update.yuejiaxin.ln.cn/i | sudo bash</code></p>
-          <p class="install-note">无人值守带域名：<code>curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash -s -- --domain=wms.example.com</code></p>
-          <p class="install-note">跳过域名交互加 <code>--no-domain</code>；已装机器升级加 <code>--upgrade</code></p>
-        </div>
-
-        <!-- 离线安装 -->
         <div class="install-block">
           <div class="install-head">
             <span class="install-tag install-tag-offline">离线安装</span>
-            <h2>无需联网，适合内网 / 无外网服务器</h2>
+            <h2>适合内网 / 无外网的服务器</h2>
           </div>
-          <p class="install-desc">包内已含构建好的运行时（Next standalone + Prisma 引擎 + 建表 SQL），服务器上不需要 npm install，也不需要访问外网。约 2 分钟。<strong>离线模式不申请 SSL 证书</strong>（无外网签不了），需要时联网后执行 <code>certbot --nginx -d 域名</code> 补上。</p>
-
-          <div class="cmd">
-            <code>wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code>
-            <button class="cmd-copy" data-copy="wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz">复制</button>
-          </div>
-          <div class="cmd">
-            <code>tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz &amp;&amp; sudo bash cloudwarehouse/install.sh --offline</code>
-            <button class="cmd-copy" data-copy="tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz && sudo bash cloudwarehouse/install.sh --offline">复制</button>
-          </div>
+          <p class="install-desc">
+            包内已含构建好的运行时（Next standalone + Prisma 引擎 + 建表 SQL），<strong>服务器上不需要联网</strong>，也不需要 <code>npm install</code>。两条命令：先下载，再解压执行。
+          </p>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code>
+              <button class="copy-btn" type="button" data-copy="wget https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz" aria-label="复制命令"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制下载命令</span></button>
+            </div>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz && sudo bash cloudwarehouse/install.sh --offline</code>
+              <button class="copy-btn" type="button" data-copy="tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz &amp;&amp; sudo bash cloudwarehouse/install.sh --offline" aria-label="复制命令"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制安装命令</span></button>
+            </div>
 
           <div class="install-meta">
             <div><span>版本</span><b>1.3.7.5</b></div>
-            <div><span>体积</span><b>35 MB</b></div>
-            <div><span>SHA256</span><b class="mono">73e25f7e…e2f745</b></div>
+            <div><span>体积</span><b>42.1 MB</b></div>
+            <div><span>SHA256</span><b class="mono">a9da72cc…92edca</b></div>
             <div><span>备用镜像</span><b>南京 / 成都</b></div>
           </div>
-          <p class="install-note">下载后建议先校验：<code>sha256sum cloudwarehouse-offline-1.3.7.5.tar.gz</code></p>
-        </div>
 
-        <!-- 卸载 -->
-        <div class="install-block" id="uninstall">
+          <p class="install-note">下载后建议先校验：<code>sha256sum cloudwarehouse-offline-1.3.7.5.tar.gz</code>，应为 <code>a9da72cc24deaa958c5f0812b2c18654d2c314ee3abffd2468752f73b092edca</code></p>
+          <p class="install-note">南京镜像：<code>https://update-1307293667.cos.ap-nanjing.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code></p>
+          <p class="install-note">成都镜像：<code>https://updatea-1307293667.cos.ap-chengdu.myqcloud.com/cloudwarehouse-offline-1.3.7.5.tar.gz</code></p>
+          <p class="install-note"><strong>离线模式不申请 SSL 证书</strong>（无外网签不了）；联网后补：<code>certbot --nginx -d 你的域名</code></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 卸载 ============================ -->
+    <section class="section" id="uninstall">
+      <div class="container">
+        <div class="install-block">
           <div class="install-head">
-            <span class="install-tag" style="background:#FEE2E2;color:#991B1B">卸载</span>
+            <span class="install-tag install-tag-danger">卸载</span>
             <h2>装错了或想重来</h2>
           </div>
-          <p class="install-desc">停止并移除服务、清掉 nginx 配置、删除应用目录。<strong>数据库默认保留</strong>（重装可直接复用），加 <code>--purge</code> 才会连库一起删。</p>
-          <div class="cmd">
-            <code>curl -fsSL https://update.yuejiaxin.ln.cn/uninstall.sh | sudo bash</code>
-            <button class="cmd-copy" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/uninstall.sh | sudo bash">复制</button>
-          </div>
-          <p class="install-note">最短写法：<code>curl -fsSL https://update.yuejiaxin.ln.cn/u | sudo bash</code></p>
-          <p class="install-note">保留数据库静默卸载：<code>... | sudo bash -s -- --keep-data --yes</code>　连库删除：<code>--purge --yes</code></p>
-          <div class="install-caution" style="margin-top:1rem">
+          <p class="install-desc">
+            停止并移除服务、删 nginx 站点配置、删应用目录。<strong>数据库默认保留</strong>（重装可直接复用），加 <code>--purge</code> 才会连库一起删。
+          </p>
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">curl -fsSL https://update.yuejiaxin.ln.cn/uninstall.sh | sudo bash</code>
+              <button class="copy-btn" type="button" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/uninstall.sh | sudo bash" aria-label="复制命令"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+            </div>
+          <p class="install-note">保留数据库静默卸载：<code>curl -fsSL https://update.yuejiaxin.ln.cn/uninstall.sh | sudo bash -s -- --keep-data --yes</code></p>
+          <p class="install-note">连库一起删（不可恢复）：<code>curl -fsSL https://update.yuejiaxin.ln.cn/uninstall.sh | sudo bash -s -- --purge --yes</code></p>
+
+          <div class="install-caution">
             <h3>卸载会做什么 / 不会做什么</h3>
             <ul>
               <li><strong>会</strong>：停服务、删 systemd unit、删 nginx 站点配置、删应用目录、删系统用户。</li>
               <li><strong>不会</strong>：不动 Node / MySQL / nginx 这些依赖（可能被其它应用共用）。</li>
-              <li><strong>默认保留</strong>：数据库 <code>warehouse</code> 与 <code>.env</code>，并会把 .env 备份到 <code>/root/</code>。</li>
+              <li><strong>默认保留</strong>：数据库 <code>warehouse</code> 与 <code>.env</code>，并把 .env 备份到 <code>/root/</code>。</li>
             </ul>
           </div>
         </div>
-        <!-- 过程 -->
-        <div class="install-facts">
-          <h2>安装过程看得见</h2>
-          <p class="install-desc">全程有进度条，不用猜卡在哪一步：</p>
-          <pre style="background:#0B1220;color:#CBD5E1;padding:1rem 1.1rem;border-radius:10px;font-size:.8rem;line-height:1.9;overflow-x:auto"><code>[####....................]   8%  环境检测
-[#######.................]  17%  安装 Node.js 20
-        └ 完成，用时 18s
-[##########..............]  33%  准备数据库
-[#############...........]  50%  在线模式：下载预构建运行时包
-[################........]  67%  部署运行时文件
-[####################....]  83%  配置系统服务
-[########################] 100%  完成</code></pre>
-          <div class="facts-grid" style="margin-top:1rem">
-            <div class="fact"><h3>环境检测优先</h3><p>先检查 Node / 数据库 / nginx，缺什么装什么；都齐了就直接部署最新代码，不重复折腾。</p></div>
-            <div class="fact"><h3>域名与 SSL 都可选</h3><p>安装开始就问是否绑定域名；绑了之后再问是否申请免费 HTTPS 证书。跳过域名则应用直接映射到 80 端口。</p></div>
-            <div class="fact"><h3>也可参数化</h3><p>无人值守时用 <code>--domain=wms.example.com</code> 或 <code>--no-domain</code> 跳过交互。</p></div>
-            <div class="fact"><h3>可重复执行</h3><p>已装过的机器再跑一次等于升级：保留数据库、.env、备份与上传文件，只替换代码。</p></div>
-          </div>
+      </div>
+    </section>
+
+    <!-- ============================ 过程与说明 ============================ -->
+    <section class="section section-soft" id="after">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">安装过程</span>
+          <h2 class="title">全程有进度，不用猜卡在哪</h2>
+          <p class="desc">每一步都打印当前步骤与耗时，失败会明确告诉你是哪一环。</p>
         </div>
 
-        <!-- 说明 -->
-        <div class="install-facts">
-          <h2>安装脚本会做什么</h2>
-          <div class="facts-grid">
-            <div class="fact"><h3>识别系统</h3><p>Ubuntu / Debian / CentOS / RHEL / Rocky / Alma / Fedora，自动选包管理器</p></div>
-            <div class="fact"><h3>装齐依赖</h3><p>Node 20、MySQL 或 MariaDB、nginx、curl 等基础组件</p></div>
-            <div class="fact"><h3>建库建表</h3><p>创建库与专用账号，导入 67 张表结构，不写入任何演示数据</p></div>
-            <div class="fact"><h3>随机密钥</h3><p>NEXTAUTH_SECRET 与数据库密码现场生成，写入 600 权限的 .env</p></div>
-            <div class="fact"><h3>守护进程</h3><p>systemd 服务 cloud-warehouse，崩溃自动重启，开机自启</p></div>
-            <div class="fact"><h3>反向代理</h3><p>nginx 反代到 127.0.0.1:3000，预留 ACME 目录方便加 HTTPS</p></div>
-          </div>
+        <pre class="logs"><code>[####....................]    8%  环境检测
+[#######.................]   17%  安装 Node.js 20
+         └ 完成，用时 18s
+[##########..............]   33%  准备数据库
+[#############...........]   50%  在线模式：下载预构建运行时包
+[################........]   67%  部署运行时文件
+[####################....]   83%  配置系统服务
+[########################]  100%  完成
+
+  访问地址   http://服务器IP
+  初始账号   <span class="ok">admin / Admin@123</span>   <span class="dim">&lt;- 登录后立即改密</span></code></pre>
+
+        <div class="facts-grid" style="margin-top:1.5rem">
+          <div class="fact"><h3>环境检测优先</h3><p>先查 Node / 数据库 / nginx，缺什么装什么；都齐了就直接部署，不重复折腾。</p></div>
+          <div class="fact"><h3>域名与 SSL 可选</h3><p>绑了域名就问是否申请免费 HTTPS；跳过则应用直接映射到 80 端口。</p></div>
+          <div class="fact"><h3>也可参数化</h3><p>无人值守用 <code>--domain=</code> 或 <code>--no-domain</code> 跳过交互。</p></div>
+          <div class="fact"><h3>可重复执行</h3><p>已装过的机器再跑一次等于升级：保留数据库、.env、备份与上传文件，只替换代码。</p></div>
         </div>
 
-        <div class="install-facts">
-          <h2>装完之后</h2>
-          <div class="facts-grid">
-            <div class="fact"><h3>访问</h3><p><code>http://服务器IP</code> 或你传入的域名</p></div>
-            <div class="fact"><h3>初始账号</h3><p><code>admin / Admin@123</code>，登录后立即改密</p></div>
-            <div class="fact"><h3>管理服务</h3><p><code>systemctl status cloud-warehouse</code></p></div>
-            <div class="fact"><h3>看日志</h3><p><code>journalctl -u cloud-warehouse -f</code></p></div>
-            <div class="fact"><h3>加 HTTPS</h3><p><code>certbot --nginx -d 你的域名</code>（扫码等功能需要 HTTPS）</p></div>
-            <div class="fact"><h3>数据库密码</h3><p>见 <code>/opt/cloud-warehouse/.env</code>（600 权限）</p></div>
-          </div>
+        <h2 class="title" style="font-size:1.3rem; margin-top:2.6rem">脚本会做什么</h2>
+        <div class="facts-grid">
+          <div class="fact"><h3>识别系统</h3><p>Ubuntu / Debian / CentOS / RHEL / Rocky / Alma / Fedora，自动选包管理器</p></div>
+          <div class="fact"><h3>装齐依赖</h3><p>Node 20、MySQL 或 MariaDB、nginx、certbot 等，缺什么补什么</p></div>
+          <div class="fact"><h3>建库建表</h3><p>创建库与专用账号，导入 67 张表结构，不写入任何演示数据</p></div>
+          <div class="fact"><h3>随机密钥</h3><p>NEXTAUTH_SECRET 与数据库密码现场生成，写入 600 权限的 .env</p></div>
+          <div class="fact"><h3>守护进程</h3><p>systemd 服务 cloud-warehouse，崩溃自动重启，开机自启</p></div>
+          <div class="fact"><h3>反向代理</h3><p>nginx 反代到 127.0.0.1:3000，停用默认站点，预留 ACME 目录</p></div>
+        </div>
+
+        <h2 class="title" style="font-size:1.3rem; margin-top:2.6rem">装完之后</h2>
+        <div class="facts-grid">
+          <div class="fact"><h3>访问</h3><p><code>http://服务器IP</code> 或你传入的域名</p></div>
+          <div class="fact"><h3>初始账号</h3><p><code>admin / Admin@123</code>，登录后立即改密</p></div>
+          <div class="fact"><h3>管理服务</h3><p><code>systemctl status cloud-warehouse</code></p></div>
+          <div class="fact"><h3>看日志</h3><p><code>journalctl -u cloud-warehouse -f</code></p></div>
+          <div class="fact"><h3>加 HTTPS</h3><p><code>certbot --nginx -d 你的域名</code>（扫码等功能要求 HTTPS）</p></div>
+          <div class="fact"><h3>数据库密码</h3><p>见 <code>/opt/cloud-warehouse/.env</code>（600 权限）</p></div>
         </div>
 
         <div class="install-caution">
           <h3>两个前提</h3>
           <ul>
             <li><strong>系统要求</strong>：64 位 Linux，内存 ≥ 2 GB，磁盘 ≥ 10 GB，root 权限。</li>
-            <li><strong>端口占用</strong>：80 端口给 nginx，3000 给应用。脚本会覆盖已有的 <code>/etc/nginx</code> 中同名配置，但不会动其它站点。</li>
+            <li><strong>端口占用</strong>：80 给 nginx、3000 给应用。脚本会覆盖 <code>/etc/nginx</code> 下同名站点配置，但不动其它站点。</li>
           </ul>
         </div>
-
       </div>
     </section>
   </main>
 
+  <!-- ============================ 页脚 ============================ -->
   <footer class="site-footer">
     <div class="container">
-      <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.5</p>
-      <p class="footer-links">
-        <a href="index.html">首页</a>
-        <a href="features.html">产品功能</a>
-        <a href="releases.html">版本发布</a>
-        <a href="changelog.html">更新日志</a>
-        <a href="security.html">安全日志</a>
-      </p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="云仓首页">
+            <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
+            <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
+          </a>
+          <p>面向中小企业的开源全链路库存管理系统。一条命令部署，浏览器打开即用，仓库全流程可追溯。</p>
+          <div class="footer-social">
+            <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg> GitHub</a>
+            <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg> Gitee</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>页面导航</h4>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="features.html">产品功能</a></li>
+            <li><a href="pricing.html">部署服务</a></li>
+            <li><a href="releases.html">版本发布</a></li>
+            <li><a href="changelog.html">更新日志</a></li>
+            <li><a href="security.html">安全日志</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>项目文档</h4>
+          <ul>
+            <li><a href="https://yc.yuejiaxin.ln.cn/" target="_blank" rel="noopener">在线演示 ↗</a></li>
+            <li><a href="install.html#online">在线安装</a></li>
+            <li><a href="install.html#offline">离线安装</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/DEPLOYMENT.md" target="_blank" rel="noopener">DEPLOYMENT</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse-wxapp" target="_blank" rel="noopener">微信小程序端</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/LICENSE" target="_blank" rel="noopener">MIT 许可证</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.5</p>
+      </div>
     </div>
   </footer>
 
-  <style>
-    .install-block { margin-bottom: 2.5rem; padding: 1.6rem 1.8rem; border: 1px solid var(--border, #E2E8F0); border-radius: 16px; background: #fff; }
-    .install-head { display: flex; align-items: center; gap: .7rem; margin-bottom: .6rem; }
-    .install-head h2 { font-size: 1.15rem; margin: 0; }
-    .install-tag { font-size: .72rem; font-weight: 600; padding: .2rem .6rem; border-radius: 999px; }
-    .install-tag-online { background: #E0F2FE; color: #0369A1; }
-    .install-tag-offline { background: #FEF3C7; color: #92400E; }
-    .install-desc { color: #475569; font-size: .92rem; line-height: 1.8; margin: 0 0 1rem; }
-    .cmd { display: flex; align-items: center; gap: .6rem; background: #0B1220; border-radius: 10px; padding: .75rem 1rem; margin-bottom: .7rem; overflow-x: auto; }
-    .cmd code { color: #E2E8F0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86rem; white-space: nowrap; }
-    .cmd-copy { margin-left: auto; flex: none; background: #1E293B; color: #CBD5E1; border: 1px solid #334155; border-radius: 7px; padding: .28rem .7rem; font-size: .75rem; cursor: pointer; }
-    .cmd-copy:hover { background: #334155; color: #F8FAFC; }
-    .install-note { color: #64748B; font-size: .82rem; margin: .3rem 0 0; }
-    .install-note code { background: #F1F5F9; padding: .1rem .35rem; border-radius: 4px; font-size: .8rem; }
-    .install-meta { display: flex; flex-wrap: wrap; gap: 1.4rem; margin: .9rem 0 .2rem; padding: .8rem 1rem; background: #F8FAFC; border-radius: 10px; }
-    .install-meta > div { display: flex; flex-direction: column; gap: .15rem; }
-    .install-meta span { font-size: .72rem; color: #94A3B8; }
-    .install-meta b { font-size: .85rem; color: #1E293B; }
-    .install-meta .mono { font-family: ui-monospace, monospace; font-size: .76rem; }
-    .install-facts { margin-bottom: 2.2rem; }
-    .install-facts h2 { font-size: 1.1rem; margin: 0 0 1rem; }
-    .facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-    .fact { border: 1px solid var(--border, #E2E8F0); border-radius: 12px; padding: 1rem 1.1rem; background: #fff; }
-    .fact h3 { font-size: .92rem; margin: 0 0 .4rem; color: #0F172A; }
-    .fact p { font-size: .84rem; color: #64748B; line-height: 1.75; margin: 0; }
-    .fact code { background: #F1F5F9; padding: .1rem .3rem; border-radius: 4px; font-size: .78rem; }
-    .install-caution { border-left: 3px solid #F59E0B; background: #FFFBEB; border-radius: 0 12px 12px 0; padding: 1rem 1.2rem; }
-    .install-caution h3 { font-size: .95rem; margin: 0 0 .5rem; }
-    .install-caution ul { margin: 0; padding-left: 1.1rem; }
-    .install-caution li { font-size: .86rem; color: #57534E; line-height: 1.85; }
-    .install-caution code { background: #FEF3C7; padding: .1rem .3rem; border-radius: 4px; font-size: .8rem; }
-  </style>
+  <button id="toTop" class="to-top" aria-label="回到顶部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+  </button>
 
-  <script>
-    document.querySelectorAll(".cmd-copy").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var text = btn.getAttribute("data-copy");
-        function fallback() {
-          var ta = document.createElement("textarea");
-          ta.value = text; ta.style.position = "fixed"; ta.style.top = "-9999px";
-          document.body.appendChild(ta); ta.select();
-          try { document.execCommand("copy"); btn.textContent = "已复制"; } catch (e) { btn.textContent = "请手动复制"; }
-          document.body.removeChild(ta);
-          setTimeout(function () { btn.textContent = "复制"; }, 1600);
-        }
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(text).then(function () {
-            btn.textContent = "已复制";
-            setTimeout(function () { btn.textContent = "复制"; }, 1600);
-          }).catch(fallback);
-        } else { fallback(); }
-      });
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/install-copy.js"></script>
 </body>
 </html>
