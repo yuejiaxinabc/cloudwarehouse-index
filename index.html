@@ -6,8 +6,8 @@
 
   <!-- ===== TDK 基础 SEO ===== -->
   <title>云仓 · 智能仓储管理平台 | 开源全链路库存管理系统</title>
-  <meta name="description" content="云仓（YUNCANG）是面向中小制造、零售与贸易企业的开源全链路库存管理系统，涵盖商品、入库、出库、库存、盘点、库位、预警、报表 8 大核心模块；v1.3.5 起提供完整的 API 密钥体系与可定制 Webhook 报文：可创建带权限范围、仓库范围、IP 白名单、限速与有效期的密钥，开放 14 个读写接口并支持写入幂等；Webhook 报文可用模板自定义字段与命名；同时保留自动更新、数据备份回滚与并发扣库存原子化。支持扫码与微信小程序端，可在 https://yc.yuejiaxin.ln.cn 在线体验。" />
-  <meta name="keywords" content="云仓,库存管理,仓储系统,WMS,入库,出库,盘点,库存预警,批次效期,FEFO,补货建议,开源,Next.js,中小企业" />
+  <meta name="description" content="云仓（YUNCANG）是面向中小制造、零售与贸易企业的开源全链路库存管理系统，涵盖商品、入库、出库、库存、盘点、库位、预警、报表 8 大核心模块。一条 Linux 命令即可在干净的服务器上完成部署：自动安装 Node 20 / MySQL / nginx，建库建表、随机密钥、systemd 守护与反向代理全自动完成。v1.3.5 起提供完整 API 密钥体系与可定制 Webhook 报文，支持扫码与微信小程序端，可在 https://yc.yuejiaxin.ln.cn 在线体验。" />
+  <meta name="keywords" content="云仓,库存管理,仓储系统,WMS,入库,出库,盘点,库存预警,批次效期,FEFO,补货建议,开源,Next.js,中小企业,一键安装,Linux部署" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/" />
 
@@ -15,11 +15,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="云仓 YUNCANG" />
   <meta property="og:title" content="云仓 · 智能仓储管理平台" />
-  <meta property="og:description" content="面向中小企业的开源全链路库存管理系统，8 大核心模块，浏览器打开即用。" />
+  <meta property="og:description" content="面向中小企业的开源全链路库存管理系统，8 大核心模块；一条命令装进干净的 Linux 服务器，浏览器打开即用。" />
   <meta property="og:url" content="https://yuejiaxinabc.github.io/cloudwarehouse-index/" />
 
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/home.css" />
 </head>
 
 <body>
@@ -43,7 +44,7 @@
 
       <div class="header-actions">
         <a class="btn-github" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
-          <svg class="w-4 h-4" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
           GitHub
         </a>
         <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
@@ -86,7 +87,7 @@
             </span>
             <h1 class="hero-title">云仓 · 智能仓储<br />管理平台</h1>
             <p class="hero-lead">
-              面向中小制造、零售与贸易企业的<strong>全链路库存管理系统</strong>。浏览器打开即用，从「货什么时候进来的、哪个批次、什么时候到期」到「放在哪个货架哪个格子」，全程可追溯。
+              面向中小制造、零售与贸易企业的<strong>全链路库存管理系统</strong>。从「货什么时候进来的、哪个批次、什么时候到期」到「放在哪个货架哪个格子」，全程可追溯；一条命令装进自己的服务器，浏览器打开就能用。
             </p>
             <div class="chip-row">
               <span class="chip-dark">Next.js 14</span>
@@ -98,54 +99,66 @@
               <span class="chip-dark">Recharts</span>
             </div>
             <div class="hero-cta">
-              <a class="btn btn-light btn-lg" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
-                GitHub 仓库
-              </a>
-              <a class="btn btn-ghost btn-lg" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
-                Gitee 仓库
-              </a>
-              <a class="btn btn-ghost btn-lg" href="https://yc.yuejiaxin.ln.cn" target="_blank" rel="noopener">
+              <a class="btn btn-light btn-lg" href="https://yc.yuejiaxin.ln.cn" target="_blank" rel="noopener">
                 在线体验 ↗
+              </a>
+              <a class="btn btn-ghost btn-lg" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+                GitHub 源码
               </a>
             </div>
           </div>
 
-          <!-- 右：快速开始终端卡 -->
+          <!-- 右：Linux 在线安装命令卡 -->
           <div class="hero-visual reveal">
-            <div class="float-anim">
-              <div class="terminal">
-                <div class="terminal-bar">
-                  <i></i><i></i><i></i>
-                  <span>快速开始 · Quick Start</span>
+            <div class="hi-wrap">
+              <div class="hi-card">
+                <div class="hi-body">
+                  <div class="hi-top">
+                    <span class="hi-tag"><span class="dot"></span>Linux 在线安装</span>
+                    <span class="hi-os">x86_64 · root</span>
+                  </div>
+                  <p class="hi-label">在干净的服务器上执行</p>
+                  <div class="stage-cmd" style="margin-top:0">
+                    <div class="cmd-block">
+                      <span class="cmd-prompt" aria-hidden="true">$</span>
+                      <code class="cmd-text">curl -fsSL https://update.yuejiaxin.ln.cn/i | sudo bash</code>
+                      <button class="copy-btn" type="button" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/i | sudo bash" aria-label="复制安装命令">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="hi-meta">
+                    <div>
+                      <span>自动安装</span>
+                      <b>Node 20 · MySQL</b>
+                    </div>
+                    <div>
+                      <span>预计耗时</span>
+                      <b>2 ~ 5 分钟</b>
+                    </div>
+                    <div>
+                      <span>初始账号</span>
+                      <b>admin / Admin@123</b>
+                    </div>
+                  </div>
+                  <div class="hi-foot">
+                    <span>装完访问 <code>http://服务器IP</code></span>
+                    <span class="sep">|</span>
+                    <a href="install.html">完整安装说明 →</a>
+                    <span class="sep">|</span>
+                    <span><code>/i</code> 与 <code>install.sh</code> 同一脚本</span>
+                  </div>
                 </div>
-                <pre><code><span class="cmt"># 1) 安装依赖（Node.js ≥ 18，推荐 22）</span>
-npm ci
-
-<span class="cmt"># 2) 配置环境变量</span>
-cp .env.example .env
-
-<span class="cmt"># 3) 初始化数据库（52+ 张表）</span>
-npx prisma generate &amp;&amp; npx prisma db push
-npx ts-node --compiler-options '{"module":"CommonJS"}' prisma/seed.ts
-
-<span class="cmt"># 4) 构建与启动</span>
-npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:3000</span></code></pre>
               </div>
             </div>
-            <span class="float-pill float-pill-1">✓ 已通过安全审计</span>
-            <span class="float-pill float-pill-2">📦 扫码入库</span>
-            <span class="float-pill float-pill-3">📱 小程序端</span>
-            <p class="hero-note">预置账号 admin / Admin@123（首次上线请立即改密）</p>
-            <p class="hero-note"><strong>Linux 一键安装</strong>：<code>curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash</code>　<a href="install.html">离线包下载 →</a></p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============================ 数据指标 ============================ -->
-    <section class="section-tight">
+    <section class="section-tight metric-strip">
       <div class="container">
         <div class="metrics">
           <div class="reveal">
@@ -163,6 +176,76 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
           <div class="reveal">
             <p class="metric-value counter" data-target="9">0</p>
             <p class="metric-label">项核心安全机制</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 中心：一条命令安装 ============================ -->
+    <section class="stage-section" id="install">
+      <div class="container">
+        <div class="stage-card reveal">
+          <span class="stage-kicker">部署安装 · Linux</span>
+          <h2>一行命令，装进任何干净的服务器</h2>
+          <p class="stage-lead">
+            复制下面这条命令，粘贴到一台<strong>刚装好的 Linux</strong> 上回车即可。脚本先做环境检测，缺什么装什么：<strong>Node 20、MySQL / MariaDB、nginx</strong> 全部自动就位，随后建库建表、生成随机密钥、写入 systemd 守护、配好反向代理。约 2 ~ 5 分钟，不用碰数据库和 nginx 配置。
+          </p>
+
+          <div class="stage-cmd">
+            <div class="cmd-block">
+              <span class="cmd-prompt" aria-hidden="true">$</span>
+              <code class="cmd-text">curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash</code>
+              <button class="copy-btn" type="button" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash" aria-label="复制安装命令">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="stage-steps">
+            <b><i>1</i>复制命令</b>
+            <span class="arrow">→</span>
+            <b><i>2</i>粘贴到服务器</b>
+            <span class="arrow">→</span>
+            <b><i>3</i>打开 http://服务器IP</b>
+          </div>
+
+          <div class="stage-os">
+            <span>Ubuntu 20.04+</span>
+            <span>Debian 11+</span>
+            <span>CentOS 7+</span>
+            <span>Rocky / Alma 8+</span>
+            <span>Fedora</span>
+            <span class="neg">纯净系统即可，无需预装环境</span>
+          </div>
+
+          <div class="stage-facts">
+            <div>
+              <h4>自动装依赖</h4>
+              <p>识别发行版与包管理器，Node 20 / 数据库 / nginx 缺什么补什么。</p>
+            </div>
+            <div>
+              <h4>建库建表</h4>
+              <p>创建库与专用账号，导入 67 张表结构，不写入任何演示数据。</p>
+            </div>
+            <div>
+              <h4>随机密钥</h4>
+              <p>NEXTAUTH_SECRET 与数据库密码现场生成，写入 600 权限的 .env。</p>
+            </div>
+            <div>
+              <h4>守护与反代</h4>
+              <p>systemd 崩溃自启 + 开机自启，nginx 反代到 127.0.0.1:3000。</p>
+            </div>
+          </div>
+
+          <div class="stage-args">
+            <span class="arg"><span class="arg-label">可选参数</span><code>--domain=wms.example.com</code>绑定域名并自动申请免费 HTTPS</span>
+            <span class="arg"><code>--no-domain</code>跳过域名交互</span>
+            <span class="arg"><code>--upgrade</code>已装机器原地升级，保留数据库与配置</span>
+            <div class="stage-links">
+              <a href="install.html">完整安装说明 →</a>
+              <a href="install.html#uninstall">卸载命令 →</a>
+              <a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/DEPLOYMENT.md" target="_blank" rel="noopener">部署文档 →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -223,8 +306,8 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
             <div class="card-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
-            <h3>开箱即用</h3>
-            <p>浏览器打开即用，无需安装客户端，私有化部署数据自主可控。</p>
+            <h3>一条命令部署</h3>
+            <p>干净 Linux 上执行一条命令即可，依赖、数据库、服务与反代全自动。也提供离线安装包。</p>
           </div>
           <div class="card card-hover reveal">
             <div class="card-icon">
@@ -300,49 +383,50 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
       </div>
     </section>
 
-  <!-- ============================ v1.3.x 开放能力 ============================ -->
-  <section class="section" id="open-api">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow">v1.3.0 ~ v1.3.2 新增</span>
-        <h2 class="title">对外开放接口与密钥体系</h2>
-        <p class="desc">给 ERP、BI、门店系统一组可控的口子：既能读也能写，但每个密钥只能碰你授权的数据和动作。</p>
+    <!-- ============================ 开放能力 ============================ -->
+    <section class="section" id="open-api">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">开放能力</span>
+          <h2 class="title">对外开放接口与密钥体系</h2>
+          <p class="desc">给 ERP、BI、门店系统一组可控的口子：既能读也能写，但每个密钥只能碰你授权的数据和动作。</p>
+        </div>
+        <div class="grid cols-3 section-head-below">
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a4 4 0 10-3.9 5H7v3H4v3h6v-3h1.1A4 4 0 0015 17a4 4 0 000-8z"/></svg>
+            </div>
+            <h3>密钥五层约束</h3>
+            <p>每个密钥独立配置：权限范围（scope）、仓库范围、IP 白名单、每分钟限速、有效期。明文只在创建时显示一次，库内只存哈希。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10"/></svg>
+            </div>
+            <h3>14 个读写接口</h3>
+            <p>读 10 个：商品、基础资料、往来单位、仓库货位、库存、批次效期、流水、单据、报表、自检。写 4 个：入库、出库、调拨、盘点。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>写入幂等与审计</h3>
+            <p>写接口支持 Idempotency-Key，24 小时内同键只执行一次，网络重试不会重复建单；写操作以密钥创建者身份执行并留审计日志。</p>
+          </div>
+        </div>
+        <p class="desc center" style="margin-top: 1.5rem;">
+          完整接口清单与调用示例在系统内「设置 → API 管理」，对接方无需额外文档。
+        </p>
       </div>
-      <div class="grid cols-3 section-head-below">
-        <div class="card card-hover reveal">
-          <div class="card-icon solid">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a4 4 0 10-3.9 5H7v3H4v3h6v-3h1.1A4 4 0 0015 17a4 4 0 000-8z"/></svg>
-          </div>
-          <h3>密钥五层约束</h3>
-          <p>每个密钥独立配置：权限范围（scope）、仓库范围、IP 白名单、每分钟限速、有效期。明文只在创建时显示一次，库内只存哈希。</p>
-        </div>
-        <div class="card card-hover reveal">
-          <div class="card-icon solid">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10"/></svg>
-          </div>
-          <h3>14 个读写接口</h3>
-          <p>读 10 个：商品、基础资料、往来单位、仓库货位、库存、批次效期、流水、单据、报表、自检。写 4 个：入库、出库、调拨、盘点。</p>
-        </div>
-        <div class="card card-hover reveal">
-          <div class="card-icon solid">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3>写入幂等与审计</h3>
-          <p>写接口支持 Idempotency-Key，24 小时内同键只执行一次，网络重试不会重复建单；写操作以密钥创建者身份执行并留审计日志。</p>
-        </div>
-      </div>
-      <p class="desc center" style="margin-top: 1.5rem;">
-        完整接口清单与调用示例在系统内「设置 → API 管理」，对接方无需额外文档。
-      </p>
-    </div>
-  </section>
-    <!-- ============================ v1.2.4 ~ v1.2.7 新增能力 ============================ -->
-    <section class="section">
+    </section>
+
+    <!-- ============================ 核心能力 ============================ -->
+    <section class="section section-soft">
       <div class="container">
         <div class="section-head center reveal">
           <span class="eyebrow">核心能力</span>
           <h2 class="title">批次效期、补货闭环与现场大屏</h2>
-          <p class="desc">批次与效期一等公民、补货闭环、库存冻结、单据附件、日结快照、现场大屏、初始化向导；v1.2.4 起再叠加自动更新、备份回滚与并发安全。</p>
+          <p class="desc">批次与效期一等公民、补货闭环、库存冻结、单据附件、日结快照、现场大屏、初始化向导；再叠加自动更新、备份回滚与并发安全。</p>
         </div>
 
         <div class="grid cols-3 section-head-below">
@@ -397,7 +481,7 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
       </div>
     </section>
 
-    <!-- ============================ 部署服务速览 ============================ -->
+    <!-- ============================ 部署服务 ============================ -->
     <section class="section">
       <div class="container">
         <div class="panel reveal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.75rem; justify-content: space-between;">
@@ -405,7 +489,7 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
             <span class="eyebrow">部署服务</span>
             <h3 style="font-size: 1.35rem; font-weight: 800; margin-top: .4rem;">不想自己动手？我们帮你装好</h3>
             <p style="margin-top: .55rem; font-size: .9rem;">
-              软件本身永久开源免费（MIT）。付费内容<strong style="color: var(--ink-900);">仅包含私有化部署服务</strong>：单次 <strong style="color: var(--brand-600);">¥299</strong> 买断，无订阅、无年费，包含环境配置、数据库初始化与上线验收。
+              软件本身永久开源免费（MIT），一条命令即可自助部署。付费内容<strong style="color: var(--ink-900);">仅包含私有化部署服务</strong>：单次 <strong style="color: var(--brand-600);">¥299</strong> 买断，无订阅、无年费，包含环境配置、数据库初始化与上线验收。
             </p>
           </div>
           <a class="btn btn-primary" href="pricing.html">
@@ -416,49 +500,18 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
       </div>
     </section>
 
-    <!-- ============================ 部署安装 ============================ -->
-    <section class="section" id="install">
-      <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow">部署安装</span>
-          <h2 class="title">两条命令，装完就能用</h2>
-          <p class="desc">纯净 Linux 也行。在线一条命令装完，离线包解压即跑，全程不需要你手配数据库和 nginx。</p>
-        </div>
-        <div class="grid cols-2 section-head-below">
-          <div class="card reveal">
-            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem">
-              <span style="font-size:.72rem;font-weight:600;padding:.2rem .6rem;border-radius:999px;background:#E0F2FE;color:#0369A1">在线安装</span>
-              <strong style="font-size:.95rem">一条命令，自动装依赖</strong>
-            </div>
-            <p style="font-size:.86rem;color:#64748B;line-height:1.8;margin:0 0 .8rem">自动装 Node 20 / MySQL / nginx → 建库建表 → 构建 → 起服务 → 配反代。约 5~10 分钟。</p>
-            <pre style="background:#0B1220;color:#E2E8F0;padding:.85rem 1rem;border-radius:10px;font-size:.8rem;overflow-x:auto;margin:0"><code>curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash</code></pre>
-          </div>
-          <div class="card reveal">
-            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem">
-              <span style="font-size:.72rem;font-weight:600;padding:.2rem .6rem;border-radius:999px;background:#FEF3C7;color:#92400E">离线安装</span>
-              <strong style="font-size:.95rem">无需联网，35 MB</strong>
-            </div>
-            <p style="font-size:.86rem;color:#64748B;line-height:1.8;margin:0 0 .8rem">包内含构建好的运行时与建表 SQL，内网服务器也能装。解压执行，约 2 分钟。</p>
-            <pre style="background:#0B1220;color:#E2E8F0;padding:.85rem 1rem;border-radius:10px;font-size:.8rem;overflow-x:auto;margin:0"><code>tar xzf cloudwarehouse-offline-1.3.7.5.tar.gz &amp;&amp; sudo bash cloudwarehouse/install.sh --offline</code></pre>
-          </div>
-        </div>
-        <p class="desc center" style="margin-top:1.5rem">
-          <a class="btn btn-primary" href="install.html">完整安装说明 →</a>
-        </p>
-      </div>
-    </section>
     <!-- ============================ CTA 引导条 ============================ -->
     <section class="band-dark cta-band">
       <div class="container cta-inner reveal">
         <h2>把仓库管得清清楚楚</h2>
-        <p>私有化部署，数据自主可控。浏览器打开即用，配套微信小程序移动作业。</p>
+        <p>私有化部署，数据自主可控。一条命令装进自己的服务器，配套微信小程序移动作业。</p>
         <div class="hero-cta">
           <a class="btn btn-light btn-lg" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
             去 GitHub 拿源码
           </a>
           <a class="btn btn-ghost btn-lg" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
             去 Gitee 拿源码
           </a>
         </div>
@@ -475,14 +528,14 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
             <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
             <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
           </a>
-          <p>面向中小企业的开源全链路库存管理系统。浏览器打开即用，仓库全流程可追溯。</p>
+          <p>面向中小企业的开源全链路库存管理系统。一条命令部署，浏览器打开即用，仓库全流程可追溯。</p>
           <div class="footer-social">
             <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
               GitHub
             </a>
             <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
               Gitee
             </a>
           </div>
@@ -503,7 +556,8 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
         <div class="footer-col">
           <h4>项目文档</h4>
           <ul>
-                        <li><a href="https://yc.yuejiaxin.ln.cn/" target="_blank" rel="noopener">在线演示 ↗</a></li>
+            <li><a href="https://yc.yuejiaxin.ln.cn/" target="_blank" rel="noopener">在线演示 ↗</a></li>
+            <li><a href="install.html">部署安装</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a></li>
             <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/SECURITY.md" target="_blank" rel="noopener">SECURITY</a></li>
@@ -527,5 +581,6 @@ npm run build &amp;&amp; npm start   <span class="ok"># → http://localhost:300
   </button>
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/install-copy.js"></script>
 </body>
 </html>
