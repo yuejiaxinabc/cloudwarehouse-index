@@ -83,12 +83,46 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.3.7.5 -->
+          <!-- v1.3.9 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.3.7.5</h3>
+                <h3>v1.3.9</h3>
                 <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.8。把「自动更新」这条路彻底修通：能连上、能落地、能重启。</p>
+              <ul class="list">
+                <li><strong>连得上</strong>：安装脚本写入更新中心地址，程序兜底不再只打本机 9958。</li>
+                <li><strong>落得下</strong>：更新工作目录搬到应用自己的 backups 下，服务用户可写。</li>
+                <li><strong>重启得了</strong>：安装脚本写入最小化 polkit 授权，只放行更新任务与服务自身。</li>
+                <li><strong>装得省心</strong>：补装 rsync，装完自检更新中心连通性，不通只提示不中断。</li>
+              </ul>
+            </div>
+          </div>
+          <!-- v1.3.8 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.8</h3>
+                <span class="badge badge-stable">Stable</span>
+                <span class="tl-date">2026-11-12</span>
+              </div>
+              <p>基线 v1.3.7.5。云仓开始「报到」：装在哪、什么版本、还在不在线，更新中心一页看清。</p>
+              <ul class="list">
+                <li><strong>入网心跳</strong>：每 5 分钟上报主机名 / 版本 / 通道 / 端口 / 域名 / 系统。</li>
+                <li><strong>在线判定</strong>：10 分钟内有心跳算在线，24 小时内活过算离线，更久算长期离线。</li>
+                <li><strong>人工鉴定</strong>：新机器先进「待鉴定」，确认后才进已安装清单。</li>
+                <li><strong>安装脚本同步</strong>：装完即登记 systemd 定时器，换 IP 自动跟上来。</li>
+              </ul>
+            </div>
+          </div>
+          <!-- v1.3.7.5 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.3.7.5</h3>
                 <span class="badge badge-stable">Stable</span>
                 <span class="tl-date">2026-11-12</span>
               </div>
@@ -495,7 +529,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.5</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.9</p>
       </div>
     </div>
   </footer>

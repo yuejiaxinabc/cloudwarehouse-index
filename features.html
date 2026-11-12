@@ -182,6 +182,40 @@
       </div>
     </section>
 
+
+    <!-- ============================ 入网心跳与更新中心 ============================ -->
+    <section class="section" id="fleet">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">v1.3.8 新增</span>
+          <h2 class="title">入网心跳 · 装了哪些机器一页看清</h2>
+          <p class="desc">装好的每一台云仓都会自己报到：主机名、版本、更新通道、在线状态。不用再挨个问「你那台跑的是哪一版」。</p>
+        </div>
+        <div class="grid cols-3 section-head-below">
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>每 5 分钟报到</h3>
+            <p>云仓启动 15 秒后先报一次，之后每 5 分钟一次；打开「检查更新」或切换更新通道会立刻补报，版本与通道变更实时可见。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>在线 / 离线一眼判定</h3>
+            <p>10 分钟内有心跳算在线，24 小时内活过算离线，更久算长期离线；每台都显示 IP、主机名、版本、通道与最近心跳时间。</p>
+          </div>
+          <div class="card card-hover reveal">
+            <div class="card-icon solid">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0 3.75h.008M12 3l9 18H3l9-18z"/></svg>
+            </div>
+            <h3>新机器先「待鉴定」</h3>
+            <p>新入网的机器自动出现在更新中心的「新入网服务器」页等确认，确认后才进入「已安装服务器」清单；只上报 installId 与运行信息，不含业务数据。</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- 批次效期与现场能力 -->
         <div class="section-head reveal" style="margin-top: 3rem;">
           <span class="eyebrow">v1.2.0 起</span>
@@ -376,7 +410,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.5</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.9</p>
       </div>
     </div>
   </footer>

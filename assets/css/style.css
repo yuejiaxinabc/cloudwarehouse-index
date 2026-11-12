@@ -697,8 +697,11 @@ img.brand-logo { background: none; box-shadow: none; border-radius: 0; }
 
 /* ---------- 更新日志条目 ---------- */
 .entry-list { margin-top: 1.1rem; display: flex; flex-direction: column; gap: .7rem; list-style: none; }
-.entry-list li { display: flex; gap: .7rem; font-size: .9rem; color: var(--ink-500); align-items: baseline; }
-.entry-list .badge { flex-shrink: 0; transform: translateY(-1px); }
+/* 条目本身不能用 flex：一用 flex，<strong> 与 <span class="mono"> 会各自变成
+   flex item，段落被拆成「标签 | 粗体 | 正文」多列，读起来像表格。
+   改成普通块级流，徽标用 margin 拉开距离，正文里的粗体与代码恢复正常行内排版。 */
+.entry-list li { font-size: .9rem; color: var(--ink-500); line-height: 1.75; }
+.entry-list .badge { margin-right: .5rem; transform: translateY(-1px); vertical-align: middle; }
 
 /* ============================================================
    表格

@@ -82,11 +82,41 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.3.9 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.9</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> <strong>无法连接远端更新</strong>：安装脚本没写更新中心地址，程序兜底去连本机 <span class="mono">127.0.0.1:9958</span>（多数机器上并没有更新中心），「检查更新」直接报「无法访问远端服务器」。安装脚本现在自动写入该地址，程序侧也改为按「配置项 → 公开更新中心 → 本机 9958」依次尝试，配置缺失不再必然失败。</li>
+            <li><span class="badge badge-fix">修复</span> <strong>点「立即更新」没反应</strong>：更新工作目录原定 <span class="mono">/opt/cw-update-work</span>，而服务以 cloudwarehouse 用户运行，无权在 <span class="mono">/opt</span> 下建目录，接口直接 500、任务永远停在 running。工作目录改到应用自己的 <span class="mono">backups/update-work</span>，由安装脚本创建并授权。</li>
+            <li><span class="badge badge-fix">修复</span> <strong>更新卡在重启</strong>：服务用户没有 systemd 权限，<span class="mono">systemd-run</span> 起任务、<span class="mono">systemctl restart</span> 自己都会被 polkit 拒绝。安装脚本现在写入最小化授权规则，只放行 <span class="mono">cw-update-*</span> 与 <span class="mono">cloud-warehouse</span> 两类 unit，卸载时一并清理。</li>
+            <li><span class="badge badge-fix">优化</span> 安装脚本补装 <span class="mono">rsync</span>（更新做代码快照与失败回滚依赖它），并在结尾检测更新中心连通性，不通只提示、不阻断安装。</li>
+            <li><span class="badge badge-doc">说明</span> 已装机器正常点「检查更新 → 立即更新」即可；若旧机器点更新仍无反应（当时没有 polkit 授权），重跑一次安装脚本补齐：<span class="mono">curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash --upgrade</span>。</li>
+          </ul>
+        </div>
+        <!-- v1.3.8 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.3.8</h3>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-12</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">新增</span> <strong>入网心跳</strong>：装好的云仓每 5 分钟向更新中心报一次「我在」——主机名、版本、更新通道、端口、域名、系统，更新中心据此判断这台机器在线还是离线。</li>
+            <li><span class="badge badge-new">新增</span> 更新中心新增「新入网服务器」页：新机器按 IP 自动出现并标「待鉴定」，人工确认后进入「已安装服务器」清单；首页只看发布更新包、已安装 IP 与当前更新通道。</li>
+            <li><span class="badge badge-fix">优化</span> 打开「检查更新」或切换更新通道时立刻补报一次心跳，版本与通道的变更在更新中心即时可见，不必等下一个 5 分钟。</li>
+            <li><span class="badge badge-doc">说明</span> 心跳只带本机随机 installId 与运行信息，不含任何业务数据、账号与密码；上报失败静默重试，不影响登录、开单与库存等主流程。</li>
+            <li><span class="badge badge-fix">配套</span> 一键安装脚本同步升级：装完自动登记每 5 分钟一次的 systemd 定时器（无 systemd 时退回 cron），换 IP 也能自己跟上来。</li>
+          </ul>
+        </div>
         <!-- v1.3.7.5 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.3.7.5</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-12</span>
           </div>
@@ -511,7 +541,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.7.5</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.3.9</p>
       </div>
     </div>
   </footer>
