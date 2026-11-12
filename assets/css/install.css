@@ -1,0 +1,154 @@
+/* ============================================================
+   云仓官网 · 部署安装页（install.html）专属样式
+   复用 style.css 设计令牌 + code-block.css 命令块
+   ============================================================ */
+
+.install-block {
+  position: relative;
+  padding: 1.9rem 2rem;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line-soft);
+  box-shadow: var(--shadow-sm);
+}
+.install-block + .install-block { margin-top: 1.5rem; }
+.install-block.is-primary {
+  border-color: rgba(37, 99, 235, .22);
+  box-shadow: 0 26px 60px -40px rgba(37, 99, 235, .55);
+}
+.install-block.is-primary::before {
+  content: "";
+  position: absolute;
+  left: 2rem; right: 2rem; top: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--grad);
+  opacity: .8;
+}
+@media (max-width: 640px) {
+  .install-block { padding: 1.4rem 1.15rem; border-radius: 16px; }
+  .install-block.is-primary::before { left: 1.15rem; right: 1.15rem; }
+}
+
+.install-head { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; }
+.install-head h2 {
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: -.015em;
+}
+.install-tag {
+  flex: none;
+  padding: .24rem .66rem;
+  border-radius: 9999px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.install-tag-online { color: #0369a1; background: #e0f2fe; border: 1px solid #bae6fd; }
+.install-tag-offline { color: #92400e; background: #fef3c7; border: 1px solid #fde68a; }
+.install-tag-danger { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+
+.install-desc {
+  margin-top: .7rem;
+  font-size: .92rem;
+  line-height: 1.85;
+  color: var(--ink-600);
+}
+.install-desc strong { color: var(--ink-900); font-weight: 600; }
+.install-desc code,
+.install-note code,
+.fact code {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  padding: .1rem .36rem;
+  border-radius: 5px;
+  background: #f1f5f9;
+  color: var(--ink-700);
+}
+
+.install-block .cmd-block { margin-top: 1rem; }
+.install-block .cmd-block + .cmd-block { margin-top: .5rem; }
+.install-block .cmd-block code.cmd-text { font-size: .8rem; }
+
+.install-note {
+  margin-top: .55rem;
+  font-size: .8rem;
+  line-height: 1.9;
+  color: var(--ink-500);
+}
+
+.install-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem;
+  margin-top: 1.1rem;
+  padding: .9rem 1.1rem;
+  border-radius: 12px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+}
+@media (max-width: 720px) { .install-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.install-meta > div { display: flex; flex-direction: column; gap: .15rem; }
+.install-meta span { font-size: .7rem; color: var(--ink-400); letter-spacing: .04em; }
+.install-meta b { font-size: .85rem; color: var(--ink-900); font-weight: 600; }
+.install-meta .mono { font-family: var(--font-mono); font-size: .74rem; letter-spacing: -.02em; }
+
+.logs {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: #05090f;
+  color: #cbd5e1;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  line-height: 1.95;
+  overflow-x: auto;
+}
+.logs .ok { color: #34d399; }
+.logs .dim { color: #64748b; }
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: .9rem;
+  margin-top: 1.1rem;
+}
+.fact {
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line-soft);
+}
+.fact h3 { font-size: .9rem; font-weight: 700; }
+.fact p { margin-top: .35rem; font-size: .82rem; line-height: 1.75; color: var(--ink-500); }
+
+.install-caution {
+  margin-top: 1.25rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0 12px 12px 0;
+  border-left: 3px solid #f59e0b;
+  background: #fffbeb;
+}
+.install-caution h3 { font-size: .92rem; font-weight: 700; }
+.install-caution ul { margin-top: .5rem; padding-left: 1.1rem; }
+.install-caution li { font-size: .84rem; line-height: 1.9; color: #57534e; }
+.install-caution code {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  padding: .08rem .32rem;
+  border-radius: 4px;
+  background: #fef3c7;
+}
+
+.jump-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.6rem; }
+.jump-row a {
+  padding: .36rem .8rem;
+  border-radius: 9999px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.86);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  transition: background-color .2s ease, color .2s ease;
+}
+.jump-row a:hover { background: rgba(255,255,255,.16); color: #fff; text-decoration: none; }
