@@ -82,11 +82,24 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.4.0.23 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.0.23</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">Stable</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> <strong>出库单详情白屏</strong>（Application error）：返库功能的 Hook 被写在条件 return 之后，已移到组件顶部。</li>
+            <li><span class="badge badge-fix">修复</span> <strong>回收站彻底删除失败</strong>：按依赖顺序清理货位/库存/批次/序列号/BOM；被单据引用时给出具体原因，全程事务。</li>
+            <li><span class="badge badge-opt">安全</span> 登出即失效（sessionVersion bump）、客户资料消毒、Open API 校验可用量、上传加权限点、畸形请求返回 400。</li>
+          </ul>
+        </div>
         <!-- v1.4.0.18 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.4.0.18</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">Stable</span>
             <span class="tl-date">2026-11-13</span>
           </div>
@@ -658,7 +671,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.18</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.0.23</p>
       </div>
     </div>
   </footer>
