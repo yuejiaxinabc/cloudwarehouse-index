@@ -83,12 +83,29 @@
     <section class="section">
       <div class="container">
         <div class="timeline">
-          <!-- v1.4.1 -->
+          <!-- v1.4.2 -->
           <div class="tl-item is-latest reveal">
             <div class="tl-card">
               <div class="tl-head">
-                <h3>v1.4.1</h3>
+                <h3>v1.4.2</h3>
                 <span class="badge badge-latest">Latest</span>
+                <span class="badge badge-stable">稳定版</span>
+                <span class="tl-date">2026-11-13</span>
+              </div>
+              <p>更新链路彻底修复：按通道精确更新、版本校验、失败回滚，通道可双向切换。</p>
+              <ul class="list">
+                <li><strong>按通道更新</strong>：选 Beta 装 Beta，切回主版本装回稳定版。</li>
+                <li><strong>版本列表修复</strong>：/api/version 的 releases 返回数组，不再点不动。</li>
+                <li><strong>假成功修复</strong>：装完核对版本号，不符即回滚并提示。</li>
+                <li>含 1.4.1 系列全部修复（返库、退货报表、回收站、容量拦截、验证码等）。</li>
+              </ul>
+            </div>
+          </div>
+          <!-- v1.4.1 -->
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-head">
+                <h3>v1.4.1</h3>
                 <span class="badge badge-stable">稳定版</span>
                 <span class="tl-date">2026-11-13</span>
               </div>
@@ -346,7 +363,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.1</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.2</p>
       </div>
     </div>
   </footer>

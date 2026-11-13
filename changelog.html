@@ -82,11 +82,26 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.4.2 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.2</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">稳定版</span>
+            <span class="tl-date">2026-11-13</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> <strong>切了测试通道却更新到主版本</strong>：自更新脚本改为按调用方传入的版本与通道精确取包，不再自行回退到通道最新版。</li>
+            <li><span class="badge badge-fix">修复</span> <strong>检查更新页版本列表为空 / 点不动</strong>：更新中心 /api/version 的 releases 之前返回数量而非数组，前端渲染即抛错，现已返回完整版本数组。</li>
+            <li><span class="badge badge-fix">修复</span> <strong>更新「假成功」</strong>：装完核对 package.json 版本，不等于目标版本即失败回滚；前端也对比目标与实际，不一致明确提示「更新未生效」。</li>
+            <li><span class="badge badge-new">新增</span> <strong>通道双向切换</strong>：选 Beta 装 Beta 最新；切回主版本可装回稳定版（允许降级切换）。</li>
+            <li><span class="badge badge-opt">包含</span> 1.4.1 系列全部内容：出库返库、退还件报表、撤销分权、回收站级联删除、货位容量拦截取消、验证码提示与可读性、出库逐行校验、草稿单作废、货架地图列多选、多项安全加固。</li>
+          </ul>
+        </div>
         <!-- v1.4.1 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.4.1</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">稳定版</span>
             <span class="tl-date">2026-11-13</span>
           </div>
@@ -319,7 +334,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.1</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.2</p>
       </div>
     </div>
   </footer>
