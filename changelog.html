@@ -84,11 +84,28 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.4.5 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.5</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">稳定版</span>
+            <span class="tl-date">2026-11-14</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-fix">修复</span> <strong>更新时页面反复跳</strong>：构建成功后脚本在重启那步管道被打断，成功状态没写入，前端一直轮询重渲染。现在构建成功即写 success 再重启。</li>
+            <li><span class="badge badge-fix">修复</span> 更新失败状态停在「更新中」、日志空白；成功还弹窗倒计时甚至连刷。现在失败写 failed 并回滚、日志落盘，成功静默刷新一次。</li>
+            <li><span class="badge badge-fix">修复</span> 字典管理新增后列表不变、调拨单打印单位为 [object Object] 且缺发出/接收货位、BOM 产品不能手填、导入商品不生成序列号、导入报「货位不存在」。</li>
+            <li><span class="badge badge-new">新增</span> <strong>货位封禁</strong>：整排 / 整列 / 大货位整格 / 单个小货位都能封禁与解封；大货位封禁显示淡红，小货位封禁后可用数量减少。</li>
+            <li><span class="badge badge-new">新增</span> <strong>桌面端专用 API 密钥</strong>一键创建（出入库写入、商品建档、新建仓库），并给出服务器地址 / 密钥 ID / API Key 的填写说明。</li>
+            <li><span class="badge badge-opt">优化</span> 四段货位全站统一显示；入库过账后首页与预警自动刷新；扫码支持扫码枪与摄像头自动切换；全站新 logo 与透明底圆角角标。</li>
+            <li><span class="badge badge-doc">安装</span> 一键安装脚本支持 <span class="mono">--channel=beta</span> 安装测试版，默认稳定版。</li>
+          </ul>
+        </div>
         <!-- v1.4.4 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.4.4</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">稳定版</span>
             <span class="tl-date">2026-11-14</span>
           </div>
@@ -403,7 +420,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.4</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.5</p>
       </div>
     </div>
   </footer>

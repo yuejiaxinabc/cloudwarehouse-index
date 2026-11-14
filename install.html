@@ -116,6 +116,24 @@
               <button class="copy-btn" type="button" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash" aria-label="复制命令"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制命令</span></button>
             </div>
           <p class="install-note">已是 root 可以去掉 <code>sudo</code>；服务器没有 <code>curl</code> 时，把 <code>curl -fsSL</code> 换成 <code>wget -qO-</code>。</p>
+
+          <div style="margin-top:1.6rem;padding:1rem 1.1rem;border:1px solid #E2E8F0;border-radius:14px;background:#F8FAFF;">
+            <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.55rem;">
+              <strong style="font-size:.98rem;color:#0F172A;">想先试用测试版？</strong>
+              <span class="badge badge-beta">Beta</span>
+            </div>
+            <p style="margin:0 0 .6rem;color:#475569;font-size:.92rem;line-height:1.8;">
+              稳定版是三位版本（如 1.4.5），功能验证过、推荐生产使用；测试版是四位版本（如 1.4.4.16），先在小范围试新功能。
+              下面这条命令装的是<strong>测试版通道的最新版本</strong>，装完也能在「设置 → 检查更新」里随时切回稳定版。
+            </p>
+            <div class="cmd-box" style="margin:0;">
+              <code class="cmd-text">curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash -s -- --channel=beta</code>
+              <button class="copy-btn" type="button" data-copy="curl -fsSL https://update.yuejiaxin.ln.cn/install.sh | sudo bash -s -- --channel=beta" aria-label="复制命令"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制命令</span></button>
+            </div>
+            <p class="install-note" style="margin-top:.6rem;">
+              已经装好的机器想切测试版：到「设置 → 检查更新」把通道切到 Beta 再点更新即可，不用重装。
+            </p>
+          </div>
           <p class="install-note">无人值守绑域名：在命令末尾加 <code>-s -- --domain=wms.example.com</code>，脚本会一并申请免费 HTTPS。</p>
           <p class="install-note">跳过域名交互加 <code>--no-domain</code>；已装过的机器原地升级加 <code>--upgrade</code>（保留数据库与配置）。</p>
         </div>
@@ -147,9 +165,9 @@
           </p>
 
           <div class="install-meta">
-            <div><span>文件名</span><b class="mono">cloudwarehouse-offline-1.4.4.tar.gz</b></div>
+            <div><span>文件名</span><b class="mono">cloudwarehouse-offline-1.4.5.tar.gz</b></div>
             <div><span>体积</span><b>63 MB</b></div>
-            <div><span>SHA256</span><b class="mono">9d3a9273…89f0</b></div>
+            <div><span>SHA256</span><b class="mono">fc404c6c…c683</b></div>
             <div><span>内含 Node</span><b>v20.18.1 x64</b></div>
           </div>
 
@@ -159,8 +177,8 @@
             <strong>在能上网的电脑上下载这个包</strong>
             <div class="cmd-block">
               <span class="cmd-prompt" aria-hidden="true">$</span>
-              <code class="cmd-text">curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.4.4.tar.gz</code>
-              <button class="copy-btn" type="button" data-copy="curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.4.4.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+              <code class="cmd-text">curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.4.5.tar.gz</code>
+              <button class="copy-btn" type="button" data-copy="curl -O https://updata-1307293667.cos.ap-beijing.myqcloud.com/cloudwarehouse-offline-1.4.5.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
             </div>
             <p class="install-note">Windows / Mac 也可以直接用浏览器打开这个地址下载。下载后拷进 U 盘。</p>
           </div></div>
@@ -183,10 +201,10 @@
             <strong>把包复制到服务器并解压</strong>
             <div class="cmd-block">
               <span class="cmd-prompt" aria-hidden="true">$</span>
-              <code class="cmd-text">cp /mnt/usb/cloudwarehouse-offline-1.4.4.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.4.4.tar.gz</code>
-              <button class="copy-btn" type="button" data-copy="cp /mnt/usb/cloudwarehouse-offline-1.4.4.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.4.4.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
+              <code class="cmd-text">cp /mnt/usb/cloudwarehouse-offline-1.4.5.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.4.5.tar.gz</code>
+              <button class="copy-btn" type="button" data-copy="cp /mnt/usb/cloudwarehouse-offline-1.4.5.tar.gz /root/ && cd /root && tar xzf cloudwarehouse-offline-1.4.5.tar.gz" aria-label="复制"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path stroke-linecap="round" d="M15 6.5V5A2 2 0 0013 3H5a2 2 0 00-2 2v8a2 2 0 002 2h1.5"/></svg><span>复制</span></button>
             </div>
-            <p class="install-note">离线包已同步到 v1.4.0.3，装完即最新版。建议先校验：<code>sha256sum cloudwarehouse-offline-1.4.4.tar.gz</code>，应等于 <code>9d3a9273…89f0</code></p>
+            <p class="install-note">离线包已同步到 v1.4.0.3，装完即最新版。建议先校验：<code>sha256sum cloudwarehouse-offline-1.4.5.tar.gz</code>，应等于 <code>fc404c6c…c683</code></p>
           </div></div>
 
           <div class="usb-step"><span class="usb-num">4</span><div>
@@ -345,7 +363,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.4</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.5</p>
       </div>
     </div>
   </footer>
