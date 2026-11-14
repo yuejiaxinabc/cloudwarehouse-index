@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>桌面客户端 · 云仓 YUNCANG</title>
-  <meta name="description" content="云仓桌面客户端（Windows）：装好填一次服务器地址与密钥，之后打开就是工作台——入库、出库、调拨、盘点、库存查询、单据记录，跟 Web 端同一套蓝白界面。v0.4.0 安装包 77.7 MB，自带运行环境。" />
+  <meta name="description" content="云仓桌面客户端（Windows）：装好填一次服务器地址与密钥，之后打开就是工作台——入库、出库、调拨、盘点、库存查询、单据记录，跟 Web 端同一套蓝白界面。v0.5.6 安装包 81.9 MB，自带运行环境。" />
   <meta name="keywords" content="云仓客户端,桌面客户端,Windows,库存管理,WMS,API 密钥,离线作业,云仓下载" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/desktop.html" />
@@ -80,7 +80,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="hero-badge"><span class="dot"></span>Windows 桌面端 · v0.4.0</span>
+          <span class="hero-badge"><span class="dot"></span>Windows 桌面端 · v0.5.6</span>
           <h1 class="hero-title">把云仓<br />装进桌面</h1>
           <p class="hero-lead">
             第一次打开填 <strong>服务器地址</strong> 与 <strong>API 密钥</strong>，之后双击图标直接进作业界面。
@@ -88,13 +88,13 @@
             各看各的。
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.4.0-x64.exe">
+            <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/apps/yuncang-desktop/stable/0.5.6/YunCang-Setup-0.5.6-x64.exe">
               下载 Windows 安装包
             </a>
             <a class="btn btn-ghost btn-lg" href="#features">看看能做什么</a>
           </div>
           <p class="hero-note">
-            77.7 MB · Windows 10 1809 及以上（x64）· 自带运行环境，不用装 Node / 数据库 / 浏览器插件
+            81.9 MB · Windows 10 1809 及以上（x64）· 自带运行环境，不用装 Node / 数据库 / 浏览器插件
           </p>
         </div>
 
@@ -149,16 +149,16 @@
             <p>入库、出库、调拨、盘点按这把密钥的权限出现；没开通的作业在左栏灰着，不会让你点了才报错。</p>
           </div>
           <div class="card card-hover">
-            <h3>密钥失效会说清楚</h3>
-            <p>任何一次请求返回 401，顶部弹「密钥已失效」并自动跳到设置页——地址已经填好，贴一把新密钥保存即恢复。</p>
+            <h3>自带更新，不用重装</h3>
+            <p>设置页「检查更新」会同时问更新中心与三个地域的对象存储，取最快的源下载，校验 SHA256 后静默安装；密钥失效也有明确提示。</p>
           </div>
           <div class="card card-hover">
             <h3>重试不会重复建单</h3>
             <p>提交时自带请求幂等标识，网络抖一下重试也不会多建一张单；同一批数据重复提交会被服务端拦下。</p>
           </div>
           <div class="card card-hover">
-            <h3>库存随时能查</h3>
-            <p>库存查询按仓库和商品筛，实时看结存 / 锁定 / 可用；单据记录按类型翻页，入库出库调拨盘点都在一处。</p>
+            <h3>货位、商品都能管</h3>
+            <p>入库时按仓库选放置货位；商品档案可新增、导入 CSV、导出 CSV；库存与单据按类型翻页查。</p>
           </div>
           <div class="card card-hover">
             <h3>卸载得干净</h3>
@@ -179,16 +179,24 @@
         <div class="dl-panel">
           <div class="dl-panel-head">
             <div>
-              <div class="dl-title">云仓 <span class="dl-ver">v0.4.0</span></div>
-              <div class="dl-meta">Windows x64 · 77.7 MB · 安装包未签名，首次运行若被 SmartScreen 拦下，点「更多信息 → 仍要运行」</div>
+              <div class="dl-title">云仓 <span class="dl-ver">v0.5.6</span></div>
+              <div class="dl-meta">Windows x64 · 81.9 MB · 安装包未签名，首次运行若被 SmartScreen 拦下，点「更多信息 → 仍要运行」</div>
             </div>
-            <a class="btn btn-primary" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.4.0-x64.exe">下载</a>
+            <a class="btn btn-primary" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/apps/yuncang-desktop/stable/0.5.6/YunCang-Setup-0.5.6-x64.exe">下载</a>
           </div>
           <ol class="steps">
             <li><strong>下载并双击</strong> <span>选安装目录（默认装到当前用户，不需要管理员权限）</span></li>
             <li><strong>桌面出「云仓」</strong> <span>同时建开始菜单项，图标与窗口标题都叫云仓</span></li>
             <li><strong>打开填两项</strong> <span>服务器地址 + API 密钥，测试通过即保存</span></li>
           </ol>
+          <div class="warn-box">
+            <b>首次运行可能被 Windows 拦一下，这是正常的</b>
+            <p>安装包目前没有代码签名证书，Windows 会提示「未知发布者 / 通常不会下载此文件」。
+               核对文件大小 81.9 MB、SHA256 与下面一致后，点「更多信息 → 仍要运行」即可；
+               也可以在文件上右键 → 属性 → 勾选「解除锁定」再运行。代码签名证书正在申请，下一版起不再出现这个提示。</p>
+            <p class="mono" style="font-size:11px;word-break:break-all">SHA256 005c74a574ce543e3e60207868dcf75686e2852f4452ead8ac7502610c8d9d7c</p>
+          </div>
+          <p class="dl-note" style="margin-top:.6rem">代码签名：云仓桌面端参与 <a href="https://signpath.org/" target="_blank" rel="noopener">SignPath Foundation</a> 开源项目签名计划，安装包由 SignPath Foundation 提供代码签名。</p>
           <p class="dl-note">
             密钥在云仓后台「设置 → API 管理」创建，明文只显示一次；丢失只能重建一把。
             内网部署直接填 <code>IP:端口</code>，自签证书在客户端 <code>.env</code> 里开 <code>CW_INSECURE_TLS=1</code> 才放行。
@@ -257,7 +265,7 @@
         <h2>把云仓放到仓库那台电脑上</h2>
         <p class="desc">双击装完就能用，作业范围由你发的密钥决定。</p>
         <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.4.0-x64.exe">下载 Windows 安装包</a>
+          <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/apps/yuncang-desktop/stable/0.5.6/YunCang-Setup-0.5.6-x64.exe">下载 Windows 安装包</a>
           <a class="btn btn-ghost btn-lg" href="install.html">部署云仓服务端</a>
         </div>
       </div>

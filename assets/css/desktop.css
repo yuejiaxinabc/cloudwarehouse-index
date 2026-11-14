@@ -187,3 +187,14 @@
 .shot-card .shot-frame { background: linear-gradient(180deg, #f8fafc, #eef2f7); }
 .shot-card .shot-frame img { mix-blend-mode: normal; }
 
+
+/* 下载页：未签名提示 */
+.warn-box {
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: 14px;
+  background: #FFF8EB;
+  border: 1px solid #FDE68A;
+}
+.warn-box b { color: #92400E; font-size: .92rem; }
+.warn-box p { margin: .5rem 0 0; font-size: .84rem; line-height: 1.8; color: #8a5a1a; }
