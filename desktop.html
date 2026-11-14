@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>桌面客户端 · 云仓 YUNCANG</title>
+  <meta name="description" content="云仓桌面客户端（Windows）：首次打开填服务器地址与 API 密钥，之后直接进入作业界面；作业范围由密钥权限决定。内置密钥失效引导、设置页换地址换密钥、CSV 导出与彻底卸载。v0.3.0 安装包 77.6 MB，无需额外运行环境。" />
+  <meta name="keywords" content="云仓客户端,桌面客户端,Windows,库存管理,WMS,API 密钥,离线作业,云仓下载" />
+  <meta name="author" content="小岳 (xiao yue)" />
+  <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/desktop.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="云仓 YUNCANG" />
+  <meta property="og:title" content="云仓桌面客户端 · 把云仓装进桌面" />
+  <meta property="og:description" content="填一次服务器地址与密钥，之后双击即用；作业范围跟着密钥权限走。" />
+  <meta property="og:url" content="https://yuejiaxinabc.github.io/cloudwarehouse-index/desktop.html" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/desktop.css" />
+</head>
+
+<body>
+
+<header id="siteHeader" class="site-header header-dark">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="云仓首页">
+        <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
+        <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="features.html">产品功能</a>
+        <a href="install.html">部署安装</a>
+        <a href="desktop.html" class="active" aria-current="page">桌面客户端</a>
+        <a href="releases.html">版本发布</a>
+        <a href="changelog.html">更新日志</a>
+        <a href="security.html">安全日志</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn-github" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg>
+          Gitee
+        </a>
+        <button id="menuToggle" class="menu-toggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="features.html">产品功能</a></li>
+        <li><a href="install.html">部署安装</a></li>
+        <li><a href="desktop.html" class="active" aria-current="page">桌面客户端</a></li>
+        <li><a href="releases.html">版本发布</a></li>
+        <li><a href="changelog.html">更新日志</a></li>
+        <li><a href="security.html">安全日志</a></li>
+        <li class="mobile-cta">
+          <a class="btn btn-outline btn-sm" href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-primary btn-sm" href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener">Gitee</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================ Hero ============================ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-badge"><span class="dot"></span>Windows 桌面端 · v0.3.0</span>
+          <h1 class="hero-title">把云仓<br />装进桌面</h1>
+          <p class="hero-lead">
+            第一次打开填 <strong>服务器地址</strong> 与 <strong>API 密钥</strong>，之后双击图标直接进作业界面。
+            能看到哪些作业、能写哪几类单据，全由那把密钥的权限决定——同一个安装包，发给仓管和发货员，
+            各看各的。
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.3.0-x64.exe">
+              下载 Windows 安装包
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#features">看看能做什么</a>
+          </div>
+          <p class="hero-note">
+            77.6 MB · Windows 10 1809 及以上（x64）· 自带运行环境，不用装 Node / 数据库 / 浏览器插件
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="shot-frame shot-frame-lg">
+            <img src="assets/img/desktop/overview.png" alt="云仓桌面客户端概览界面" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 界面 ============================ -->
+    <section class="section section-soft" id="screens">
+      <div class="container">
+        <div class="section-head center">
+          <h2>界面</h2>
+          <p class="desc">蓝白配色，跟 Web 端同一套观感；左栏按你拿到的权限生成作业菜单，没有权限的灰着并注明缺哪一项。</p>
+        </div>
+
+        <div class="shot-grid">
+          <figure class="shot-card">
+            <div class="shot-frame">
+              <img src="assets/img/desktop/setup.png" alt="首次启动配置服务器地址与密钥" loading="lazy" />
+            </div>
+            <figcaption><strong>第一次打开</strong>填地址与密钥，测试通过后写进本机，以后不再问。</figcaption>
+          </figure>
+          <figure class="shot-card">
+            <div class="shot-frame">
+              <img src="assets/img/desktop/settings.png" alt="设置页更换服务器地址与密钥，含卸载入口" loading="lazy" />
+            </div>
+            <figcaption><strong>设置</strong>随时换地址、换密钥；底部就是卸载入口。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 能力 ============================ -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>桌面端做什么</h2>
+          <p class="desc">它不是把网页塞进一个壳子：作业目录由服务端下发，参数表单按接口定义生成，写单据自带幂等键。</p>
+        </div>
+
+        <div class="grid grid-3 feature-grid">
+          <div class="card card-hover">
+            <h3>配一次，之后不用管</h3>
+            <p>地址与密钥保存在本机，密钥用 Windows DPAPI（safeStorage）加密，只有当前系统账号能解开；换账号或重装后会提示重新填写，不会静默失败。</p>
+          </div>
+          <div class="card card-hover">
+            <h3>作业范围跟着密钥走</h3>
+            <p>密钥带哪些 scope，侧栏就有哪些作业；限于某些仓库的密钥，查询自动收敛，越界写入直接被服务端拒绝。</p>
+          </div>
+          <div class="card card-hover">
+            <h3>密钥失效会告诉你</h3>
+            <p>任何一次请求返回 401，顶部弹「密钥已失效」并自动跳到设置页——地址已经填好，贴一把新密钥保存即恢复。</p>
+          </div>
+          <div class="card card-hover">
+            <h3>写单据不重复</h3>
+            <p>入库、出库、调拨、盘点自动带 Idempotency-Key，网络抖动重试不会重复建单；同一个 key 换请求体会被服务端拦下。</p>
+          </div>
+          <div class="card card-hover">
+            <h3>结果能带走</h3>
+            <p>查询结果直接出表格，可导出 CSV（带 BOM，Excel 打开不乱码），也能展开看原始响应，方便跟后台对数据。</p>
+          </div>
+          <div class="card card-hover">
+            <h3>卸载得干净</h3>
+            <p>设置页里有卸载入口；卸载会一并清掉程序、本机配置（地址与加密密钥）、缓存、快捷方式和开机自启登记，重装等于全新机器。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 安装 ============================ -->
+    <section class="section section-soft" id="install">
+      <div class="container">
+        <div class="section-head">
+          <h2>安装</h2>
+          <p class="desc">一个 exe 搞定，不需要先装 Node、数据库或浏览器组件。</p>
+        </div>
+
+        <div class="dl-panel">
+          <div class="dl-panel-head">
+            <div>
+              <div class="dl-title">云仓 <span class="dl-ver">v0.3.0</span></div>
+              <div class="dl-meta">Windows x64 · 77.6 MB · 安装包未签名，首次运行若被 SmartScreen 拦下，点「更多信息 → 仍要运行」</div>
+            </div>
+            <a class="btn btn-primary" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.3.0-x64.exe">下载</a>
+          </div>
+          <ol class="steps">
+            <li><strong>下载并双击</strong> <span>选安装目录（默认装到当前用户，不需要管理员权限）</span></li>
+            <li><strong>桌面出「云仓」</strong> <span>同时建开始菜单项，图标与窗口标题都叫云仓</span></li>
+            <li><strong>打开填两项</strong> <span>服务器地址 + API 密钥，测试通过即保存</span></li>
+          </ol>
+          <p class="dl-note">
+            密钥在云仓后台「设置 → API 管理」创建，明文只显示一次；丢失只能重建一把。
+            内网部署直接填 <code>IP:端口</code>，自签证书在客户端 <code>.env</code> 里开 <code>CW_INSECURE_TLS=1</code> 才放行。
+          </p>
+        </div>
+
+        <div class="req-grid">
+          <div class="req-card">
+            <h3>系统要求</h3>
+            <ul class="req-list">
+              <li>Windows 10 1809 / Windows 11 / Server 2019+，64 位</li>
+              <li>磁盘可用空间 ≥ 500 MB</li>
+              <li>能访问云仓服务端（内网直连或域名 + 有效证书）</li>
+              <li>无需 Node.js、MySQL、IIS、浏览器扩展</li>
+            </ul>
+          </div>
+          <div class="req-card">
+            <h3>卸载会删什么</h3>
+            <ul class="req-list">
+              <li>程序本体：<code>%LOCALAPPDATA%\Programs\云仓</code></li>
+              <li>本机配置（地址 + 加密密钥）：<code>%APPDATA%\云仓</code></li>
+              <li>缓存、快捷方式、开机自启登记</li>
+              <li>旧版本残留目录（云仓客户端）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 常见问题 ============================ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>常见问题</h2>
+          <p class="desc">几个上手时最容易卡住的地方。</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>提示「密钥已失效」怎么办？</summary>
+            <p>说明服务端返回了 401：密钥被停用、过期、来源 IP 不在白名单，或所属账号被禁用。打开「设置」，地址保持不变，贴一把新密钥点「保存并连接」即可，不用重装、不用重启。</p>
+          </details>
+          <details>
+            <summary>菜单里有些作业是灰的</summary>
+            <p>那是没授权的作业，灰着的项上写着缺哪个 scope（例如 <code>transfer:write</code>）。让管理员在后台给这把密钥加对应权限，重连即出现。</p>
+          </details>
+          <details>
+            <summary>连不上内网地址</summary>
+            <p>先确认这台机器能 ping 通服务端端口；HTTPS 用自签证书时客户端默认会拒绝，需要在程序目录的 <code>.env</code> 里加 <code>CW_INSECURE_TLS=1</code>。请求超时默认 20 秒，可用 <code>CW_TIMEOUT_MS</code> 调整。</p>
+          </details>
+          <details>
+            <summary>怎么换成另一台云仓？</summary>
+            <p>设置页改服务器地址，密钥重新填（留空表示沿用旧密钥），保存后立即生效；旧配置被覆盖，不会残留两套。</p>
+          </details>
+          <details>
+            <summary>为什么不需要装 Node 或数据库？</summary>
+            <p>客户端本体是 Electron，Chromium 与 Node 运行时都打包在安装包里；它只通过 HTTP 调云仓的开放接口，本机不存业务数据。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CTA ============================ -->
+    <section class="section section-soft cta-section">
+      <div class="container cta-inner">
+        <h2>把云仓放到仓库那台电脑上</h2>
+        <p class="desc">双击装完就能用，作业范围由你发的密钥决定。</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.3.0-x64.exe">下载 Windows 安装包</a>
+          <a class="btn btn-ghost btn-lg" href="install.html">部署云仓服务端</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="云仓首页">
+            <img class="brand-logo" src="assets/logo.svg" alt="云仓 Logo" width="36" height="36">
+            <span class="brand-name">云仓 <span class="brand-sub">YUNCANG</span></span>
+          </a>
+          <p>面向中小企业的开源全链路库存管理系统。一条命令部署，浏览器打开即用，仓库全流程可追溯。</p>
+          <div class="footer-social">
+            <a href="https://github.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.523 2 12 2z"/></svg> GitHub</a>
+            <a href="https://gitee.com/yuejiaxinabc/cloud-warehouse" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.5 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 17.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM18 6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zM6.5 9v3.5a3 3 0 0 0 3 3h5M15.5 15V9"/></svg> Gitee</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>页面导航</h4>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="features.html">产品功能</a></li>
+            <li><a href="desktop.html">桌面客户端</a></li>
+            <li><a href="pricing.html">部署服务</a></li>
+            <li><a href="releases.html">版本发布</a></li>
+            <li><a href="changelog.html">更新日志</a></li>
+            <li><a href="security.html">安全日志</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>项目文档</h4>
+          <ul>
+            <li><a href="https://yc.yuejiaxin.ln.cn/" target="_blank" rel="noopener">在线演示 ↗</a></li>
+            <li><a href="install.html#online">在线安装</a></li>
+            <li><a href="install.html#offline">离线安装</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/README.md" target="_blank" rel="noopener">README</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/docs/DEPLOYMENT.md" target="_blank" rel="noopener">DEPLOYMENT</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse-wxapp" target="_blank" rel="noopener">微信小程序端</a></li>
+            <li><a href="https://github.com/yuejiaxinabc/cloud-warehouse/blob/main/LICENSE" target="_blank" rel="noopener">MIT 许可证</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.4</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="toTop" class="to-top" aria-label="回到顶部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
