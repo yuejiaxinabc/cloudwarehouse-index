@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>桌面客户端 · 云仓 YUNCANG</title>
-  <meta name="description" content="云仓桌面客户端（Windows）：首次打开填服务器地址与 API 密钥，之后直接进入作业界面；作业范围由密钥权限决定。内置密钥失效引导、设置页换地址换密钥、CSV 导出与彻底卸载。v0.3.0 安装包 77.6 MB，无需额外运行环境。" />
+  <meta name="description" content="云仓桌面客户端（Windows）：装好填一次服务器地址与密钥，之后打开就是工作台——入库、出库、调拨、盘点、库存查询、单据记录，跟 Web 端同一套蓝白界面。v0.4.0 安装包 77.7 MB，自带运行环境。" />
   <meta name="keywords" content="云仓客户端,桌面客户端,Windows,库存管理,WMS,API 密钥,离线作业,云仓下载" />
   <meta name="author" content="小岳 (xiao yue)" />
   <link rel="canonical" href="https://yuejiaxinabc.github.io/cloudwarehouse-index/desktop.html" />
@@ -33,8 +33,9 @@
       <nav class="main-nav" aria-label="主导航">
         <a href="index.html">首页</a>
         <a href="features.html">产品功能</a>
-        <a href="install.html">部署安装</a>
         <a href="desktop.html" class="active" aria-current="page">桌面客户端</a>
+        <a href="install.html">部署安装</a>
+        <a href="pricing.html">部署服务</a>
         <a href="releases.html">版本发布</a>
         <a href="changelog.html">更新日志</a>
         <a href="security.html">安全日志</a>
@@ -59,8 +60,9 @@
       <ul>
         <li><a href="index.html">首页</a></li>
         <li><a href="features.html">产品功能</a></li>
-        <li><a href="install.html">部署安装</a></li>
         <li><a href="desktop.html" class="active" aria-current="page">桌面客户端</a></li>
+        <li><a href="install.html">部署安装</a></li>
+        <li><a href="pricing.html">部署服务</a></li>
         <li><a href="releases.html">版本发布</a></li>
         <li><a href="changelog.html">更新日志</a></li>
         <li><a href="security.html">安全日志</a></li>
@@ -77,7 +79,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="hero-badge"><span class="dot"></span>Windows 桌面端 · v0.3.0</span>
+          <span class="hero-badge"><span class="dot"></span>Windows 桌面端 · v0.4.0</span>
           <h1 class="hero-title">把云仓<br />装进桌面</h1>
           <p class="hero-lead">
             第一次打开填 <strong>服务器地址</strong> 与 <strong>API 密钥</strong>，之后双击图标直接进作业界面。
@@ -85,13 +87,13 @@
             各看各的。
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.3.0-x64.exe">
+            <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.4.0-x64.exe">
               下载 Windows 安装包
             </a>
             <a class="btn btn-ghost btn-lg" href="#features">看看能做什么</a>
           </div>
           <p class="hero-note">
-            77.6 MB · Windows 10 1809 及以上（x64）· 自带运行环境，不用装 Node / 数据库 / 浏览器插件
+            77.7 MB · Windows 10 1809 及以上（x64）· 自带运行环境，不用装 Node / 数据库 / 浏览器插件
           </p>
         </div>
 
@@ -108,15 +110,15 @@
       <div class="container">
         <div class="section-head center">
           <h2>界面</h2>
-          <p class="desc">蓝白配色，跟 Web 端同一套观感；左栏按你拿到的权限生成作业菜单，没有权限的灰着并注明缺哪一项。</p>
+          <p class="desc">蓝白配色，跟 Web 端同一套观感；左栏按你拿到的权限生成作业菜单，没开通的显示「未开通」，不会让你点了才报错。</p>
         </div>
 
         <div class="shot-grid">
           <figure class="shot-card">
             <div class="shot-frame">
-              <img src="assets/img/desktop/setup.png" alt="首次启动配置服务器地址与密钥" loading="lazy" />
+              <img src="assets/img/desktop/inbound.png" alt="入库作业：仓库和商品自动带出" loading="lazy" />
             </div>
-            <figcaption><strong>第一次打开</strong>填地址与密钥，测试通过后写进本机，以后不再问。</figcaption>
+            <figcaption><strong>入库作业</strong>仓库、类型自动带出，商品边打边搜，勾「直接入账」即过账。</figcaption>
           </figure>
           <figure class="shot-card">
             <div class="shot-frame">
@@ -133,29 +135,29 @@
       <div class="container">
         <div class="section-head">
           <h2>桌面端做什么</h2>
-          <p class="desc">它不是把网页塞进一个壳子：作业目录由服务端下发，参数表单按接口定义生成，写单据自带幂等键。</p>
+          <p class="desc">跟 Web 端同一套蓝白界面：进页面就是业务表单，仓库、商品、可用量自动带出来，不用记任何接口。</p>
         </div>
 
         <div class="grid grid-3 feature-grid">
           <div class="card card-hover">
-            <h3>配一次，之后不用管</h3>
-            <p>地址与密钥保存在本机，密钥用 Windows DPAPI（safeStorage）加密，只有当前系统账号能解开；换账号或重装后会提示重新填写，不会静默失败。</p>
+            <h3>打开就能干活</h3>
+            <p>服务器地址与密钥只填一次，用 Windows DPAPI 加密保存；之后双击图标直接进工作台，仓库清单自动加载。</p>
           </div>
           <div class="card card-hover">
-            <h3>作业范围跟着密钥走</h3>
-            <p>密钥带哪些 scope，侧栏就有哪些作业；限于某些仓库的密钥，查询自动收敛，越界写入直接被服务端拒绝。</p>
+            <h3>能做什么由权限决定</h3>
+            <p>入库、出库、调拨、盘点按这把密钥的权限出现；没开通的作业在左栏灰着，不会让你点了才报错。</p>
           </div>
           <div class="card card-hover">
-            <h3>密钥失效会告诉你</h3>
+            <h3>密钥失效会说清楚</h3>
             <p>任何一次请求返回 401，顶部弹「密钥已失效」并自动跳到设置页——地址已经填好，贴一把新密钥保存即恢复。</p>
           </div>
           <div class="card card-hover">
-            <h3>写单据不重复</h3>
-            <p>入库、出库、调拨、盘点自动带 Idempotency-Key，网络抖动重试不会重复建单；同一个 key 换请求体会被服务端拦下。</p>
+            <h3>重试不会重复建单</h3>
+            <p>提交时自带请求幂等标识，网络抖一下重试也不会多建一张单；同一批数据重复提交会被服务端拦下。</p>
           </div>
           <div class="card card-hover">
-            <h3>结果能带走</h3>
-            <p>查询结果直接出表格，可导出 CSV（带 BOM，Excel 打开不乱码），也能展开看原始响应，方便跟后台对数据。</p>
+            <h3>库存随时能查</h3>
+            <p>库存查询按仓库和商品筛，实时看结存 / 锁定 / 可用；单据记录按类型翻页，入库出库调拨盘点都在一处。</p>
           </div>
           <div class="card card-hover">
             <h3>卸载得干净</h3>
@@ -176,10 +178,10 @@
         <div class="dl-panel">
           <div class="dl-panel-head">
             <div>
-              <div class="dl-title">云仓 <span class="dl-ver">v0.3.0</span></div>
-              <div class="dl-meta">Windows x64 · 77.6 MB · 安装包未签名，首次运行若被 SmartScreen 拦下，点「更多信息 → 仍要运行」</div>
+              <div class="dl-title">云仓 <span class="dl-ver">v0.4.0</span></div>
+              <div class="dl-meta">Windows x64 · 77.7 MB · 安装包未签名，首次运行若被 SmartScreen 拦下，点「更多信息 → 仍要运行」</div>
             </div>
-            <a class="btn btn-primary" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.3.0-x64.exe">下载</a>
+            <a class="btn btn-primary" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.4.0-x64.exe">下载</a>
           </div>
           <ol class="steps">
             <li><strong>下载并双击</strong> <span>选安装目录（默认装到当前用户，不需要管理员权限）</span></li>
@@ -226,11 +228,11 @@
         <div class="faq">
           <details>
             <summary>提示「密钥已失效」怎么办？</summary>
-            <p>说明服务端返回了 401：密钥被停用、过期、来源 IP 不在白名单，或所属账号被禁用。打开「设置」，地址保持不变，贴一把新密钥点「保存并连接」即可，不用重装、不用重启。</p>
+            <p>说明服务端拒绝了这把密钥：可能被停用、过期、来源 IP 不在白名单，或所属账号被禁用。打开「设置」，地址保持不变，贴一把新密钥点「保存并连接」即可，不用重装、不用重启。</p>
           </details>
           <details>
             <summary>菜单里有些作业是灰的</summary>
-            <p>那是没授权的作业，灰着的项上写着缺哪个 scope（例如 <code>transfer:write</code>）。让管理员在后台给这把密钥加对应权限，重连即出现。</p>
+            <p>那是没开通的作业，左栏显示「未开通」。让管理员在云仓后台给这把密钥加上对应权限（例如调拨），重连后就会出现。</p>
           </details>
           <details>
             <summary>连不上内网地址</summary>
@@ -242,7 +244,7 @@
           </details>
           <details>
             <summary>为什么不需要装 Node 或数据库？</summary>
-            <p>客户端本体是 Electron，Chromium 与 Node 运行时都打包在安装包里；它只通过 HTTP 调云仓的开放接口，本机不存业务数据。</p>
+            <p>客户端把 Chromium 与运行时都打包进了安装包，只负责界面与请求；商品、库存、单据全在你的云仓服务器上，本机不存业务数据。</p>
           </details>
         </div>
       </div>
@@ -254,7 +256,7 @@
         <h2>把云仓放到仓库那台电脑上</h2>
         <p class="desc">双击装完就能用，作业范围由你发的密钥决定。</p>
         <div class="hero-cta">
-          <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.3.0-x64.exe">下载 Windows 安装包</a>
+          <a class="btn btn-primary btn-lg" href="https://updata-1307293667.cos.ap-beijing.myqcloud.com/desktop/setup/yuncang-0.4.0-x64.exe">下载 Windows 安装包</a>
           <a class="btn btn-ghost btn-lg" href="install.html">部署云仓服务端</a>
         </div>
       </div>
@@ -282,6 +284,7 @@
             <li><a href="index.html">首页</a></li>
             <li><a href="features.html">产品功能</a></li>
             <li><a href="desktop.html">桌面客户端</a></li>
+            <li><a href="install.html">部署安装</a></li>
             <li><a href="pricing.html">部署服务</a></li>
             <li><a href="releases.html">版本发布</a></li>
             <li><a href="changelog.html">更新日志</a></li>
