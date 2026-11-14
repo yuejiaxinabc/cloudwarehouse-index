@@ -82,11 +82,26 @@
     <!-- ============================ 日志列表 ============================ -->
     <section class="section">
       <div class="container" style="max-width: 56rem;">
+        <!-- v1.4.4 -->
+        <div class="card reveal" style="margin-bottom: 1.5rem;">
+          <div class="tl-head">
+            <h3>v1.4.4</h3>
+            <span class="badge badge-new">Latest</span>
+            <span class="badge badge-stable">稳定版</span>
+            <span class="tl-date">2026-11-14</span>
+          </div>
+          <ul class="entry-list">
+            <li><span class="badge badge-new">定稿</span> <strong>货架模型四段编码</strong> A-01-02-03：货架 → 第1排（横）→ 第2列（竖）→ 第3个货位；坐标是位置，位置里是统一数量的小货位。</li>
+            <li><span class="badge badge-new">新增</span> <strong>货架地图重做</strong>：横轴排、纵轴列的网格，每格显示「已用小货位 / 总数」；点格看该坐标的小货位卡片，可封存 / 恢复，有库存的不能封存。</li>
+            <li><span class="badge badge-fix">调整</span> 建仓只填四个数：货架数 / 每架几排 / 每排几列 / 每个位置几个货位，实时显示位置数与小货位总数。</li>
+            <li><span class="badge badge-opt">包含</span> 1.4.3.x 全部修复：按通道精确更新、装完核对版本并回滚、版本列表返回数组、出库返库与退还件、回收站级联删除、撤销分权、验证码提示、Excel 金额格式、商品可选供应商、容量拦截取消等。</li>
+            <li><span class="badge badge-doc">说明</span> 本版由 Beta 1.4.4.0 验证后转正；三位版本 = 稳定版，一键安装脚本与离线包只跟稳定版。</li>
+          </ul>
+        </div>
         <!-- v1.4.3 -->
         <div class="card reveal" style="margin-bottom: 1.5rem;">
           <div class="tl-head">
             <h3>v1.4.3</h3>
-            <span class="badge badge-new">Latest</span>
             <span class="badge badge-stable">稳定版</span>
             <span class="tl-date">2026-11-13</span>
           </div>
@@ -385,7 +400,7 @@
 
       <div class="footer-bottom">
         <p>© <span id="year">2026</span> 小岳 (xiao yue) · 基于 MIT 许可证开源</p>
-        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.3</p>
+        <p>云仓 · YUNCANG Inventory Management · 当前版本 v1.4.4</p>
       </div>
     </div>
   </footer>
